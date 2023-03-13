@@ -1,1 +1,1 @@
-console.log("test");
+(()=>{"use strict";let t=[];t.push({projectTitle:"Default project"}),console.log(t);let e=[];const o=("eat",i="eat ingredients straight out of the fridge",r="soon",s="high",e.push({title:"eat",description:i,dueDate:r,priority:s}),console.log(e),{title:"eat",description:i,dueDate:r,priority:s});var i,r,s;console.log(o)})();
