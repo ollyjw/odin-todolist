@@ -1,21 +1,47 @@
+import { grabProjectFormData } from "./grabFormData";
+import { projectsArray, createProject } from "./projects.js";
+
 
 
 const content = document.getElementById("content");
 
-export function addProject() {
-    // store the value of the title input in a var & add it to html textcontent
-    const projectTitle = document.getElementById("project-title").value;
-    const h2 = document.createElement("h2");
-    const saveProjectBtn = document.getElementById("save-new-project");
-    h2.className = "project-title";
-    h2.textContent = projectTitle;
+
+export function printProjectInfo(title, description) {
+
+
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('project-card');
+    content.appendChild(newDiv);
+
+    const projectH2 = document.createElement("h2");
+    projectH2.className = "project-title";
+    projectH2.textContent = title;
+
+    const projectP = document.createElement("p");
+    projectP.className = "project-title";
+    projectP.textContent = description;
     
-    saveProjectBtn.addEventListener('click', grabFormData);
 
-    content.appendChild(h2);
+    newDiv.appendChild(projectH2);
+    newDiv.appendChild(projectP);
+}
+
+export function displayProject() {
+    // const { projectsArray } = createProject();
+
+    // Loop through array and display each project's properties
+    projectsArray.forEach(project => {
+        // print title
+        printProjectInfo(project.title, project.description);
+    })
+
 
 }
 
-export function addToDoItem() {
+export function displayToDoItem() {
 
 }
+
+
+const saveProjectBtn = document.getElementById("save-new-project");
+saveProjectBtn.addEventListener('click', grabProjectFormData);

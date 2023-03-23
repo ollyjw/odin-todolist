@@ -5,7 +5,9 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    sourceMapFilename: "sourcemap.js.map"
   },
+  devtool: "source-map",
   module: {
     rules: [
       {

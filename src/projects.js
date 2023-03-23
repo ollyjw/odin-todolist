@@ -1,12 +1,16 @@
+import { grabProjectFormData } from './grabFormData.js';
 
-
-
-let projectsArray = [];
-let projectTitle = "Default project";
-projectsArray.push({projectTitle});
-console.log(projectsArray);
+export let projectsArray = [];
 
 // Push new projects to projects array
-export function createProject(newProject) {
+export function addNewProjectToArray(newProject) {
     projectsArray.push(newProject)
+}
+
+
+// Factory function
+export const createProject = (title, description) => {
+    
+    // addNewProjectToArray(newProject);
+    return { projectsArray, title, description };
 }

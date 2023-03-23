@@ -3,7 +3,7 @@ let toDoArray = [];
 // Factory function
 export const createToDo = (title, description, dueDate, priority) => {
     toDoArray.push({title, description, dueDate, priority});
-    console.log(toDoArray);
+    //console.log(toDoArray);
     return { title, description, dueDate, priority };
 }
 

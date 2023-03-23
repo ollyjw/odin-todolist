@@ -1,6 +1,7 @@
-// import './style.css';
+import './style.css';
 import { createToDo } from "./toDo.js";
-import { addProject, addToDoItem } from "./domcontroller.js";
+import { displayProject, displayToDoItem } from "./domcontroller.js";
+import { createProject } from "./projects.js";
 
 // Project
 // -- To do
@@ -27,7 +28,11 @@ import { addProject, addToDoItem } from "./domcontroller.js";
 // print these properties / display to DOM
 
 
-
-
+// displayProject();
+// Assigning factory function to var and logging
 const myToDo = createToDo('eat', 'eat ingredients straight out of the fridge', 'soon', 'high');
 console.log(myToDo);
+
+
+const myProject = createProject('lol', 'lmao');
+console.log(myProject);
