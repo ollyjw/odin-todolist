@@ -28,7 +28,7 @@ import { createProject } from "./projects.js";
 // print these properties / display to DOM
 
 
-// displayProject();
+displayProject();
 // Assigning factory function to var and logging
 const myToDo = createToDo('eat', 'eat ingredients straight out of the fridge', 'soon', 'high');
 console.log(myToDo);
