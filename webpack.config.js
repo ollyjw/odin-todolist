@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     sourceMapFilename: "sourcemap.js.map"
   },
+  mode: 'development',
   devtool: "source-map",
   module: {
     rules: [
