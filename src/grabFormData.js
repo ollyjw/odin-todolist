@@ -1,5 +1,5 @@
 import { createProject, addNewProjectToArray } from './projects.js';
-import { displayProject } from './DOMController.js';
+import { displayProject } from './domController.js';
 import { projectsArray  } from './projects.js';
 
 // Project form

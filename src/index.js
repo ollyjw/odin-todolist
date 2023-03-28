@@ -1,7 +1,7 @@
 import './style.css';
-import { createToDo } from "./toDo.js";
-import { displayProject, displayToDoItem } from "./domcontroller.js";
-import { createProject } from "./projects.js";
+import { createToDo } from './toDo.js';
+import { displayProject, displayToDoItem } from './domController.js';
+import { createProject } from './projects.js';
 
 // Project
 // -- To do
