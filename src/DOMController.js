@@ -30,20 +30,20 @@ export function printProjectInfo(title, description) {
 
 
 export function displayProject() {
+    // Set content div to empty so it clears the page each time you save & doesnt append projects to previous iteration of displayProject
+    // NB - this didnt work until I called the function in global scope in index.js & broke when I put it beneath the following forEach
+    content.innerHTML = '';
+    
     // Loop through array and display each project's properties
     projectsArray.forEach(project => {
         // print title + description
         printProjectInfo(project.title, project.description);
-    })
-    
-    // Set content div to empty so it doesnt append projects to previous iteration of displayProject
-    // NB - this didnt work until I called the function in index.js
-    content.innerHTML = '';    
+    })    
 }
 
-export function displayToDoItem() {
+// export function displayToDoItem() {
 
-}
+// }
 
 
 const saveProjectBtn = document.getElementById("save-new-project");
