@@ -507,16 +507,15 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/DOMController.js":
+/***/ "./src/domController.js":
 /*!******************************!*\
-  !*** ./src/DOMController.js ***!
+  !*** ./src/domController.js ***!
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "displayProject": () => (/* binding */ displayProject),
-/* harmony export */   "displayToDoItem": () => (/* binding */ displayToDoItem),
 /* harmony export */   "printProjectInfo": () => (/* binding */ printProjectInfo)
 /* harmony export */ });
 /* harmony import */ var _grabFormData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./grabFormData */ "./src/grabFormData.js");
@@ -553,91 +552,20 @@ function printProjectInfo(title, description) {
 
 
 function displayProject() {
-
-    // Set content div to empty so it doesnt append projects to previous iteration of displayProject
-    // NB - this didnt work until I called the function in index.js
+    // Set content div to empty so it clears the page each time you save & doesnt append projects to previous iteration of displayProject
+    // NB - this didnt work until I called the function in global scope in index.js & broke when I put it beneath the following forEach
     content.innerHTML = '';
-
+    
     // Loop through array and display each project's properties
     _projects_js__WEBPACK_IMPORTED_MODULE_1__.projectsArray.forEach(project => {
         // print title + description
         printProjectInfo(project.title, project.description);
-    })
-
-    
+    })    
 }
 
-function displayToDoItem() {
+// export function displayToDoItem() {
 
-}
-
-
-const saveProjectBtn = document.getElementById("save-new-project");
-saveProjectBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__.grabProjectFormData);
-
-
-/***/ }),
-
-/***/ "./src/domcontroller.js":
-/*!******************************!*\
-  !*** ./src/domcontroller.js ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "displayProject": () => (/* binding */ displayProject),
-/* harmony export */   "displayToDoItem": () => (/* binding */ displayToDoItem),
-/* harmony export */   "printProjectInfo": () => (/* binding */ printProjectInfo)
-/* harmony export */ });
-/* harmony import */ var _grabFormData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./grabFormData */ "./src/grabFormData.js");
-/* harmony import */ var _projects_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects.js */ "./src/projects.js");
-
-
-
-
-
-const content = document.getElementById("content");
-
-
-function printProjectInfo(title, description) {
-
-    // Create card div
-    const newDiv = document.createElement('div');
-    newDiv.classList.add('project-card');
-    content.appendChild(newDiv);
-
-    // Create a h2 tag for title
-    const projectH2 = document.createElement("h2");
-    projectH2.className = "project-title";
-    projectH2.textContent = title;
-
-    // Create p tag for description
-    const projectP = document.createElement("p");
-    projectP.className = "project-title";
-    projectP.textContent = description;
-    
-    // Add tags to card div
-    newDiv.appendChild(projectH2);
-    newDiv.appendChild(projectP);
-}
-
-
-function displayProject() {
-    // Loop through array and display each project's properties
-    _projects_js__WEBPACK_IMPORTED_MODULE_1__.projectsArray.forEach(project => {
-        // print title + description
-        printProjectInfo(project.title, project.description);
-    })
-    
-    // Set content div to empty so it doesnt append projects to previous iteration of displayProject
-    // NB - this didnt work until I called the function in index.js
-    content.innerHTML = '';    
-}
-
-function displayToDoItem() {
-
-}
+// }
 
 
 const saveProjectBtn = document.getElementById("save-new-project");
@@ -657,7 +585,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "grabProjectFormData": () => (/* binding */ grabProjectFormData)
 /* harmony export */ });
 /* harmony import */ var _projects_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects.js */ "./src/projects.js");
-/* harmony import */ var _DOMController_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DOMController.js */ "./src/DOMController.js");
+/* harmony import */ var _domController_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./domController.js */ "./src/domController.js");
 
 
 
@@ -676,7 +604,7 @@ function grabProjectFormData(event) {
     (0,_projects_js__WEBPACK_IMPORTED_MODULE_0__.addNewProjectToArray)(newProject);
 
     // Display function
-    (0,_DOMController_js__WEBPACK_IMPORTED_MODULE_1__.displayProject)();
+    (0,_domController_js__WEBPACK_IMPORTED_MODULE_1__.displayProject)();
     console.log(_projects_js__WEBPACK_IMPORTED_MODULE_0__.projectsArray);
     
 }
@@ -827,7 +755,7 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
 /* harmony import */ var _toDo_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toDo.js */ "./src/toDo.js");
-/* harmony import */ var _domcontroller_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./domcontroller.js */ "./src/domcontroller.js");
+/* harmony import */ var _domController_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./domController.js */ "./src/domController.js");
 /* harmony import */ var _projects_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./projects.js */ "./src/projects.js");
 
 
@@ -859,7 +787,8 @@ __webpack_require__.r(__webpack_exports__);
 // print these properties / display to DOM
 
 
-(0,_domcontroller_js__WEBPACK_IMPORTED_MODULE_2__.displayProject)();
+(0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayProject)();
+
 // Assigning factory function to var and logging
 const myToDo = (0,_toDo_js__WEBPACK_IMPORTED_MODULE_1__.createToDo)('eat', 'eat ingredients straight out of the fridge', 'soon', 'high');
 console.log(myToDo);
