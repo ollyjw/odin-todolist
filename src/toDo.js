@@ -1,8 +1,13 @@
-let toDoArray = [];
+export let toDoArray = [];
+
+// Push new projects to projects array
+export function addNewToDoToArray(newToDo) {
+    toDoArray.push(newToDo);
+}
 
 // Factory function
 export const createToDo = (title, description, dueDate, priority) => {
-    toDoArray.push({title, description, dueDate, priority});
+    // toDoArray.push({title, description, dueDate, priority});
     //console.log(toDoArray);
     return { title, description, dueDate, priority };
 }

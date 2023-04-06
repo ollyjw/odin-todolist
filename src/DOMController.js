@@ -1,6 +1,6 @@
-import { grabProjectFormData } from './grabFormData';
+import { grabProjectFormData, grabToDoFormData } from './grabFormData';
 import { projectsArray } from './projects.js';
-
+import { toDoArray } from './toDo';
 
 
 const content = document.getElementById("content");
@@ -9,9 +9,9 @@ const content = document.getElementById("content");
 export function printProjectInfo(title, description) {
 
     // Create card div
-    const newDiv = document.createElement('div');
-    newDiv.classList.add('project-card');
-    content.appendChild(newDiv);
+    const projectCard = document.createElement('div');
+    projectCard.classList.add('project-card');
+    content.appendChild(projectCard);
 
     // Create a h2 tag for title
     const projectH2 = document.createElement("h2");
@@ -24,8 +24,8 @@ export function printProjectInfo(title, description) {
     projectP.textContent = description;
     
     // Add tags to card div
-    newDiv.appendChild(projectH2);
-    newDiv.appendChild(projectP);
+    projectCard.appendChild(projectH2);
+    projectCard.appendChild(projectP);
 }
 
 
@@ -41,10 +41,59 @@ export function displayProject() {
     })    
 }
 
-// export function displayToDoItem() {
+export function printToDoInfo(title, description, date, priority) {
 
-// }
+    // Create card div
+    const toDoCard = document.createElement('div');
+    toDoCard.classList.add('to-do-card');
+    content.appendChild(toDoCard);
 
+    // Create a h2 tag for title
+    const toDoH2 = document.createElement("h2");
+    toDoH2.className = "to-do-title";
+    toDoH2.textContent = title;
+
+    // Create p tag for description
+    const toDoDescriptionP = document.createElement("p");
+    toDoDescriptionP.className = "to-do-title";
+    toDoDescriptionP.textContent = description;
+
+    // Create p tag for date
+    const toDoDateP = document.createElement("p");
+    toDoDateP.className = "to-do-date";
+    toDoDateP.textContent = date;
+
+    // Create p tag for priority
+    const toDoPriority = document.createElement("p");
+    toDoPriority.className = "to-do-priority";
+    toDoPriority.textContent = priority;
+    
+    // Add tags to card div
+    toDoCard.appendChild(toDoH2);
+    toDoCard.appendChild(toDoDescriptionP);
+    toDoCard.appendChild(toDoDateP);
+    toDoCard.appendChild(toDoPriority);
+}
+
+export function displayToDoItem() {
+    // Unsure whether to put this in printinfo to append to projectCard
+    // const projectItems = document.createElement('div');
+    // projectItems.classList.add('project-items');
+
+    //content.innerHTML = '';
+    
+    // Loop through array and display each project's properties
+    toDoArray.forEach(toDo => {
+        // print title + description
+        printToDoInfo(toDo.title, toDo.description, toDo.date, toDo.priority);
+    })
+}
 
 const saveProjectBtn = document.getElementById("save-new-project");
 saveProjectBtn.addEventListener('click', grabProjectFormData);
+
+const saveToDoBtn = document.getElementById("save-new-to-do");
+saveToDoBtn.addEventListener('click', grabToDoFormData);
+
+
+// const cancelProjectBtn = document.getElementById("save-new-project");
