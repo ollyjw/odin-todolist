@@ -516,10 +516,13 @@ module.exports = styleTagTransform;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "displayProject": () => (/* binding */ displayProject),
-/* harmony export */   "printProjectInfo": () => (/* binding */ printProjectInfo)
+/* harmony export */   "displayToDoItem": () => (/* binding */ displayToDoItem),
+/* harmony export */   "printProjectInfo": () => (/* binding */ printProjectInfo),
+/* harmony export */   "printToDoInfo": () => (/* binding */ printToDoInfo)
 /* harmony export */ });
 /* harmony import */ var _grabFormData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./grabFormData */ "./src/grabFormData.js");
 /* harmony import */ var _projects_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects.js */ "./src/projects.js");
+/* harmony import */ var _toDo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toDo */ "./src/toDo.js");
 
 
 
@@ -531,9 +534,9 @@ const content = document.getElementById("content");
 function printProjectInfo(title, description) {
 
     // Create card div
-    const newDiv = document.createElement('div');
-    newDiv.classList.add('project-card');
-    content.appendChild(newDiv);
+    const projectCard = document.createElement('div');
+    projectCard.classList.add('project-card');
+    content.appendChild(projectCard);
 
     // Create a h2 tag for title
     const projectH2 = document.createElement("h2");
@@ -546,8 +549,8 @@ function printProjectInfo(title, description) {
     projectP.textContent = description;
     
     // Add tags to card div
-    newDiv.appendChild(projectH2);
-    newDiv.appendChild(projectP);
+    projectCard.appendChild(projectH2);
+    projectCard.appendChild(projectP);
 }
 
 
@@ -563,14 +566,62 @@ function displayProject() {
     })    
 }
 
-// export function displayToDoItem() {
+function printToDoInfo(title, description, date, priority) {
 
-// }
+    // Create card div
+    const toDoCard = document.createElement('div');
+    toDoCard.classList.add('to-do-card');
+    content.appendChild(toDoCard);
 
+    // Create a h2 tag for title
+    const toDoH2 = document.createElement("h2");
+    toDoH2.className = "to-do-title";
+    toDoH2.textContent = title;
+
+    // Create p tag for description
+    const toDoDescriptionP = document.createElement("p");
+    toDoDescriptionP.className = "to-do-title";
+    toDoDescriptionP.textContent = description;
+
+    // Create p tag for date
+    const toDoDateP = document.createElement("p");
+    toDoDateP.className = "to-do-date";
+    toDoDateP.textContent = date;
+
+    // Create p tag for priority
+    const toDoPriority = document.createElement("p");
+    toDoPriority.className = "to-do-priority";
+    toDoPriority.textContent = priority;
+    
+    // Add tags to card div
+    toDoCard.appendChild(toDoH2);
+    toDoCard.appendChild(toDoDescriptionP);
+    toDoCard.appendChild(toDoDateP);
+    toDoCard.appendChild(toDoPriority);
+}
+
+function displayToDoItem() {
+    // Unsure whether to put this in printinfo to append to projectCard
+    // const projectItems = document.createElement('div');
+    // projectItems.classList.add('project-items');
+
+    //content.innerHTML = '';
+    
+    // Loop through array and display each project's properties
+    _toDo__WEBPACK_IMPORTED_MODULE_2__.toDoArray.forEach(toDo => {
+        // print title + description
+        printToDoInfo(toDo.title, toDo.description, toDo.date, toDo.priority);
+    })
+}
 
 const saveProjectBtn = document.getElementById("save-new-project");
 saveProjectBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__.grabProjectFormData);
 
+const saveToDoBtn = document.getElementById("save-new-to-do");
+saveToDoBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__.grabToDoFormData);
+
+
+// const cancelProjectBtn = document.getElementById("save-new-project");
 
 /***/ }),
 
@@ -582,10 +633,13 @@ saveProjectBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "grabProjectFormData": () => (/* binding */ grabProjectFormData)
+/* harmony export */   "grabProjectFormData": () => (/* binding */ grabProjectFormData),
+/* harmony export */   "grabToDoFormData": () => (/* binding */ grabToDoFormData)
 /* harmony export */ });
 /* harmony import */ var _projects_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects.js */ "./src/projects.js");
 /* harmony import */ var _domController_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./domController.js */ "./src/domController.js");
+/* harmony import */ var _toDo_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toDo.js */ "./src/toDo.js");
+
 
 
 
@@ -610,9 +664,26 @@ function grabProjectFormData(event) {
 }
 
 // To-do form
-// export function grabToDoFormData(event) {
-   
-// }
+function grabToDoFormData(event) {
+    event.preventDefault();
+
+    const toDoTitleValue = document.getElementById("to-do-title").value;
+    const toDoDescriptionValue = document.getElementById("to-do-description").value;
+    
+    
+    // the parsed value is always formatted yyyy-mm-dd
+    const toDoDateValue = document.getElementById("dueDate").valueAsDate;
+
+
+    const toDoPriorityValue = document.getElementById("priority").value;
+
+    let newToDo = (0,_toDo_js__WEBPACK_IMPORTED_MODULE_2__.createToDo)(toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue);
+
+    (0,_toDo_js__WEBPACK_IMPORTED_MODULE_2__.addNewToDoToArray)(newToDo);
+
+    (0,_domController_js__WEBPACK_IMPORTED_MODULE_1__.displayToDoItem)();
+    console.log(_toDo_js__WEBPACK_IMPORTED_MODULE_2__.toDoArray);    
+}
 
 /***/ }),
 
@@ -650,13 +721,20 @@ const createProject = (title, description) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createToDo": () => (/* binding */ createToDo)
+/* harmony export */   "addNewToDoToArray": () => (/* binding */ addNewToDoToArray),
+/* harmony export */   "createToDo": () => (/* binding */ createToDo),
+/* harmony export */   "toDoArray": () => (/* binding */ toDoArray)
 /* harmony export */ });
 let toDoArray = [];
 
+// Push new projects to projects array
+function addNewToDoToArray(newToDo) {
+    toDoArray.push(newToDo);
+}
+
 // Factory function
 const createToDo = (title, description, dueDate, priority) => {
-    toDoArray.push({title, description, dueDate, priority});
+    // toDoArray.push({title, description, dueDate, priority});
     //console.log(toDoArray);
     return { title, description, dueDate, priority };
 }
@@ -788,6 +866,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 (0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayProject)();
+(0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayToDoItem)();
 
 // Assigning factory function to var and logging
 const myToDo = (0,_toDo_js__WEBPACK_IMPORTED_MODULE_1__.createToDo)('eat', 'eat ingredients straight out of the fridge', 'soon', 'high');
