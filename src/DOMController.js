@@ -1,17 +1,20 @@
 import { grabProjectFormData, grabToDoFormData } from './grabFormData';
-import { projectsArray } from './projects.js';
+import { projectsArray, updateIndex } from './projects.js';
 import { toDoArray } from './toDo';
 
 
-const content = document.getElementById("content");
+const sideNav = document.getElementById("projects");
+
+const toDoList = document.getElementById("to-do-list");
 
 
-export function printProjectInfo(title, description) {
+export function printProjectInfo(title, description, id) {
 
-    // Create card div
-    const projectCard = document.createElement('div');
-    projectCard.classList.add('project-card');
-    content.appendChild(projectCard);
+    // Create project list item
+    const projectLi = document.createElement('li');
+    projectLi.classList.add('project');
+    projectLi.dataset.index = id;
+    sideNav.appendChild(projectLi);
 
     // Create a h2 tag for title
     const projectH2 = document.createElement("h2");
@@ -23,21 +26,24 @@ export function printProjectInfo(title, description) {
     projectP.className = "project-title";
     projectP.textContent = description;
     
-    // Add tags to card div
-    projectCard.appendChild(projectH2);
-    projectCard.appendChild(projectP);
+    // Add tags to list item
+    projectLi.appendChild(projectH2);
+    projectLi.appendChild(projectP);
 }
 
 
 export function displayProject() {
+
+    updateIndex();
+
     // Set content div to empty so it clears the page each time you save & doesnt append projects to previous iteration of displayProject
     // NB - this didnt work until I called the function in global scope in index.js & broke when I put it beneath the following forEach
-    content.innerHTML = '';
+    sideNav.innerHTML = '';
     
     // Loop through array and display each project's properties
     projectsArray.forEach(project => {
         // print title + description
-        printProjectInfo(project.title, project.description);
+        printProjectInfo(project.title, project.description, project.id);
     })    
 }
 
@@ -46,7 +52,7 @@ export function printToDoInfo(title, description, dueDate, priority) {
     // Create card div
     const toDoCard = document.createElement('div');
     toDoCard.classList.add('to-do-card');
-    content.appendChild(toDoCard);
+    toDoList.appendChild(toDoCard);
 
     // Create a h2 tag for title
     const toDoH2 = document.createElement("h2");
@@ -66,7 +72,7 @@ export function printToDoInfo(title, description, dueDate, priority) {
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
     toDoPriority.className = "to-do-priority";
-    toDoPriority.textContent = priority;
+    toDoPriority.textContent = `${priority} Priority`;
     
     // Add tags to card div
     toDoCard.appendChild(toDoH2);
@@ -76,11 +82,11 @@ export function printToDoInfo(title, description, dueDate, priority) {
 }
 
 export function displayToDoItem() {
-    // Unsure whether to put this in printinfo to append to projectCard
+    // Unsure whether to put this in printinfo to append to projectLi
     // const projectItems = document.createElement('div');
     // projectItems.classList.add('project-items');
 
-    //content.innerHTML = '';
+    toDoList.innerHTML = '';
     
     // Loop through array and display each project's properties
     toDoArray.forEach(toDo => {

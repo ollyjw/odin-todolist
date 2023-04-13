@@ -1,4 +1,20 @@
-.project-card {
+#project-container {
+    display: flex;
+    min-height: 100%;
+}
+
+.side-nav {
+    flex: 1;
+    height: 100%;
+    width: 25%;
+}
+
+#to-do-list {
+    flex: 5;
+    height: 500px;
+}
+
+.to-do-card {
     padding: 30px;
     border-radius: 0.375rem;
     border:1px solid #eee;

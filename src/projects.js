@@ -9,3 +9,13 @@ export function addNewProjectToArray(newProject) {
 export const createProject = (title, description) => {    
     return { title, description };
 }
+
+// update index no. of each project
+// start index from 0 & add 1 for every project added
+export function updateIndex() {
+    let i = 0;
+    projectsArray.forEach(project => {
+        project.id = i;
+        i += 1;
+    })
+}

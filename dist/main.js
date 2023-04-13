@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".project-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    text-align: center;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n\r\n/* Modal form */\r\n/* .modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n} */", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,kBAAkB;IAClB,mBAAmB;AACvB;;;AAGA,eAAe;AACf;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAgCG","sourcesContent":[".project-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    text-align: center;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n\r\n/* Modal form */\r\n/* .modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n} */"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n}\r\n\r\n.side-nav {\r\n    flex: 1;\r\n    height: 100%;\r\n    width: 25%;\r\n}\r\n\r\n#to-do-list {\r\n    flex: 5;\r\n    height: 500px;\r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    text-align: center;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n\r\n/* Modal form */\r\n/* .modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n} */", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,gBAAgB;AACpB;;AAEA;IACI,OAAO;IACP,YAAY;IACZ,UAAU;AACd;;AAEA;IACI,OAAO;IACP,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,kBAAkB;IAClB,mBAAmB;AACvB;;;AAGA,eAAe;AACf;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAgCG","sourcesContent":["#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n}\r\n\r\n.side-nav {\r\n    flex: 1;\r\n    height: 100%;\r\n    width: 25%;\r\n}\r\n\r\n#to-do-list {\r\n    flex: 5;\r\n    height: 500px;\r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    text-align: center;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n\r\n/* Modal form */\r\n/* .modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n} */"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22514,15 +22514,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const content = document.getElementById("content");
+const sideNav = document.getElementById("projects");
+
+const toDoList = document.getElementById("to-do-list");
 
 
-function printProjectInfo(title, description) {
+function printProjectInfo(title, description, id) {
 
-    // Create card div
-    const projectCard = document.createElement('div');
-    projectCard.classList.add('project-card');
-    content.appendChild(projectCard);
+    // Create project list item
+    const projectLi = document.createElement('li');
+    projectLi.classList.add('project');
+    projectLi.dataset.index = id;
+    sideNav.appendChild(projectLi);
 
     // Create a h2 tag for title
     const projectH2 = document.createElement("h2");
@@ -22534,21 +22537,24 @@ function printProjectInfo(title, description) {
     projectP.className = "project-title";
     projectP.textContent = description;
     
-    // Add tags to card div
-    projectCard.appendChild(projectH2);
-    projectCard.appendChild(projectP);
+    // Add tags to list item
+    projectLi.appendChild(projectH2);
+    projectLi.appendChild(projectP);
 }
 
 
 function displayProject() {
+
+    (0,_projects_js__WEBPACK_IMPORTED_MODULE_1__.updateIndex)();
+
     // Set content div to empty so it clears the page each time you save & doesnt append projects to previous iteration of displayProject
     // NB - this didnt work until I called the function in global scope in index.js & broke when I put it beneath the following forEach
-    content.innerHTML = '';
+    sideNav.innerHTML = '';
     
     // Loop through array and display each project's properties
     _projects_js__WEBPACK_IMPORTED_MODULE_1__.projectsArray.forEach(project => {
         // print title + description
-        printProjectInfo(project.title, project.description);
+        printProjectInfo(project.title, project.description, project.id);
     })    
 }
 
@@ -22557,7 +22563,7 @@ function printToDoInfo(title, description, dueDate, priority) {
     // Create card div
     const toDoCard = document.createElement('div');
     toDoCard.classList.add('to-do-card');
-    content.appendChild(toDoCard);
+    toDoList.appendChild(toDoCard);
 
     // Create a h2 tag for title
     const toDoH2 = document.createElement("h2");
@@ -22577,7 +22583,7 @@ function printToDoInfo(title, description, dueDate, priority) {
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
     toDoPriority.className = "to-do-priority";
-    toDoPriority.textContent = priority;
+    toDoPriority.textContent = `${priority} Priority`;
     
     // Add tags to card div
     toDoCard.appendChild(toDoH2);
@@ -22587,11 +22593,11 @@ function printToDoInfo(title, description, dueDate, priority) {
 }
 
 function displayToDoItem() {
-    // Unsure whether to put this in printinfo to append to projectCard
+    // Unsure whether to put this in printinfo to append to projectLi
     // const projectItems = document.createElement('div');
     // projectItems.classList.add('project-items');
 
-    //content.innerHTML = '';
+    toDoList.innerHTML = '';
     
     // Loop through array and display each project's properties
     _toDo__WEBPACK_IMPORTED_MODULE_2__.toDoArray.forEach(toDo => {
@@ -22683,7 +22689,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addNewProjectToArray": () => (/* binding */ addNewProjectToArray),
 /* harmony export */   "createProject": () => (/* binding */ createProject),
-/* harmony export */   "projectsArray": () => (/* binding */ projectsArray)
+/* harmony export */   "projectsArray": () => (/* binding */ projectsArray),
+/* harmony export */   "updateIndex": () => (/* binding */ updateIndex)
 /* harmony export */ });
 let projectsArray = [];
 
@@ -22695,6 +22702,16 @@ function addNewProjectToArray(newProject) {
 // Factory function
 const createProject = (title, description) => {    
     return { title, description };
+}
+
+// update index no. of each project
+// start index from 0 & add 1 for every project added
+function updateIndex() {
+    let i = 0;
+    projectsArray.forEach(project => {
+        project.id = i;
+        i += 1;
+    })
 }
 
 /***/ }),
@@ -22826,6 +22843,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 // Project
 // -- To do
 // ---- View Details
@@ -22836,20 +22854,7 @@ __webpack_require__.r(__webpack_exports__);
 // Create new to-dos, set to-dos to complete, change to-do priority
 // View all projects / View all todos in each project / expand todo to see/edit details
 
-// https://ollyjw.github.io/odin-library/
-// Similar to library project, use modal forms to take in values and then populate the page with projects and to do items
-
-// Create a project module which is the parent to the To Do Tasks Module
-// May need to give each project an ID to append new to-do tasks 
-
-// LOGIC
-// -----
-// Grab Form data
-// ^
-// Loop through arrays and extract each object's properties
-// ^
-// print these properties / display to DOM
-
+// Add projects to a side nav & the To Do's to cards in content container 
 
 (0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayProject)();
 (0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayToDoItem)();
