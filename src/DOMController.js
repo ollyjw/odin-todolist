@@ -41,7 +41,7 @@ export function displayProject() {
     })    
 }
 
-export function printToDoInfo(title, description, date, priority) {
+export function printToDoInfo(title, description, dueDate, priority) {
 
     // Create card div
     const toDoCard = document.createElement('div');
@@ -61,7 +61,7 @@ export function printToDoInfo(title, description, date, priority) {
     // Create p tag for date
     const toDoDateP = document.createElement("p");
     toDoDateP.className = "to-do-date";
-    toDoDateP.textContent = date;
+    toDoDateP.textContent = `Due at ${dueDate}`;
 
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
@@ -85,7 +85,7 @@ export function displayToDoItem() {
     // Loop through array and display each project's properties
     toDoArray.forEach(toDo => {
         // print title + description
-        printToDoInfo(toDo.title, toDo.description, toDo.date, toDo.priority);
+        printToDoInfo(toDo.title, toDo.description, toDo.dueDate, toDo.priority);
     })
 }
 

@@ -38,3 +38,9 @@ console.log(myToDo);
 
 const myProject = createProject('lol', 'lmao');
 console.log(myProject);
+
+
+// date fns - import the function you want to use
+const {format} = require('date-fns');
+const today =format(new Date(),'dd.MM.yyyy');
+console.log(today);
