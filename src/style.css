@@ -1,15 +1,16 @@
 #project-container {
     display: flex;
     min-height: 100%;
+    margin: 50px;;
 }
 
 .side-nav {
-    flex: 1;
+    flex: 2;
     height: 100%;
     width: 25%;
 }
 
-#to-do-list {
+.to-do-container {
     flex: 5;
     height: 500px;
 }
@@ -20,6 +21,14 @@
     border:1px solid #eee;
     text-align: center;
     margin-bottom: 30px;
+}
+
+#projects {
+    padding-left: 0;
+}
+
+.project {
+    list-style: none;
 }
 
 

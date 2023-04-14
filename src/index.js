@@ -14,7 +14,16 @@ import { createProject } from './projects.js';
 // Create new to-dos, set to-dos to complete, change to-do priority
 // View all projects / View all todos in each project / expand todo to see/edit details
 
-// Add projects to a side nav & the To Do's to cards in content container 
+// Add projects to a side nav & the To Do's to cards in to do container 
+
+// Assign tasks to each project - add dropdown to task form that contains existing projects - may need to sort out storage first to achieve this
+
+//Click on a project in the sidenav and it shows the tasks for that specific project
+
+// Modal js - separate modals for each form - add/remove 'active' class to hide reveal upon click of add new to do / new project btns
+
+// Storage - figure out local storage so its remembers the projects you added in the past & loads them on page load
+
 
 displayProject();
 displayToDoItem();
