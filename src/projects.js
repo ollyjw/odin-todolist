@@ -19,3 +19,13 @@ export function updateIndex() {
         i += 1;
     })
 }
+
+
+export const blankProjectLoad = () => {
+    const myProject = createProject('Default Project', 'Heres a description');
+
+    projectsArray.push(myProject);
+    console.log(projectsArray);
+
+    return { projectsArray };
+}

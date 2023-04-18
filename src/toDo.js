@@ -6,10 +6,19 @@ export function addNewToDoToArray(newToDo) {
 }
 
 // Factory function
-export const createToDo = (title, description, dueDate, priority) => {
+export const createToDo = (projectName, title, description, dueDate, priority) => {
     // toDoArray.push({title, description, dueDate, priority});
     //console.log(toDoArray);
-    return { title, description, dueDate, priority };
+    return { projectName, title, description, dueDate, priority };
+}
+
+export const blankToDoLoad = () => {
+    const myToDo = createToDo('default project', 'eat', 'eat ingredients straight out of the fridge', '28th April', 'high');
+
+    toDoArray.push(myToDo);
+    console.log(toDoArray);
+
+    return {toDoArray};
 }
 
 

@@ -1,7 +1,7 @@
 import './style.css';
-import { createToDo } from './toDo.js';
+import { blankToDoLoad } from './toDo.js';
 import { displayProject, displayToDoItem } from './domController.js';
-import { createProject } from './projects.js';
+import { blankProjectLoad } from './projects.js';
 
 
 // Project
@@ -16,25 +16,22 @@ import { createProject } from './projects.js';
 
 // Add projects to a side nav & the To Do's to cards in to do container 
 
-// Assign tasks to each project - add dropdown to task form that contains existing projects - may need to sort out storage first to achieve this
+// Assign to-dos to each project - add dropdown to to-do form that contains existing projects - may need to sort out storage first to achieve this
 
-//Click on a project in the sidenav and it shows the tasks for that specific project
+// Add projectsArray items to the select>options dropdown elements in the to-do form
+
+// Possibly use Array.filter() to grab the projectName property out of the to-do factory & check if it's equal to item of project array?
+
+//Click on a project in the sidenav and it shows the to-dos for that specific project
 
 // Modal js - separate modals for each form - add/remove 'active' class to hide reveal upon click of add new to do / new project btns
 
 // Storage - figure out local storage so its remembers the projects you added in the past & loads them on page load
 
-
+blankProjectLoad();
+blankToDoLoad();
 displayProject();
 displayToDoItem();
-
-// Assigning factory function to var and logging
-const myToDo = createToDo('eat', 'eat ingredients straight out of the fridge', 'soon', 'high');
-console.log(myToDo);
-
-
-const myProject = createProject('lol', 'lmao');
-console.log(myProject);
 
 
 // date fns - import the function you want to use

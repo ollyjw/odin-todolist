@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n    margin: 50px;;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;\r\n    height: 500px;\r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    text-align: center;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n}\r\n\r\n\r\n/* Modal form */\r\n/* .modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n} */", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,gBAAgB;IAChB,YAAY;AAChB;;AAEA;IACI,OAAO;IACP,YAAY;IACZ,UAAU;AACd;;AAEA;IACI,OAAO;IACP,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,kBAAkB;IAClB,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,gBAAgB;AACpB;;;AAGA,eAAe;AACf;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAgCG","sourcesContent":["#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n    margin: 50px;;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;\r\n    height: 500px;\r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    text-align: center;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n}\r\n\r\n\r\n/* Modal form */\r\n/* .modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n} */"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n    margin: 50px;;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n    margin-right: 15px;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;\r\n    height: 500px;\r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n    padding: 15px;\r\n    border: 1px solid blue;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.project-title {\r\n    margin: 0;\r\n}\r\n\r\n\r\n/* Modal form */\r\n/* .modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n} */", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,gBAAgB;IAChB,YAAY;AAChB;;AAEA;IACI,OAAO;IACP,YAAY;IACZ,UAAU;IACV,kBAAkB;AACtB;;AAEA;IACI,OAAO;IACP,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,sBAAsB;IACtB,mBAAmB;AACvB;;AAEA;IACI,SAAS;AACb;;;AAGA,eAAe;AACf;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAgCG","sourcesContent":["#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n    margin: 50px;;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n    margin-right: 15px;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;\r\n    height: 500px;\r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n    padding: 15px;\r\n    border: 1px solid blue;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.project-title {\r\n    margin: 0;\r\n}\r\n\r\n\r\n/* Modal form */\r\n/* .modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n} */"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22688,6 +22688,7 @@ function grabToDoFormData(event) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addNewProjectToArray": () => (/* binding */ addNewProjectToArray),
+/* harmony export */   "blankProjectLoad": () => (/* binding */ blankProjectLoad),
 /* harmony export */   "createProject": () => (/* binding */ createProject),
 /* harmony export */   "projectsArray": () => (/* binding */ projectsArray),
 /* harmony export */   "updateIndex": () => (/* binding */ updateIndex)
@@ -22714,6 +22715,16 @@ function updateIndex() {
     })
 }
 
+
+const blankProjectLoad = () => {
+    const myProject = createProject('Default Project', 'Heres a description');
+
+    projectsArray.push(myProject);
+    console.log(projectsArray);
+
+    return { projectsArray };
+}
+
 /***/ }),
 
 /***/ "./src/toDo.js":
@@ -22725,6 +22736,7 @@ function updateIndex() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addNewToDoToArray": () => (/* binding */ addNewToDoToArray),
+/* harmony export */   "blankToDoLoad": () => (/* binding */ blankToDoLoad),
 /* harmony export */   "createToDo": () => (/* binding */ createToDo),
 /* harmony export */   "toDoArray": () => (/* binding */ toDoArray)
 /* harmony export */ });
@@ -22736,10 +22748,19 @@ function addNewToDoToArray(newToDo) {
 }
 
 // Factory function
-const createToDo = (title, description, dueDate, priority) => {
+const createToDo = (projectName, title, description, dueDate, priority) => {
     // toDoArray.push({title, description, dueDate, priority});
     //console.log(toDoArray);
-    return { title, description, dueDate, priority };
+    return { projectName, title, description, dueDate, priority };
+}
+
+const blankToDoLoad = () => {
+    const myToDo = createToDo('default project', 'eat', 'eat ingredients straight out of the fridge', '28th April', 'high');
+
+    toDoArray.push(myToDo);
+    console.log(toDoArray);
+
+    return {toDoArray};
 }
 
 
@@ -22856,25 +22877,22 @@ __webpack_require__.r(__webpack_exports__);
 
 // Add projects to a side nav & the To Do's to cards in to do container 
 
-// Assign tasks to each project - add dropdown to task form that contains existing projects - may need to sort out storage first to achieve this
+// Assign to-dos to each project - add dropdown to to-do form that contains existing projects - may need to sort out storage first to achieve this
 
-//Click on a project in the sidenav and it shows the tasks for that specific project
+// Add projectsArray items to the select>options dropdown elements in the to-do form
+
+// Possibly use Array.filter() to grab the projectName property out of the to-do factory & check if it's equal to item of project array?
+
+//Click on a project in the sidenav and it shows the to-dos for that specific project
 
 // Modal js - separate modals for each form - add/remove 'active' class to hide reveal upon click of add new to do / new project btns
 
 // Storage - figure out local storage so its remembers the projects you added in the past & loads them on page load
 
-
+(0,_projects_js__WEBPACK_IMPORTED_MODULE_3__.blankProjectLoad)();
+(0,_toDo_js__WEBPACK_IMPORTED_MODULE_1__.blankToDoLoad)();
 (0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayProject)();
 (0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayToDoItem)();
-
-// Assigning factory function to var and logging
-const myToDo = (0,_toDo_js__WEBPACK_IMPORTED_MODULE_1__.createToDo)('eat', 'eat ingredients straight out of the fridge', 'soon', 'high');
-console.log(myToDo);
-
-
-const myProject = (0,_projects_js__WEBPACK_IMPORTED_MODULE_3__.createProject)('lol', 'lmao');
-console.log(myProject);
 
 
 // date fns - import the function you want to use
