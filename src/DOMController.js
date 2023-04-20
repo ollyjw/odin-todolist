@@ -1,6 +1,8 @@
 import { grabProjectFormData, grabToDoFormData } from './grabFormData';
 import { projectsArray, updateIndex } from './projects.js';
 import { toDoArray } from './toDo';
+import { parseISO } from 'date-fns';
+import { Modal } from './modal';
 
 
 const sideNav = document.getElementById("projects");
@@ -47,8 +49,31 @@ export function displayProject() {
     })    
 }
 
+
+// Once new project submitted, do this
+export function populateProjectDropdown(){
+    // Store Select tag of project dropdown
+    const projectSelect = document.getElementById("projectName");
+    
+    // Loop through projects array and populate in option tags
+    // THIS ARRAY IS AN OBJECT WITH MULTIPLE PROPERTIES - I NEED TO RETRIEVE PROJECTNAME PROP OR THE DROPDOWN OPTIONS WILL JUST SAY OBJECT
+    for (let i = 0; i < projectsArray.length; i++) {
+        let project = projectsArray[i];
+        let optionElement = document.createElement('option');
+        optionElement.textContent = project;
+        optionElement.value = project;
+        projectSelect.appendChild(optionElement);
+    }
+}
+
 export function printToDoInfo(title, description, dueDate, priority) {
 
+    // let title = localStorage.getItem('title');
+    // let description = localStorage.getItem('description');
+    // let dueDate = localStorage.getItem('dueDate');
+    // let priority = localStorage.getItem('priority');
+
+    
     // Create card div
     const toDoCard = document.createElement('div');
     toDoCard.classList.add('to-do-card');
@@ -61,19 +86,16 @@ export function printToDoInfo(title, description, dueDate, priority) {
 
     // Create p tag for description
     const toDoDescriptionP = document.createElement("p");
-    toDoDescriptionP.className = "to-do-title";
-    toDoDescriptionP.textContent = description;
+    toDoDescriptionP.textContent = `Description: ${description}`;
 
     // Create p tag for date
     const toDoDateP = document.createElement("p");
-    toDoDateP.className = "to-do-date";
-    toDoDateP.textContent = `Due at ${dueDate}`;
+    toDoDateP.textContent = `Deadline: ${parseISO(dueDate)}`;
 
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
-    toDoPriority.className = "to-do-priority";
-    toDoPriority.textContent = `${priority} Priority`;
-    
+    toDoPriority.textContent = `Priority: ${priority}`;
+   
     // Add tags to card div
     toDoCard.appendChild(toDoH2);
     toDoCard.appendChild(toDoDescriptionP);
@@ -82,24 +104,76 @@ export function printToDoInfo(title, description, dueDate, priority) {
 }
 
 export function displayToDoItem() {
-    // Unsure whether to put this in printinfo to append to projectLi
-    // const projectItems = document.createElement('div');
-    // projectItems.classList.add('project-items');
-
     toDoList.innerHTML = '';
     
     // Loop through array and display each project's properties
     toDoArray.forEach(toDo => {
-        // print title + description
+        // print title, description, duedate, priority
         printToDoInfo(toDo.title, toDo.description, toDo.dueDate, toDo.priority);
     })
 }
 
+
+// ///////////////////
+// FORM SUBMIT/CANCEl BTNS
+// ///////////////////
 const saveProjectBtn = document.getElementById("save-new-project");
 saveProjectBtn.addEventListener('click', grabProjectFormData);
+saveProjectBtn.addEventListener('click', populateProjectDropdown);
 
 const saveToDoBtn = document.getElementById("save-new-to-do");
 saveToDoBtn.addEventListener('click', grabToDoFormData);
 
-
 // const cancelProjectBtn = document.getElementById("save-new-project");
+
+
+// ///////////////////
+// NEW PROJ/TO-DO BTNS
+// ///////////////////
+const contentContainer = document.getElementById('content-container');
+const overlay = document.getElementById('overlay');
+
+const newProjectBtn = document.createElement('button');
+newProjectBtn.classList.add('btn');
+newProjectBtn.setAttribute('type', 'button');
+newProjectBtn.textContent = 'New project';
+
+newProjectBtn.addEventListener('click', () => {
+    const projectModal = document.getElementById('new-project');
+    Modal.openModal(projectModal);
+})
+overlay.addEventListener('click', () => {
+    const modals = document.querySelector('.modal.active')
+    Modal.closeModal(modals);
+})
+
+const newToDoBtn = document.createElement('button');
+newToDoBtn.classList.add('btn');
+newToDoBtn.setAttribute('type', 'button');
+newToDoBtn.textContent = 'New To Do';
+
+newToDoBtn.addEventListener('click', () => {
+    const toDoModal = document.getElementById('new-to-do');
+    Modal.openModal(toDoModal);
+})
+
+contentContainer.appendChild(newProjectBtn);
+contentContainer.appendChild(newToDoBtn);
+
+
+
+// DELETE PROJ/TO-DO BTNS
+
+// function createDeleteToDoBtn() {
+//     const btn = document.createElement('button');
+//     btn.classList.add('btn');
+//     btn.setAttribute('type', 'button');
+
+//     btn.addEventListener('click', function() {
+//         Modal.openModal();
+        
+//     })
+// }
+
+
+// DETAILS BTN

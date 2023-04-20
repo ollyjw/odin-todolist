@@ -1,7 +1,7 @@
 import './style.css';
 import { blankToDoLoad } from './toDo.js';
 import { displayProject, displayToDoItem } from './domController.js';
-import { blankProjectLoad } from './projects.js';
+import { blankProjectLoad, projectsArray } from './projects.js';
 
 
 // Project
@@ -32,9 +32,3 @@ blankProjectLoad();
 blankToDoLoad();
 displayProject();
 displayToDoItem();
-
-
-// date fns - import the function you want to use
-const {format} = require('date-fns');
-const today =format(new Date(),'dd.MM.yyyy');
-console.log(today);

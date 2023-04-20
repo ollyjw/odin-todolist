@@ -2,6 +2,7 @@ import { createProject, addNewProjectToArray } from './projects.js';
 import { displayProject, displayToDoItem } from './domController.js';
 import { projectsArray  } from './projects.js';
 import { addNewToDoToArray, createToDo, toDoArray } from './toDo.js';
+import { parseISO, startOfToday } from 'date-fns';
 
 // Project form
 export function grabProjectFormData(event) {
@@ -30,16 +31,29 @@ export function grabToDoFormData(event) {
     const toDoDescriptionValue = document.getElementById("to-do-description").value;
     
     
-    // the parsed value is always formatted yyyy-mm-dd
-    const toDoDateValue = document.getElementById("dueDate").valueAsDate;
-
+    // the default parsed value is always formatted yyyy-mm-dd, date-fns's parse ISO changes it to dd-mm-yyyy
+    const toDoDateValue = document.getElementById("dueDate").value;
 
     const toDoPriorityValue = document.getElementById("priority").value;
 
-    let newToDo = createToDo(toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue);
+    let newToDo = createToDo(toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, parentProject);
 
     addNewToDoToArray(newToDo);
-
     displayToDoItem();
     console.log(toDoArray);    
+
+    // Add required fields
+    if (toDoTitleValue == '' || toDoDescriptionValue == '' || toDoDateValue == '') {
+        alert("Please fill out the title, description and due date fields");
+    }
+
+    // Warn user that they selected a date in past
+    if (parseISO(toDoDateValue) < startOfToday()) {
+        alert("You have entered a date which already passed!");
+        console.log(parseISO(toDoDateValue));
+        return;
+    }
+
+    return { toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, }
+
 }

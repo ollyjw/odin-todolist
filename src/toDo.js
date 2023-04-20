@@ -1,3 +1,5 @@
+import { saveToDoLocally } from './storage.js';
+
 export let toDoArray = [];
 
 // Push new projects to projects array
@@ -6,14 +8,20 @@ export function addNewToDoToArray(newToDo) {
 }
 
 // Factory function
-export const createToDo = (projectName, title, description, dueDate, priority) => {
-    // toDoArray.push({title, description, dueDate, priority});
-    //console.log(toDoArray);
-    return { projectName, title, description, dueDate, priority };
+export const createToDo = (title, description, dueDate, priority, projectName) => {
+
+    // saveToDoLocally({ title, description, dueDate, priority });
+
+    return { title, description, dueDate, priority, projectName };
 }
 
 export const blankToDoLoad = () => {
-    const myToDo = createToDo('default project', 'eat', 'eat ingredients straight out of the fridge', '28th April', 'high');
+
+    // // date fns - import the function you want to use
+    const {format} = require('date-fns');
+    const today = format(new Date(),'dd.MM.yyyy');
+
+    const myToDo = createToDo('eat', 'eat ingredients straight out of the fridge', `${today}`, 'high', 'default project');
 
     toDoArray.push(myToDo);
     console.log(toDoArray);
