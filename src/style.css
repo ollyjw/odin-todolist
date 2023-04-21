@@ -1,3 +1,7 @@
+h2 {
+    margin-top: 0;
+}
+
 #content-container {
     margin: 60px;
 }
@@ -35,13 +39,16 @@
 
 .project {
     list-style: none;
-    padding: 15px;
+    padding: 30px;
     border: 1px solid blue;
     margin-bottom: 10px;
 }
 
-.project-title,
-.to-do-title {
+.to-do-card p:last-child {
+    margin-bottom: 0;
+}
+
+.project-description {
     margin: 0;
 }
 

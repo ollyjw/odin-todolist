@@ -25,7 +25,7 @@ export function printProjectInfo(title, description, id) {
 
     // Create p tag for description
     const projectP = document.createElement("p");
-    projectP.className = "project-title";
+    projectP.className = "project-description";
     projectP.textContent = description;
     
     // Add tags to list item
@@ -50,15 +50,16 @@ export function displayProject() {
 }
 
 
-// Once new project submitted, do this
+// Once new project submitted, add to dropdown in new to-do form
 export function populateProjectDropdown(){
     // Store Select tag of project dropdown
     const projectSelect = document.getElementById("projectName");
+
+    projectSelect.innerHTML = '';
     
     // Loop through projects array and populate in option tags
-    // THIS ARRAY IS AN OBJECT WITH MULTIPLE PROPERTIES - I NEED TO RETRIEVE PROJECTNAME PROP OR THE DROPDOWN OPTIONS WILL JUST SAY OBJECT
-    for (let i = 0; i < projectsArray.length; i++) {
-        let project = projectsArray[i];
+     for (let i = 0; i < projectsArray.length; i++) {
+        let project = projectsArray[i].title;
         let optionElement = document.createElement('option');
         optionElement.textContent = project;
         optionElement.value = project;

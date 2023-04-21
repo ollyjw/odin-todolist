@@ -36,6 +36,8 @@ export function grabToDoFormData(event) {
 
     const toDoPriorityValue = document.getElementById("priority").value;
 
+    const parentProject = document.getElementById("projectName").value;
+
     let newToDo = createToDo(toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, parentProject);
 
     addNewToDoToArray(newToDo);
