@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "h2 {\r\n    margin-top: 0;\r\n}\r\n\r\n#content-container {\r\n    margin: 60px;\r\n}\r\n\r\n#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n}\r\n\r\n.row {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n    margin-right: 15px;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;    \r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n    padding: 30px;\r\n    border: 1px solid blue;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.to-do-card p:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.project-description {\r\n    margin: 0;\r\n}\r\n\r\n.btn {\r\n    background-color: rgb(59,130,246);\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n    font-size: large;\r\n    border-style: none;\r\n    border-radius: 10px;\r\n    margin-right: 15px;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #0a58ca;\r\n    border-color: #0a53be;\r\n    cursor: pointer;\r\n}\r\n\r\ninput {\r\n    display: block;\r\n    box-sizing: border-box;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    color: #212529;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n}\r\n\r\nselect {\r\n    display: block;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 2.25rem 0.375rem 0.75rem;\r\n    -moz-padding-start: calc(0.75rem - 3px);\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.375rem;\r\n}\r\n\r\n\r\n/* Modal form */\r\n.modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;AACjB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,gBAAgB;AACpB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,OAAO;IACP,YAAY;IACZ,UAAU;IACV,kBAAkB;AACtB;;AAEA;IACI,OAAO;AACX;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,sBAAsB;IACtB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,SAAS;AACb;;AAEA;IACI,iCAAiC;IACjC,WAAW;IACX,kBAAkB;IAClB,gBAAgB;IAChB,kBAAkB;IAClB,mBAAmB;IACnB,kBAAkB;AACtB;;AAEA;IACI,yBAAyB;IACzB,qBAAqB;IACrB,eAAe;AACnB;;AAEA;IACI,cAAc;IACd,sBAAsB;IACtB,eAAe;IACf,eAAe;IACf,yBAAyB;IACzB,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,cAAc;IACd,sBAAsB;IACtB,4BAA4B;IAC5B,yBAAyB;AAC7B;;AAEA;IACI,cAAc;IACd,eAAe;IACf,eAAe;IACf,0CAA0C;IAC1C,uCAAuC;IACvC,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,yBAAyB;IACzB,uBAAuB;AAC3B;;;AAGA,eAAe;AACf;IACI,eAAe;IACf,QAAQ;IACR,SAAS;IACT,wCAAwC;IACxC,6BAA6B;IAC7B,uBAAuB;IACvB,mBAAmB;IACnB,WAAW;IACX,WAAW;IACX,YAAY;IACZ,cAAc;IACd,aAAa;IACb,sBAAsB;AAC1B;AACA;IACI,wCAAwC;AAC5C;AACA;IACI,eAAe;IACf,UAAU;IACV,6BAA6B;IAC7B,MAAM;IACN,OAAO;IACP,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,oBAAoB;AACxB;AACA;IACI,UAAU;IACV,mBAAmB;AACvB","sourcesContent":["h2 {\r\n    margin-top: 0;\r\n}\r\n\r\n#content-container {\r\n    margin: 60px;\r\n}\r\n\r\n#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n}\r\n\r\n.row {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n    margin-right: 15px;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;    \r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n    padding: 30px;\r\n    border: 1px solid blue;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.to-do-card p:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.project-description {\r\n    margin: 0;\r\n}\r\n\r\n.btn {\r\n    background-color: rgb(59,130,246);\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n    font-size: large;\r\n    border-style: none;\r\n    border-radius: 10px;\r\n    margin-right: 15px;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #0a58ca;\r\n    border-color: #0a53be;\r\n    cursor: pointer;\r\n}\r\n\r\ninput {\r\n    display: block;\r\n    box-sizing: border-box;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    color: #212529;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n}\r\n\r\nselect {\r\n    display: block;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 2.25rem 0.375rem 0.75rem;\r\n    -moz-padding-start: calc(0.75rem - 3px);\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.375rem;\r\n}\r\n\r\n\r\n/* Modal form */\r\n.modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "h2 {\r\n    margin-top: 0;\r\n}\r\n\r\n#content-container {\r\n    margin: 60px;\r\n}\r\n\r\n#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n}\r\n\r\n.row {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n    margin-right: 15px;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;    \r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n    padding: 30px;\r\n    border: 1px solid blue;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.to-do-card p:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n/* .project-description {\r\n    margin: 0;\r\n} */\r\n\r\n.btn {\r\n    background-color: rgb(59,130,246);\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n    font-size: large;\r\n    border-style: none;\r\n    border-radius: 10px;\r\n    margin-right: 15px;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #0a58ca;\r\n    border-color: #0a53be;\r\n    cursor: pointer;\r\n}\r\n\r\ninput {\r\n    display: block;\r\n    box-sizing: border-box;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    color: #212529;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n}\r\n\r\nselect {\r\n    display: block;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 2.25rem 0.375rem 0.75rem;\r\n    -moz-padding-start: calc(0.75rem - 3px);\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.375rem;\r\n}\r\n\r\n\r\n/* Modal form */\r\n.modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;AACjB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,gBAAgB;AACpB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,OAAO;IACP,YAAY;IACZ,UAAU;IACV,kBAAkB;AACtB;;AAEA;IACI,OAAO;AACX;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,sBAAsB;IACtB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;;GAEG;;AAEH;IACI,iCAAiC;IACjC,WAAW;IACX,kBAAkB;IAClB,gBAAgB;IAChB,kBAAkB;IAClB,mBAAmB;IACnB,kBAAkB;AACtB;;AAEA;IACI,yBAAyB;IACzB,qBAAqB;IACrB,eAAe;AACnB;;AAEA;IACI,cAAc;IACd,sBAAsB;IACtB,eAAe;IACf,eAAe;IACf,yBAAyB;IACzB,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,cAAc;IACd,sBAAsB;IACtB,4BAA4B;IAC5B,yBAAyB;AAC7B;;AAEA;IACI,cAAc;IACd,eAAe;IACf,eAAe;IACf,0CAA0C;IAC1C,uCAAuC;IACvC,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,yBAAyB;IACzB,uBAAuB;AAC3B;;;AAGA,eAAe;AACf;IACI,eAAe;IACf,QAAQ;IACR,SAAS;IACT,wCAAwC;IACxC,6BAA6B;IAC7B,uBAAuB;IACvB,mBAAmB;IACnB,WAAW;IACX,WAAW;IACX,YAAY;IACZ,cAAc;IACd,aAAa;IACb,sBAAsB;AAC1B;AACA;IACI,wCAAwC;AAC5C;AACA;IACI,eAAe;IACf,UAAU;IACV,6BAA6B;IAC7B,MAAM;IACN,OAAO;IACP,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,oBAAoB;AACxB;AACA;IACI,UAAU;IACV,mBAAmB;AACvB","sourcesContent":["h2 {\r\n    margin-top: 0;\r\n}\r\n\r\n#content-container {\r\n    margin: 60px;\r\n}\r\n\r\n#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n}\r\n\r\n.row {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n    margin-right: 15px;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;    \r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n    padding: 30px;\r\n    border: 1px solid blue;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.to-do-card p:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n/* .project-description {\r\n    margin: 0;\r\n} */\r\n\r\n.btn {\r\n    background-color: rgb(59,130,246);\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n    font-size: large;\r\n    border-style: none;\r\n    border-radius: 10px;\r\n    margin-right: 15px;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #0a58ca;\r\n    border-color: #0a53be;\r\n    cursor: pointer;\r\n}\r\n\r\ninput {\r\n    display: block;\r\n    box-sizing: border-box;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    color: #212529;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n}\r\n\r\nselect {\r\n    display: block;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 2.25rem 0.375rem 0.75rem;\r\n    -moz-padding-start: calc(0.75rem - 3px);\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.375rem;\r\n}\r\n\r\n\r\n/* Modal form */\r\n.modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22520,16 +22520,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const sideNav = document.getElementById("projects");
-
 const toDoList = document.getElementById("to-do-list");
 
 
-function printProjectInfo(title, description, id) {
+function printProjectInfo(title, description) {
 
     // Create project list item
     const projectLi = document.createElement('li');
     projectLi.classList.add('project');
-    projectLi.dataset.index = id;
+    // projectLi.dataset.index = id;
     sideNav.appendChild(projectLi);
 
     // Create a h2 tag for title
@@ -22541,10 +22540,30 @@ function printProjectInfo(title, description, id) {
     const projectP = document.createElement("p");
     projectP.className = "project-description";
     projectP.textContent = description;
-    
+
+    // Create delete project btn that brings up confirmation modal
+    const deleteProjectBtn = document.createElement('button');
+    deleteProjectBtn.classList.add('btn');
+    deleteProjectBtn.setAttribute('type', 'button');
+    deleteProjectBtn.textContent = 'Delete';
+        
+    deleteProjectBtn.addEventListener('click', function() {
+        const deleteConfirmModal = document.getElementById('delete-project-confirm-modal');
+        _modal__WEBPACK_IMPORTED_MODULE_3__.Modal.openModal(deleteConfirmModal);
+    })
+
+    // DELETE CONFIRMATION - currently deletes all
+    const deleteProjectConfirmBtn = document.getElementById('delete-project-confirm');
+
+    deleteProjectConfirmBtn.addEventListener('click', function deleteProject() {
+        projectLi.remove();
+        localStorage.clear();
+    })
+   
     // Add tags to list item
     projectLi.appendChild(projectH2);
     projectLi.appendChild(projectP);
+    projectLi.appendChild(deleteProjectBtn);
 }
 
 
@@ -22559,7 +22578,7 @@ function displayProject() {
     // Loop through array and display each project's properties
     _projects_js__WEBPACK_IMPORTED_MODULE_1__.projectsArray.forEach(project => {
         // print title + description
-        printProjectInfo(project.title, project.description, project.id);
+        printProjectInfo(project.title, project.description);
     })    
 }
 
@@ -22583,10 +22602,10 @@ function populateProjectDropdown(){
 
 function printToDoInfo(title, description, dueDate, priority) {
 
-    // let title = localStorage.getItem('title');
-    // let description = localStorage.getItem('description');
-    // let dueDate = localStorage.getItem('dueDate');
-    // let priority = localStorage.getItem('priority');
+    title = localStorage.getItem('title');
+    description = localStorage.getItem('description');
+    dueDate = localStorage.getItem('dueDate');
+    priority = localStorage.getItem('priority');
 
     
     // Create card div
@@ -22610,12 +22629,34 @@ function printToDoInfo(title, description, dueDate, priority) {
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
     toDoPriority.textContent = `Priority: ${priority}`;
+
+    // Create Delete Btn which brings up delete confirmation modal
+    const deleteToDoBtn = document.createElement('button');
+    deleteToDoBtn.classList.add('btn');
+    deleteToDoBtn.setAttribute('type', 'button');
+    deleteToDoBtn.textContent = 'Delete';
+        
+    
+    deleteToDoBtn.addEventListener('click', function() {
+        const deleteConfirmModal = document.getElementById('delete-to-do-confirm-modal');
+        _modal__WEBPACK_IMPORTED_MODULE_3__.Modal.openModal(deleteConfirmModal);
+    })
+
+    // DELETE CONFIRMATION
+    const deleteToDoConfirmBtn = document.getElementById('delete-to-do-confirm');
+
+    deleteToDoConfirmBtn.addEventListener('click', function deleteToDo() {
+        toDoCard.remove();
+        localStorage.clear();
+    })
+
    
     // Add tags to card div
     toDoCard.appendChild(toDoH2);
     toDoCard.appendChild(toDoDescriptionP);
     toDoCard.appendChild(toDoDateP);
     toDoCard.appendChild(toDoPriority);
+    toDoCard.appendChild(deleteToDoBtn);
 }
 
 function displayToDoItem() {
@@ -22675,21 +22716,18 @@ newToDoBtn.addEventListener('click', () => {
 contentContainer.appendChild(newProjectBtn);
 contentContainer.appendChild(newToDoBtn);
 
+// CANCEL BTNS
+const cancelDeleteProject = document.getElementById('delete-project-cancel');
+const cancelDeleteToDo = document.getElementById('delete-to-do-modal-cancel');
 
-
-// DELETE PROJ/TO-DO BTNS
-
-// function createDeleteToDoBtn() {
-//     const btn = document.createElement('button');
-//     btn.classList.add('btn');
-//     btn.setAttribute('type', 'button');
-
-//     btn.addEventListener('click', function() {
-//         Modal.openModal();
-        
-//     })
-// }
-
+cancelDeleteProject.addEventListener('click', () => {
+    const modals = document.querySelector('.modal.active')
+    _modal__WEBPACK_IMPORTED_MODULE_3__.Modal.closeModal(modals);
+})
+cancelDeleteToDo.addEventListener('click', () => {
+    const modals = document.querySelector('.modal.active')
+    _modal__WEBPACK_IMPORTED_MODULE_3__.Modal.closeModal(modals);
+})
 
 // DETAILS BTN
 
@@ -22825,6 +22863,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "projectsArray": () => (/* binding */ projectsArray),
 /* harmony export */   "updateIndex": () => (/* binding */ updateIndex)
 /* harmony export */ });
+/* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
+
+
 let projectsArray = [];
 
 // Push new projects to projects array
@@ -22834,6 +22875,7 @@ function addNewProjectToArray(newProject) {
 
 // Factory function
 const createProject = (title, description) => {    
+    (0,_storage_js__WEBPACK_IMPORTED_MODULE_0__.saveProjectLocally)({title, description});
     return { title, description };
 }
 
@@ -22867,39 +22909,38 @@ const blankProjectLoad = () => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "addNewProjectToStorage": () => (/* binding */ addNewProjectToStorage)
+/* harmony export */   "saveProjectLocally": () => (/* binding */ saveProjectLocally),
+/* harmony export */   "saveToDoLocally": () => (/* binding */ saveToDoLocally)
 /* harmony export */ });
 // import { displayToDoItem } from './domController';
 
 
 // Set up a function that saves the projects (and todos) to localStorage every time a new project (or todo) is created
-
-
 // and another function that looks for that data in localStorage when your app is first loaded.
 
-// export function saveToDoLocally({ title, description, dueDate, priority }) {
-//     localStorage.setItem('title',  document.getElementById('to-do-title').value);
-//     localStorage.setItem('description',  document.getElementById('to-do-description').value);
-//     localStorage.setItem('dueDate',  document.getElementById('dueDate').value);
-//     localStorage.setItem('priority',  document.getElementById('priority').value);
-//     // localStorage.setItem('projectName', projectName);
 
+function saveToDoLocally({ title, description, dueDate, priority }) {
+    // The setItem() method of the Storage interface, when passed a key name and value, will add that key to the given Storage object, or update that key's value if it already exists.
+    localStorage.setItem('title',  document.getElementById('to-do-title').value);
+    localStorage.setItem('description',  document.getElementById('to-do-description').value);
+    localStorage.setItem('dueDate',  document.getElementById('dueDate').value);
+    localStorage.setItem('priority',  document.getElementById('priority').value);
+    // localStorage.setItem('projectName', projectName);
 
-//     return { title, description, dueDate, priority };
-// }
+    console.log('saved to do object to local');
 
-function addNewProjectToStorage() {
-    let storage;
-    let storageProjects = JSON.parse(storage).getItem('projects' || 0);
-    storageProjects.push(project);
-    storage.setItem('projects', JSON.stringify(storageProjects));
+    return { title, description, dueDate, priority };
 }
 
+function saveProjectLocally({title, description}) {
+    localStorage.setItem('title',  document.getElementById('project-title').value);
+    localStorage.setItem('description',  document.getElementById('project-description').value);
 
-// let title = localStorage.getItem('title');
-// let description = localStorage.getItem('description');
-// let dueDate = localStorage.getItem('dueDate');
-// let priority = localStorage.getItem('priority');
+    console.log('saved project object to local');
+
+    return { title, description };
+}
+
 
 /***/ }),
 
@@ -22929,14 +22970,14 @@ function addNewToDoToArray(newToDo) {
 // Factory function
 const createToDo = (title, description, dueDate, priority, projectName) => {
 
-    // saveToDoLocally({ title, description, dueDate, priority });
+    (0,_storage_js__WEBPACK_IMPORTED_MODULE_0__.saveToDoLocally)({ title, description, dueDate, priority });
 
     return { title, description, dueDate, priority, projectName };
 }
 
 const blankToDoLoad = () => {
 
-    // // date fns - import the function you want to use
+    // date fns - import the function you want to use
     const {format} = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
     const today = format(new Date(),'dd.MM.yyyy');
 
@@ -22947,16 +22988,6 @@ const blankToDoLoad = () => {
 
     return {toDoArray};
 }
-
-
-// Todo-item constructor
-// (inc notes or checklist?)
-// function ToDoItem (title, description, dueDate, priority) {
-//     this.title = title;
-//     this.description = description;
-//     this.dueDate = dueDate;
-//     this.priority = priority;
-// }
 
 /***/ })
 
@@ -23060,17 +23091,15 @@ __webpack_require__.r(__webpack_exports__);
 // Create new to-dos, set to-dos to complete, change to-do priority
 // View all projects / View all todos in each project / expand todo to see/edit details
 
-// Add projects to a side nav & the To Do's to cards in to do container 
-
-// Assign to-dos to each project - add dropdown to to-do form that contains existing projects - may need to sort out storage first to achieve this
-
-// Add projectsArray items to the select>options dropdown elements in the to-do form
-
-// Possibly use Array.filter() to grab the projectName property out of the to-do factory & check if it's equal to item of project array?
 
 //Click on a project in the sidenav and it shows the to-dos for that specific project
 
-// Modal js - separate modals for each form - add/remove 'active' class to hide reveal upon click of add new to do / new project btns
+// Possibly use Array.filter() to grab the projectName property out of the to-do factory & check if it's equal to item of project array?
+
+// Make sure you can't add the same project title more than once
+
+// 'Delete Confirmation' modal + 'View & Edit Details' Modal
+
 
 // Storage - figure out local storage so its remembers the projects you added in the past & loads them on page load
 

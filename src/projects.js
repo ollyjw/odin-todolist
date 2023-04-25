@@ -1,3 +1,5 @@
+import { saveProjectLocally } from './storage.js';
+
 export let projectsArray = [];
 
 // Push new projects to projects array
@@ -7,6 +9,7 @@ export function addNewProjectToArray(newProject) {
 
 // Factory function
 export const createProject = (title, description) => {    
+    saveProjectLocally({title, description});
     return { title, description };
 }
 

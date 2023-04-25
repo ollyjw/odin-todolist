@@ -6,16 +6,15 @@ import { Modal } from './modal';
 
 
 const sideNav = document.getElementById("projects");
-
 const toDoList = document.getElementById("to-do-list");
 
 
-export function printProjectInfo(title, description, id) {
+export function printProjectInfo(title, description) {
 
     // Create project list item
     const projectLi = document.createElement('li');
     projectLi.classList.add('project');
-    projectLi.dataset.index = id;
+    // projectLi.dataset.index = id;
     sideNav.appendChild(projectLi);
 
     // Create a h2 tag for title
@@ -27,10 +26,30 @@ export function printProjectInfo(title, description, id) {
     const projectP = document.createElement("p");
     projectP.className = "project-description";
     projectP.textContent = description;
-    
+
+    // Create delete project btn that brings up confirmation modal
+    const deleteProjectBtn = document.createElement('button');
+    deleteProjectBtn.classList.add('btn');
+    deleteProjectBtn.setAttribute('type', 'button');
+    deleteProjectBtn.textContent = 'Delete';
+        
+    deleteProjectBtn.addEventListener('click', function() {
+        const deleteConfirmModal = document.getElementById('delete-project-confirm-modal');
+        Modal.openModal(deleteConfirmModal);
+    })
+
+    // DELETE CONFIRMATION - currently deletes all
+    const deleteProjectConfirmBtn = document.getElementById('delete-project-confirm');
+
+    deleteProjectConfirmBtn.addEventListener('click', function deleteProject() {
+        projectLi.remove();
+        localStorage.clear();
+    })
+   
     // Add tags to list item
     projectLi.appendChild(projectH2);
     projectLi.appendChild(projectP);
+    projectLi.appendChild(deleteProjectBtn);
 }
 
 
@@ -45,7 +64,7 @@ export function displayProject() {
     // Loop through array and display each project's properties
     projectsArray.forEach(project => {
         // print title + description
-        printProjectInfo(project.title, project.description, project.id);
+        printProjectInfo(project.title, project.description);
     })    
 }
 
@@ -69,10 +88,10 @@ export function populateProjectDropdown(){
 
 export function printToDoInfo(title, description, dueDate, priority) {
 
-    // let title = localStorage.getItem('title');
-    // let description = localStorage.getItem('description');
-    // let dueDate = localStorage.getItem('dueDate');
-    // let priority = localStorage.getItem('priority');
+    title = localStorage.getItem('title');
+    description = localStorage.getItem('description');
+    dueDate = localStorage.getItem('dueDate');
+    priority = localStorage.getItem('priority');
 
     
     // Create card div
@@ -96,12 +115,34 @@ export function printToDoInfo(title, description, dueDate, priority) {
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
     toDoPriority.textContent = `Priority: ${priority}`;
+
+    // Create Delete Btn which brings up delete confirmation modal
+    const deleteToDoBtn = document.createElement('button');
+    deleteToDoBtn.classList.add('btn');
+    deleteToDoBtn.setAttribute('type', 'button');
+    deleteToDoBtn.textContent = 'Delete';
+        
+    
+    deleteToDoBtn.addEventListener('click', function() {
+        const deleteConfirmModal = document.getElementById('delete-to-do-confirm-modal');
+        Modal.openModal(deleteConfirmModal);
+    })
+
+    // DELETE CONFIRMATION
+    const deleteToDoConfirmBtn = document.getElementById('delete-to-do-confirm');
+
+    deleteToDoConfirmBtn.addEventListener('click', function deleteToDo() {
+        toDoCard.remove();
+        localStorage.clear();
+    })
+
    
     // Add tags to card div
     toDoCard.appendChild(toDoH2);
     toDoCard.appendChild(toDoDescriptionP);
     toDoCard.appendChild(toDoDateP);
     toDoCard.appendChild(toDoPriority);
+    toDoCard.appendChild(deleteToDoBtn);
 }
 
 export function displayToDoItem() {
@@ -161,20 +202,17 @@ newToDoBtn.addEventListener('click', () => {
 contentContainer.appendChild(newProjectBtn);
 contentContainer.appendChild(newToDoBtn);
 
+// CANCEL BTNS
+const cancelDeleteProject = document.getElementById('delete-project-cancel');
+const cancelDeleteToDo = document.getElementById('delete-to-do-modal-cancel');
 
-
-// DELETE PROJ/TO-DO BTNS
-
-// function createDeleteToDoBtn() {
-//     const btn = document.createElement('button');
-//     btn.classList.add('btn');
-//     btn.setAttribute('type', 'button');
-
-//     btn.addEventListener('click', function() {
-//         Modal.openModal();
-        
-//     })
-// }
-
+cancelDeleteProject.addEventListener('click', () => {
+    const modals = document.querySelector('.modal.active')
+    Modal.closeModal(modals);
+})
+cancelDeleteToDo.addEventListener('click', () => {
+    const modals = document.querySelector('.modal.active')
+    Modal.closeModal(modals);
+})
 
 // DETAILS BTN

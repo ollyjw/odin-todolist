@@ -10,14 +10,14 @@ export function addNewToDoToArray(newToDo) {
 // Factory function
 export const createToDo = (title, description, dueDate, priority, projectName) => {
 
-    // saveToDoLocally({ title, description, dueDate, priority });
+    saveToDoLocally({ title, description, dueDate, priority });
 
     return { title, description, dueDate, priority, projectName };
 }
 
 export const blankToDoLoad = () => {
 
-    // // date fns - import the function you want to use
+    // date fns - import the function you want to use
     const {format} = require('date-fns');
     const today = format(new Date(),'dd.MM.yyyy');
 
@@ -28,13 +28,3 @@ export const blankToDoLoad = () => {
 
     return {toDoArray};
 }
-
-
-// Todo-item constructor
-// (inc notes or checklist?)
-// function ToDoItem (title, description, dueDate, priority) {
-//     this.title = title;
-//     this.description = description;
-//     this.dueDate = dueDate;
-//     this.priority = priority;
-// }
