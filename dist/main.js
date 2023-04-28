@@ -22510,8 +22510,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _grabFormData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./grabFormData */ "./src/grabFormData.js");
 /* harmony import */ var _projects_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects.js */ "./src/projects.js");
 /* harmony import */ var _toDo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toDo */ "./src/toDo.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modal */ "./src/modal.js");
+/* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./storage */ "./src/storage.js");
 
 
 
@@ -22522,7 +22522,7 @@ __webpack_require__.r(__webpack_exports__);
 const sideNav = document.getElementById("projects");
 const toDoList = document.getElementById("to-do-list");
 
-
+// Create project html elements
 function printProjectInfo(title, description) {
 
     // Create project list item
@@ -22552,10 +22552,13 @@ function printProjectInfo(title, description) {
         _modal__WEBPACK_IMPORTED_MODULE_3__.Modal.openModal(deleteConfirmModal);
     })
 
-    // DELETE CONFIRMATION - currently deletes all
+    // DELETE PROJECT CONFIRMATION - currently deletes all
     const deleteProjectConfirmBtn = document.getElementById('delete-project-confirm');
 
     deleteProjectConfirmBtn.addEventListener('click', function deleteProject() {
+        const modals = document.querySelector('.modal.active');
+        _modal__WEBPACK_IMPORTED_MODULE_3__.Modal.closeModal(modals);
+        
         projectLi.remove();
         localStorage.clear();
     })
@@ -22566,7 +22569,7 @@ function printProjectInfo(title, description) {
     projectLi.appendChild(deleteProjectBtn);
 }
 
-
+// Loop through array and populate html elements
 function displayProject() {
 
     (0,_projects_js__WEBPACK_IMPORTED_MODULE_1__.updateIndex)();
@@ -22600,14 +22603,14 @@ function populateProjectDropdown(){
     }
 }
 
+// Create to-do html elements
 function printToDoInfo(title, description, dueDate, priority) {
 
-    title = localStorage.getItem('title');
-    description = localStorage.getItem('description');
-    dueDate = localStorage.getItem('dueDate');
-    priority = localStorage.getItem('priority');
+    // title = localStorage.getItem('title');
+    // description = localStorage.getItem('description');
+    // dueDate = localStorage.getItem('dueDate');
+    // priority = localStorage.getItem('priority');
 
-    
     // Create card div
     const toDoCard = document.createElement('div');
     toDoCard.classList.add('to-do-card');
@@ -22624,7 +22627,9 @@ function printToDoInfo(title, description, dueDate, priority) {
 
     // Create p tag for date
     const toDoDateP = document.createElement("p");
-    toDoDateP.textContent = `Deadline: ${(0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(dueDate)}`;
+    // the default parsed value is always formatted yyyy-mm-dd, date-fns changes it to dd-mm-yyyy
+    const {format} = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
+    toDoDateP.textContent = `Due Date: ${format(new Date(dueDate), 'dd.MM.yyy')}`;
 
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
@@ -22636,16 +22641,18 @@ function printToDoInfo(title, description, dueDate, priority) {
     deleteToDoBtn.setAttribute('type', 'button');
     deleteToDoBtn.textContent = 'Delete';
         
-    
     deleteToDoBtn.addEventListener('click', function() {
         const deleteConfirmModal = document.getElementById('delete-to-do-confirm-modal');
         _modal__WEBPACK_IMPORTED_MODULE_3__.Modal.openModal(deleteConfirmModal);
     })
 
-    // DELETE CONFIRMATION
+    // DELETE TO DO CONFIRMATION
     const deleteToDoConfirmBtn = document.getElementById('delete-to-do-confirm');
 
     deleteToDoConfirmBtn.addEventListener('click', function deleteToDo() {
+        const modals = document.querySelector('.modal.active');
+        _modal__WEBPACK_IMPORTED_MODULE_3__.Modal.closeModal(modals);
+
         toDoCard.remove();
         localStorage.clear();
     })
@@ -22659,16 +22666,30 @@ function printToDoInfo(title, description, dueDate, priority) {
     toDoCard.appendChild(deleteToDoBtn);
 }
 
+// Loop through array and populate html elements
 function displayToDoItem() {
     toDoList.innerHTML = '';
     
-    // Loop through array and display each project's properties
-    _toDo__WEBPACK_IMPORTED_MODULE_2__.toDoArray.forEach(toDo => {
-        // print title, description, duedate, priority
-        printToDoInfo(toDo.title, toDo.description, toDo.dueDate, toDo.priority);
-    })
+    // getToDoData();
+
+    let title = localStorage.getItem('title');
+    let description = localStorage.getItem('description');
+    let dueDate = localStorage.getItem('dueDate');
+    let priority = localStorage.getItem('priority');
+
+
+    for (let toDo in _toDo__WEBPACK_IMPORTED_MODULE_2__.toDoArray) {
+        printToDoInfo(title, description, dueDate, priority);
+    }
+
+    // toDoArray.forEach(toDo => {
+    //     // print title, description, duedate, priority
+    //     printToDoInfo(toDo.title, toDo.description, toDo.dueDate, toDo.priority);
+    // })
+
 }
 
+///////////////////////////////////////////////
 
 // ///////////////////
 // FORM SUBMIT/CANCEl BTNS
@@ -22680,6 +22701,7 @@ saveProjectBtn.addEventListener('click', populateProjectDropdown);
 const saveToDoBtn = document.getElementById("save-new-to-do");
 saveToDoBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__.grabToDoFormData);
 
+// Clear form and close modal
 // const cancelProjectBtn = document.getElementById("save-new-project");
 
 
@@ -22716,7 +22738,9 @@ newToDoBtn.addEventListener('click', () => {
 contentContainer.appendChild(newProjectBtn);
 contentContainer.appendChild(newToDoBtn);
 
+// ///////////////////
 // CANCEL BTNS
+// ///////////////////
 const cancelDeleteProject = document.getElementById('delete-project-cancel');
 const cancelDeleteToDo = document.getElementById('delete-to-do-modal-cancel');
 
@@ -22747,8 +22771,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _projects_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects.js */ "./src/projects.js");
 /* harmony import */ var _domController_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./domController.js */ "./src/domController.js");
 /* harmony import */ var _toDo_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toDo.js */ "./src/toDo.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
+/* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
+
+
 
 
 
@@ -22766,33 +22793,39 @@ function grabProjectFormData(event) {
 
     let newProject = (0,_projects_js__WEBPACK_IMPORTED_MODULE_0__.createProject)(projectTitleValue, projectDescriptionValue);
 
+    (0,_storage_js__WEBPACK_IMPORTED_MODULE_3__.saveProjectLocally)(newProject);
+
     (0,_projects_js__WEBPACK_IMPORTED_MODULE_0__.addNewProjectToArray)(newProject);
 
     // Display function
     (0,_domController_js__WEBPACK_IMPORTED_MODULE_1__.displayProject)();
-    console.log(_projects_js__WEBPACK_IMPORTED_MODULE_0__.projectsArray);
-    
+    console.log(_projects_js__WEBPACK_IMPORTED_MODULE_0__.projectsArray);    
 }
 
 // To-do form
 function grabToDoFormData(event) {
     event.preventDefault();
 
+    // Store the input values in a variable
     const toDoTitleValue = document.getElementById("to-do-title").value;
     const toDoDescriptionValue = document.getElementById("to-do-description").value;
-    
-    
-    // the default parsed value is always formatted yyyy-mm-dd, date-fns's parse ISO changes it to dd-mm-yyyy
     const toDoDateValue = document.getElementById("dueDate").value;
-
     const toDoPriorityValue = document.getElementById("priority").value;
 
-    const parentProject = document.getElementById("projectName").value;
+    const projectNameValue = document.getElementById("projectName").value;
 
-    let newToDo = (0,_toDo_js__WEBPACK_IMPORTED_MODULE_2__.createToDo)(toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, parentProject);
+    // Create new to-do object with properties from input values
+    let newToDo = (0,_toDo_js__WEBPACK_IMPORTED_MODULE_2__.createToDo)(toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, projectNameValue);
 
+    // Save the input values to local storage
+    (0,_storage_js__WEBPACK_IMPORTED_MODULE_3__.saveToDoLocally)(newToDo);
+
+    // Add the object to toDoArray
     (0,_toDo_js__WEBPACK_IMPORTED_MODULE_2__.addNewToDoToArray)(newToDo);
+
+    // Push to DOM (Loops through toDoArray and populates html elements)
     (0,_domController_js__WEBPACK_IMPORTED_MODULE_1__.displayToDoItem)();
+
     console.log(_toDo_js__WEBPACK_IMPORTED_MODULE_2__.toDoArray);    
 
     // Add required fields
@@ -22800,14 +22833,15 @@ function grabToDoFormData(event) {
         alert("Please fill out the title, description and due date fields");
     }
 
+    // the default parsed value is always formatted yyyy-mm-dd, date-fns's parse ISO changes it to dd-mm-yyyy
     // Warn user that they selected a date in past
-    if ((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(toDoDateValue) < (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])()) {
+    if ((0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(toDoDateValue) < (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])()) {
         alert("You have entered a date which already passed!");
-        console.log((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(toDoDateValue));
+        console.log((0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(toDoDateValue));
         return;
     }
 
-    return { toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, }
+    return { toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, projectNameValue }
 
 }
 
@@ -22875,7 +22909,7 @@ function addNewProjectToArray(newProject) {
 
 // Factory function
 const createProject = (title, description) => {    
-    (0,_storage_js__WEBPACK_IMPORTED_MODULE_0__.saveProjectLocally)({title, description});
+    // saveProjectLocally({title, description});
     return { title, description };
 }
 
@@ -22894,7 +22928,7 @@ const blankProjectLoad = () => {
     const myProject = createProject('Default Project', 'Heres a description');
 
     projectsArray.push(myProject);
-    console.log(projectsArray);
+    //console.log(projectsArray);
 
     return { projectsArray };
 }
@@ -22909,27 +22943,26 @@ const blankProjectLoad = () => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getToDoData": () => (/* binding */ getToDoData),
 /* harmony export */   "saveProjectLocally": () => (/* binding */ saveProjectLocally),
 /* harmony export */   "saveToDoLocally": () => (/* binding */ saveToDoLocally)
 /* harmony export */ });
-// import { displayToDoItem } from './domController';
-
-
 // Set up a function that saves the projects (and todos) to localStorage every time a new project (or todo) is created
 // and another function that looks for that data in localStorage when your app is first loaded.
 
 
-function saveToDoLocally({ title, description, dueDate, priority }) {
+function saveToDoLocally({ title, description, dueDate, priority, projectName }) {
     // The setItem() method of the Storage interface, when passed a key name and value, will add that key to the given Storage object, or update that key's value if it already exists.
     localStorage.setItem('title',  document.getElementById('to-do-title').value);
     localStorage.setItem('description',  document.getElementById('to-do-description').value);
     localStorage.setItem('dueDate',  document.getElementById('dueDate').value);
     localStorage.setItem('priority',  document.getElementById('priority').value);
-    // localStorage.setItem('projectName', projectName);
+    localStorage.setItem('projectName', projectName);
 
     console.log('saved to do object to local');
+    console.log({ title, description, dueDate, priority, projectName });
 
-    return { title, description, dueDate, priority };
+    return { title, description, dueDate, priority, projectName };
 }
 
 function saveProjectLocally({title, description}) {
@@ -22937,9 +22970,36 @@ function saveProjectLocally({title, description}) {
     localStorage.setItem('description',  document.getElementById('project-description').value);
 
     console.log('saved project object to local');
+    console.log({ title, description });
 
     return { title, description };
 }
+
+// I NEED TO get the current content of localstorage and put those objects into an array
+
+
+function getToDoData() {
+    let title = localStorage.getItem('title');
+    let description = localStorage.getItem('description');
+    let dueDate = localStorage.getItem('dueDate');
+    let priority = localStorage.getItem('priority');
+
+    return { title, description, dueDate, priority };
+}
+
+
+
+// https://blog.logrocket.com/storing-retrieving-javascript-objects-localstorage/
+// we can only store strings in the window.localStorage object
+// If we try to store a JavaScript object without first converting it to a string, we will get an [object, object] response
+
+
+// THOUGHTS
+// TRY REFACTOR TO MODULE PATTERN
+
+// NEED TO STORE FORM INPUT VALUES/OBJECT PROPS IN ONE VARIABLE THAT WILL REPRESENT OBJ  THEN CREATE  A FUNCTION THAT WILL STRINGIFY THE OBJ/ITEM TO LOCAL STORAGE
+
+// CAN STORE  THE DEFAULT PROJECT/TODOS HERE
 
 
 /***/ }),
@@ -22957,20 +23017,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createToDo": () => (/* binding */ createToDo),
 /* harmony export */   "toDoArray": () => (/* binding */ toDoArray)
 /* harmony export */ });
-/* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
-
-
 let toDoArray = [];
 
-// Push new projects to projects array
+// Push new to-do items to toDo array
 function addNewToDoToArray(newToDo) {
     toDoArray.push(newToDo);
 }
 
 // Factory function
 const createToDo = (title, description, dueDate, priority, projectName) => {
-
-    (0,_storage_js__WEBPACK_IMPORTED_MODULE_0__.saveToDoLocally)({ title, description, dueDate, priority });
 
     return { title, description, dueDate, priority, projectName };
 }
@@ -22984,7 +23039,8 @@ const blankToDoLoad = () => {
     const myToDo = createToDo('eat', 'eat ingredients straight out of the fridge', `${today}`, 'high', 'default project');
 
     toDoArray.push(myToDo);
-    console.log(toDoArray);
+
+    //console.log(toDoArray);
 
     return {toDoArray};
 }
@@ -23094,7 +23150,7 @@ __webpack_require__.r(__webpack_exports__);
 
 //Click on a project in the sidenav and it shows the to-dos for that specific project
 
-// Possibly use Array.filter() to grab the projectName property out of the to-do factory & check if it's equal to item of project array?
+// Possibly use Array.filter() to grab the projectName property out of the to-do factory & check if it's equal to title property of project array?
 
 // Make sure you can't add the same project title more than once
 
@@ -23107,6 +23163,9 @@ __webpack_require__.r(__webpack_exports__);
 (0,_toDo_js__WEBPACK_IMPORTED_MODULE_1__.blankToDoLoad)();
 (0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayProject)();
 (0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayToDoItem)();
+
+console.log('to do array is:')
+console.log(_toDo_js__WEBPACK_IMPORTED_MODULE_1__.toDoArray);
 })();
 
 /******/ })()

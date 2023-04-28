@@ -3,6 +3,8 @@ import { displayProject, displayToDoItem } from './domController.js';
 import { projectsArray  } from './projects.js';
 import { addNewToDoToArray, createToDo, toDoArray } from './toDo.js';
 import { parseISO, startOfToday } from 'date-fns';
+import { saveToDoLocally, saveProjectLocally } from './storage.js';
+
 
 // Project form
 export function grabProjectFormData(event) {
@@ -15,33 +17,39 @@ export function grabProjectFormData(event) {
 
     let newProject = createProject(projectTitleValue, projectDescriptionValue);
 
+    saveProjectLocally(newProject);
+
     addNewProjectToArray(newProject);
 
     // Display function
     displayProject();
-    console.log(projectsArray);
-    
+    console.log(projectsArray);    
 }
 
 // To-do form
 export function grabToDoFormData(event) {
     event.preventDefault();
 
+    // Store the input values in a variable
     const toDoTitleValue = document.getElementById("to-do-title").value;
     const toDoDescriptionValue = document.getElementById("to-do-description").value;
-    
-    
-    // the default parsed value is always formatted yyyy-mm-dd, date-fns's parse ISO changes it to dd-mm-yyyy
     const toDoDateValue = document.getElementById("dueDate").value;
-
     const toDoPriorityValue = document.getElementById("priority").value;
 
-    const parentProject = document.getElementById("projectName").value;
+    const projectNameValue = document.getElementById("projectName").value;
 
-    let newToDo = createToDo(toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, parentProject);
+    // Create new to-do object with properties from input values
+    let newToDo = createToDo(toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, projectNameValue);
 
+    // Save the input values to local storage
+    saveToDoLocally(newToDo);
+
+    // Add the object to toDoArray
     addNewToDoToArray(newToDo);
+
+    // Push to DOM (Loops through toDoArray and populates html elements)
     displayToDoItem();
+
     console.log(toDoArray);    
 
     // Add required fields
@@ -49,6 +57,7 @@ export function grabToDoFormData(event) {
         alert("Please fill out the title, description and due date fields");
     }
 
+    // the default parsed value is always formatted yyyy-mm-dd, date-fns's parse ISO changes it to dd-mm-yyyy
     // Warn user that they selected a date in past
     if (parseISO(toDoDateValue) < startOfToday()) {
         alert("You have entered a date which already passed!");
@@ -56,6 +65,6 @@ export function grabToDoFormData(event) {
         return;
     }
 
-    return { toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, }
+    return { toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, projectNameValue }
 
 }

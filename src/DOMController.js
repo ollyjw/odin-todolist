@@ -1,14 +1,14 @@
 import { grabProjectFormData, grabToDoFormData } from './grabFormData';
 import { projectsArray, updateIndex } from './projects.js';
 import { toDoArray } from './toDo';
-import { parseISO } from 'date-fns';
 import { Modal } from './modal';
+import { getToDoData } from './storage';
 
 
 const sideNav = document.getElementById("projects");
 const toDoList = document.getElementById("to-do-list");
 
-
+// Create project html elements
 export function printProjectInfo(title, description) {
 
     // Create project list item
@@ -38,10 +38,13 @@ export function printProjectInfo(title, description) {
         Modal.openModal(deleteConfirmModal);
     })
 
-    // DELETE CONFIRMATION - currently deletes all
+    // DELETE PROJECT CONFIRMATION - currently deletes all
     const deleteProjectConfirmBtn = document.getElementById('delete-project-confirm');
 
     deleteProjectConfirmBtn.addEventListener('click', function deleteProject() {
+        const modals = document.querySelector('.modal.active');
+        Modal.closeModal(modals);
+        
         projectLi.remove();
         localStorage.clear();
     })
@@ -52,7 +55,7 @@ export function printProjectInfo(title, description) {
     projectLi.appendChild(deleteProjectBtn);
 }
 
-
+// Loop through array and populate html elements
 export function displayProject() {
 
     updateIndex();
@@ -86,14 +89,14 @@ export function populateProjectDropdown(){
     }
 }
 
+// Create to-do html elements
 export function printToDoInfo(title, description, dueDate, priority) {
 
-    title = localStorage.getItem('title');
-    description = localStorage.getItem('description');
-    dueDate = localStorage.getItem('dueDate');
-    priority = localStorage.getItem('priority');
+    // title = localStorage.getItem('title');
+    // description = localStorage.getItem('description');
+    // dueDate = localStorage.getItem('dueDate');
+    // priority = localStorage.getItem('priority');
 
-    
     // Create card div
     const toDoCard = document.createElement('div');
     toDoCard.classList.add('to-do-card');
@@ -110,7 +113,9 @@ export function printToDoInfo(title, description, dueDate, priority) {
 
     // Create p tag for date
     const toDoDateP = document.createElement("p");
-    toDoDateP.textContent = `Deadline: ${parseISO(dueDate)}`;
+    // the default parsed value is always formatted yyyy-mm-dd, date-fns changes it to dd-mm-yyyy
+    const {format} = require('date-fns');
+    toDoDateP.textContent = `Due Date: ${format(new Date(dueDate), 'dd.MM.yyy')}`;
 
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
@@ -122,16 +127,18 @@ export function printToDoInfo(title, description, dueDate, priority) {
     deleteToDoBtn.setAttribute('type', 'button');
     deleteToDoBtn.textContent = 'Delete';
         
-    
     deleteToDoBtn.addEventListener('click', function() {
         const deleteConfirmModal = document.getElementById('delete-to-do-confirm-modal');
         Modal.openModal(deleteConfirmModal);
     })
 
-    // DELETE CONFIRMATION
+    // DELETE TO DO CONFIRMATION
     const deleteToDoConfirmBtn = document.getElementById('delete-to-do-confirm');
 
     deleteToDoConfirmBtn.addEventListener('click', function deleteToDo() {
+        const modals = document.querySelector('.modal.active');
+        Modal.closeModal(modals);
+
         toDoCard.remove();
         localStorage.clear();
     })
@@ -145,16 +152,30 @@ export function printToDoInfo(title, description, dueDate, priority) {
     toDoCard.appendChild(deleteToDoBtn);
 }
 
+// Loop through array and populate html elements
 export function displayToDoItem() {
     toDoList.innerHTML = '';
     
-    // Loop through array and display each project's properties
-    toDoArray.forEach(toDo => {
-        // print title, description, duedate, priority
-        printToDoInfo(toDo.title, toDo.description, toDo.dueDate, toDo.priority);
-    })
+    // getToDoData();
+
+    let title = localStorage.getItem('title');
+    let description = localStorage.getItem('description');
+    let dueDate = localStorage.getItem('dueDate');
+    let priority = localStorage.getItem('priority');
+
+
+    for (let toDo in toDoArray) {
+        printToDoInfo(title, description, dueDate, priority);
+    }
+
+    // toDoArray.forEach(toDo => {
+    //     // print title, description, duedate, priority
+    //     printToDoInfo(toDo.title, toDo.description, toDo.dueDate, toDo.priority);
+    // })
+
 }
 
+///////////////////////////////////////////////
 
 // ///////////////////
 // FORM SUBMIT/CANCEl BTNS
@@ -166,6 +187,7 @@ saveProjectBtn.addEventListener('click', populateProjectDropdown);
 const saveToDoBtn = document.getElementById("save-new-to-do");
 saveToDoBtn.addEventListener('click', grabToDoFormData);
 
+// Clear form and close modal
 // const cancelProjectBtn = document.getElementById("save-new-project");
 
 
@@ -202,7 +224,9 @@ newToDoBtn.addEventListener('click', () => {
 contentContainer.appendChild(newProjectBtn);
 contentContainer.appendChild(newToDoBtn);
 
+// ///////////////////
 // CANCEL BTNS
+// ///////////////////
 const cancelDeleteProject = document.getElementById('delete-project-cancel');
 const cancelDeleteToDo = document.getElementById('delete-to-do-modal-cancel');
 

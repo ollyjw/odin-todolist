@@ -1,5 +1,5 @@
 import './style.css';
-import { blankToDoLoad } from './toDo.js';
+import { blankToDoLoad, toDoArray } from './toDo.js';
 import { displayProject, displayToDoItem } from './domController.js';
 import { blankProjectLoad } from './projects.js';
 
@@ -17,7 +17,7 @@ import { blankProjectLoad } from './projects.js';
 
 //Click on a project in the sidenav and it shows the to-dos for that specific project
 
-// Possibly use Array.filter() to grab the projectName property out of the to-do factory & check if it's equal to item of project array?
+// Possibly use Array.filter() to grab the projectName property out of the to-do factory & check if it's equal to title property of project array?
 
 // Make sure you can't add the same project title more than once
 
@@ -30,3 +30,6 @@ blankProjectLoad();
 blankToDoLoad();
 displayProject();
 displayToDoItem();
+
+console.log('to do array is:')
+console.log(toDoArray);

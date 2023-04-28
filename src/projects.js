@@ -9,7 +9,7 @@ export function addNewProjectToArray(newProject) {
 
 // Factory function
 export const createProject = (title, description) => {    
-    saveProjectLocally({title, description});
+    // saveProjectLocally({title, description});
     return { title, description };
 }
 
@@ -28,7 +28,7 @@ export const blankProjectLoad = () => {
     const myProject = createProject('Default Project', 'Heres a description');
 
     projectsArray.push(myProject);
-    console.log(projectsArray);
+    //console.log(projectsArray);
 
     return { projectsArray };
 }
