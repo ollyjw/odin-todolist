@@ -1,7 +1,7 @@
 import './style.css';
 import { blankToDoLoad, toDoArray } from './toDo.js';
 import { displayProject, displayToDoItem } from './domController.js';
-import { blankProjectLoad } from './projects.js';
+// import { blankProjectLoad } from './projects.js';
 
 
 // Project
@@ -26,10 +26,11 @@ import { blankProjectLoad } from './projects.js';
 
 // Storage - figure out local storage so its remembers the projects you added in the past & loads them on page load
 
-blankProjectLoad();
-blankToDoLoad();
+// blankProjectLoad();
+// blankToDoLoad();
 displayProject();
-displayToDoItem();
+displayToDoItem('Default project');
 
-console.log('to do array is:')
-console.log(toDoArray);
+// submit new project > create new project > Display projects + display project's todos
+
+// Need populate project dropdown to happen on page load.

@@ -1,34 +1,45 @@
-import { saveProjectLocally } from './storage.js';
+import { storage } from './storage.js';
 
-export let projectsArray = [];
+// export let projectsArray = [];
 
-// Push new projects to projects array
-export function addNewProjectToArray(newProject) {
-    projectsArray.push(newProject)
-}
+// // Push new projects to projects array
+// export function addNewProjectToArray(newProject) {
+//     projectsArray.push(newProject)
+// }
 
 // Factory function
-export const createProject = (title, description) => {    
-    // saveProjectLocally({title, description});
-    return { title, description };
+export const createProject = (projectName, description, id) => {    
+    let projectProps = {
+        projectName: projectName,
+        description: description,
+        id: updateIndex()
+    }
+
+    class Project {
+        constructor(props) {
+            this.projectName = props.projectName;
+            this.description = props.description;
+            this.id = props.id;
+        }
+    }
+
+    // updateIndex();
+
+    storage.addNewProjectLocally(new Project(projectProps));
+    
+    //return { projectName, description };
 }
+
 
 // update index no. of each project
 // start index from 0 & add 1 for every project added
 export function updateIndex() {
+    let projects = storage.getProjectItems();
     let i = 0;
-    projectsArray.forEach(project => {
+    projects.forEach(project => {
         project.id = i;
         i += 1;
     })
-}
 
-
-export const blankProjectLoad = () => {
-    const myProject = createProject('Default Project', 'Heres a description');
-
-    projectsArray.push(myProject);
-    //console.log(projectsArray);
-
-    return { projectsArray };
+    return i;
 }

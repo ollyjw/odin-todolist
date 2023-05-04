@@ -3,7 +3,7 @@ import { displayProject, displayToDoItem } from './domController.js';
 import { projectsArray  } from './projects.js';
 import { addNewToDoToArray, createToDo, toDoArray } from './toDo.js';
 import { parseISO, startOfToday } from 'date-fns';
-import { saveToDoLocally, saveProjectLocally } from './storage.js';
+import { storage } from './storage.js';
 
 
 // Project form
@@ -15,15 +15,11 @@ export function grabProjectFormData(event) {
     const projectTitleValue = document.getElementById("project-title").value;
     const projectDescriptionValue = document.getElementById("project-description").value;  
 
-    let newProject = createProject(projectTitleValue, projectDescriptionValue);
-
-    saveProjectLocally(newProject);
-
-    addNewProjectToArray(newProject);
+    // Create new project with these values
+    createProject(projectTitleValue, projectDescriptionValue);
 
     // Display function
     displayProject();
-    console.log(projectsArray);    
 }
 
 // To-do form
@@ -38,19 +34,11 @@ export function grabToDoFormData(event) {
 
     const projectNameValue = document.getElementById("projectName").value;
 
+    const {format} = require('date-fns');
+    const formattedDate = format(new Date(toDoDateValue),'dd.MM.yyyy');
+
     // Create new to-do object with properties from input values
-    let newToDo = createToDo(toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, projectNameValue);
-
-    // Save the input values to local storage
-    saveToDoLocally(newToDo);
-
-    // Add the object to toDoArray
-    addNewToDoToArray(newToDo);
-
-    // Push to DOM (Loops through toDoArray and populates html elements)
-    displayToDoItem();
-
-    console.log(toDoArray);    
+    createToDo(toDoTitleValue, toDoDescriptionValue, formattedDate, toDoPriorityValue, projectNameValue); 
 
     // Add required fields
     if (toDoTitleValue == '' || toDoDescriptionValue == '' || toDoDateValue == '') {
@@ -65,6 +53,6 @@ export function grabToDoFormData(event) {
         return;
     }
 
-    return { toDoTitleValue, toDoDescriptionValue, toDoDateValue, toDoPriorityValue, projectNameValue }
-
+    // Push to DOM (Loops through array of to do items and populates html elements)
+    displayToDoItem();
 }

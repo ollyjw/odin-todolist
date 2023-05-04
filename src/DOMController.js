@@ -1,31 +1,30 @@
 import { grabProjectFormData, grabToDoFormData } from './grabFormData';
-import { projectsArray, updateIndex } from './projects.js';
-import { toDoArray } from './toDo';
 import { Modal } from './modal';
-import { getToDoData } from './storage';
+import { storage } from './storage.js';
+// import { updateIndex } from './projects';
 
 
 const sideNav = document.getElementById("projects");
 const toDoList = document.getElementById("to-do-list");
 
 // Create project html elements
-export function printProjectInfo(title, description) {
+export function printProjectInfo(project) {
 
     // Create project list item
     const projectLi = document.createElement('li');
     projectLi.classList.add('project');
-    // projectLi.dataset.index = id;
+    projectLi.dataset.index = project['id'];
     sideNav.appendChild(projectLi);
 
     // Create a h2 tag for title
     const projectH2 = document.createElement("h2");
     projectH2.className = "project-title";
-    projectH2.textContent = title;
+    projectH2.textContent = project['projectName'];
 
     // Create p tag for description
     const projectP = document.createElement("p");
     projectP.className = "project-description";
-    projectP.textContent = description;
+    projectP.textContent = project['description'];
 
     // Create delete project btn that brings up confirmation modal
     const deleteProjectBtn = document.createElement('button');
@@ -41,13 +40,7 @@ export function printProjectInfo(title, description) {
     // DELETE PROJECT CONFIRMATION - currently deletes all
     const deleteProjectConfirmBtn = document.getElementById('delete-project-confirm');
 
-    deleteProjectConfirmBtn.addEventListener('click', function deleteProject() {
-        const modals = document.querySelector('.modal.active');
-        Modal.closeModal(modals);
-        
-        projectLi.remove();
-        localStorage.clear();
-    })
+    deleteProjectConfirmBtn.addEventListener('click', deleteProject());
    
     // Add tags to list item
     projectLi.appendChild(projectH2);
@@ -55,20 +48,36 @@ export function printProjectInfo(title, description) {
     projectLi.appendChild(deleteProjectBtn);
 }
 
+// FIX NEXT
+//deleteProject(project['id'])
+function deleteProject(projectId) {
+    storage.deleteProject(projectId);
+
+    const modals = document.querySelector('.modal.active');
+    Modal.closeModal(modals);
+    
+    // Clears everything - need to target id
+    //projectLi.remove();
+    //localStorage.clear();
+
+}
+
 // Loop through array and populate html elements
 export function displayProject() {
 
-    updateIndex();
+    //storage.updateIndex();
 
     // Set content div to empty so it clears the page each time you save & doesnt append projects to previous iteration of displayProject
     // NB - this didnt work until I called the function in global scope in index.js & broke when I put it beneath the following forEach
     sideNav.innerHTML = '';
     
     // Loop through array and display each project's properties
-    projectsArray.forEach(project => {
-        // print title + description
-        printProjectInfo(project.title, project.description);
-    })    
+      
+    let projects = storage.getProjectItems();
+ 
+    projects.forEach((item) => {
+        printProjectInfo(item);
+    });
 }
 
 
@@ -77,11 +86,14 @@ export function populateProjectDropdown(){
     // Store Select tag of project dropdown
     const projectSelect = document.getElementById("projectName");
 
-    projectSelect.innerHTML = '';
+    // projectSelect.innerHTML = '';
+
+    // REFACTOR AWAY FROM INITIAL ARRAYS TO LOCAL STORAGE ARRAYS
+    let projects = storage.getProjectItems();
     
     // Loop through projects array and populate in option tags
-     for (let i = 0; i < projectsArray.length; i++) {
-        let project = projectsArray[i].title;
+     for (let i = 0; i < projects.length; i++) {
+        let project = projects[i].projectName;
         let optionElement = document.createElement('option');
         optionElement.textContent = project;
         optionElement.value = project;
@@ -91,11 +103,6 @@ export function populateProjectDropdown(){
 
 // Create to-do html elements
 export function printToDoInfo(title, description, dueDate, priority) {
-
-    // title = localStorage.getItem('title');
-    // description = localStorage.getItem('description');
-    // dueDate = localStorage.getItem('dueDate');
-    // priority = localStorage.getItem('priority');
 
     // Create card div
     const toDoCard = document.createElement('div');
@@ -115,7 +122,7 @@ export function printToDoInfo(title, description, dueDate, priority) {
     const toDoDateP = document.createElement("p");
     // the default parsed value is always formatted yyyy-mm-dd, date-fns changes it to dd-mm-yyyy
     const {format} = require('date-fns');
-    toDoDateP.textContent = `Due Date: ${format(new Date(dueDate), 'dd.MM.yyy')}`;
+    toDoDateP.textContent = `Due Date: ${format(new Date(dueDate), 'dd.MM.yyy')}`;   
 
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
@@ -142,7 +149,6 @@ export function printToDoInfo(title, description, dueDate, priority) {
         toDoCard.remove();
         localStorage.clear();
     })
-
    
     // Add tags to card div
     toDoCard.appendChild(toDoH2);
@@ -153,26 +159,15 @@ export function printToDoInfo(title, description, dueDate, priority) {
 }
 
 // Loop through array and populate html elements
-export function displayToDoItem() {
+export function displayToDoItem(projectName) {
     toDoList.innerHTML = '';
     
-    // getToDoData();
+    let toDos = storage.getToDosofProject(projectName);
 
-    let title = localStorage.getItem('title');
-    let description = localStorage.getItem('description');
-    let dueDate = localStorage.getItem('dueDate');
-    let priority = localStorage.getItem('priority');
-
-
-    for (let toDo in toDoArray) {
-        printToDoInfo(title, description, dueDate, priority);
-    }
-
-    // toDoArray.forEach(toDo => {
-    //     // print title, description, duedate, priority
-    //     printToDoInfo(toDo.title, toDo.description, toDo.dueDate, toDo.priority);
-    // })
-
+    toDos.forEach(toDo => {
+        printToDoInfo(toDo['title'], 
+        toDo['description'], toDo['dueDate'], toDo['priority']);
+    })
 }
 
 ///////////////////////////////////////////////
