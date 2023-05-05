@@ -82,17 +82,19 @@ export function displayProject() {
 
 
 // Once new project submitted, add to dropdown in new to-do form
-export function populateProjectDropdown(){
+// populateProjectDropdown('Default project');
+export function populateProjectDropdown(projectName){
     // Store Select tag of project dropdown
     const projectSelect = document.getElementById("projectName");
 
-    // projectSelect.innerHTML = '';
+    // reset the list every time a project is added
+    projectSelect.innerHTML = '';
 
     // REFACTOR AWAY FROM INITIAL ARRAYS TO LOCAL STORAGE ARRAYS
     let projects = storage.getProjectItems();
     
     // Loop through projects array and populate in option tags
-     for (let i = 0; i < projects.length; i++) {
+    for (let i = 0; i < projects.length; i++) {
         let project = projects[i].projectName;
         let optionElement = document.createElement('option');
         optionElement.textContent = project;
