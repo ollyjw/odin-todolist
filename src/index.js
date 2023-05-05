@@ -1,6 +1,6 @@
 import './style.css';
 import { blankToDoLoad, toDoArray } from './toDo.js';
-import { displayProject, displayToDoItem } from './domController.js';
+import { displayProject, displayToDoItem, populateProjectDropdown } from './domController.js';
 // import { blankProjectLoad } from './projects.js';
 
 
@@ -30,7 +30,6 @@ import { displayProject, displayToDoItem } from './domController.js';
 // blankToDoLoad();
 displayProject();
 displayToDoItem('Default project');
+populateProjectDropdown('Default project');
 
 // submit new project > create new project > Display projects + display project's todos
-
-// Need populate project dropdown to happen on page load.
