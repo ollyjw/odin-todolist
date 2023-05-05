@@ -22594,17 +22594,19 @@ function displayProject() {
 
 
 // Once new project submitted, add to dropdown in new to-do form
-function populateProjectDropdown(){
+// populateProjectDropdown('Default project');
+function populateProjectDropdown(projectName){
     // Store Select tag of project dropdown
     const projectSelect = document.getElementById("projectName");
 
-    // projectSelect.innerHTML = '';
+    // reset the list every time a project is added
+    projectSelect.innerHTML = '';
 
     // REFACTOR AWAY FROM INITIAL ARRAYS TO LOCAL STORAGE ARRAYS
     let projects = _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.getProjectItems();
     
     // Loop through projects array and populate in option tags
-     for (let i = 0; i < projects.length; i++) {
+    for (let i = 0; i < projects.length; i++) {
         let project = projects[i].projectName;
         let optionElement = document.createElement('option');
         optionElement.textContent = project;
@@ -23213,10 +23215,9 @@ __webpack_require__.r(__webpack_exports__);
 // blankToDoLoad();
 (0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayProject)();
 (0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.displayToDoItem)('Default project');
+(0,_domController_js__WEBPACK_IMPORTED_MODULE_2__.populateProjectDropdown)('Default project');
 
 // submit new project > create new project > Display projects + display project's todos
-
-// Need populate project dropdown to happen on page load.
 })();
 
 /******/ })()
