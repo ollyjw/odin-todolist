@@ -2,6 +2,7 @@ import { grabProjectFormData, grabToDoFormData } from './grabFormData';
 import { Modal } from './modal';
 import { storage } from './storage.js';
 // import { updateIndex } from './projects';
+import { format, parse } from 'date-fns';
 
 
 const sideNav = document.getElementById("projects");
@@ -15,6 +16,12 @@ export function printProjectInfo(project) {
     projectLi.classList.add('project');
     projectLi.dataset.index = project['id'];
     sideNav.appendChild(projectLi);
+
+    // Create an anchor tag within the li
+    const projectA = document.createElement('a');
+    projectA.className = "project-link";
+    projectA.href = '#';
+    projectLi.appendChild(projectA);
 
     // Create a h2 tag for title
     const projectH2 = document.createElement("h2");
@@ -43,9 +50,33 @@ export function printProjectInfo(project) {
     deleteProjectConfirmBtn.addEventListener('click', deleteProject());
    
     // Add tags to list item
-    projectLi.appendChild(projectH2);
-    projectLi.appendChild(projectP);
-    projectLi.appendChild(deleteProjectBtn);
+    projectA.appendChild(projectH2);
+    projectA.appendChild(projectP);
+    projectA.appendChild(deleteProjectBtn);
+
+    addListenerToProjectItem(projectLi, project['projectName'], projectA, displayToDoItem);
+}
+
+// Click on a project, reset todo container, display project's to-do, add active class to anchor
+function addListenerToProjectItem(projectElem, projectName, anchor, displayToDoItem) {
+    projectElem.addEventListener('click', function() {
+        resetToDoList();
+        // NOT WORKING FOR DEFAULT PROJ - WHY?
+        displayToDoItem(projectName);
+        resetActiveProject(anchor);
+    })
+}
+
+// to be added to click event:
+// add class of active to anchor tag & remove it from the other projects
+function resetActiveProject(newActiveProject) {
+    let projectsUl = document.getElementById('projects').getElementsByClassName('active');
+
+    for (let project of projectsUl) {
+        project.classList.remove('active');
+    }
+
+    newActiveProject.classList.add('active');
 }
 
 // FIX NEXT
@@ -123,8 +154,9 @@ export function printToDoInfo(title, description, dueDate, priority) {
     // Create p tag for date
     const toDoDateP = document.createElement("p");
     // the default parsed value is always formatted yyyy-mm-dd, date-fns changes it to dd-mm-yyyy
-    const {format} = require('date-fns');
-    toDoDateP.textContent = `Due Date: ${format(new Date(dueDate), 'dd.MM.yyy')}`;   
+    let date = parse(dueDate, 'dd.MM.yyyy', new Date());
+
+    toDoDateP.textContent = `Due Date: ${format(date, 'dd.MM.yyyy')}`;   
 
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
@@ -160,11 +192,16 @@ export function printToDoInfo(title, description, dueDate, priority) {
     toDoCard.appendChild(deleteToDoBtn);
 }
 
+// Clear the to do list (when click on project so it hides other projects todos)
+function resetToDoList() {
+    toDoList.innerHTML = '';
+}
+
 // Loop through array and populate html elements
 export function displayToDoItem(projectName) {
-    toDoList.innerHTML = '';
+    //toDoList.innerHTML = '';
     
-    let toDos = storage.getToDosofProject(projectName);
+    let toDos = storage.getToDosOfProject(projectName);
 
     toDos.forEach(toDo => {
         printToDoInfo(toDo['title'], 

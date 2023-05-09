@@ -54,5 +54,5 @@ export function grabToDoFormData(event) {
     }
 
     // Push to DOM (Loops through array of to do items and populates html elements)
-    displayToDoItem();
+    displayToDoItem(projectName);
 }

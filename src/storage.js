@@ -53,7 +53,7 @@ let storage;
         storage.setItem('todos', JSON.stringify(storageToDos));
     }
 
-    function getToDosofProject(project) {
+    function getToDosOfProject(project) {
         // Put todos array from storage into todos variable
         let todos = JSON.parse(storage.getItem('todos'));
         // filter through each element of todos array & check projectName property is equal to project input
@@ -85,7 +85,7 @@ let storage;
     return {
         addNewToDoLocally,
         addNewProjectLocally,
-        getToDosofProject,
+        getToDosOfProject,
         getProjectItems,
         deleteProject
     }

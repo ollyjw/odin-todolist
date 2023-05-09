@@ -39,9 +39,16 @@ h2 {
 
 .project {
     list-style: none;
-    padding: 30px;
     border: 1px solid blue;
     margin-bottom: 10px;
+}
+
+.project-link {
+    display: block;
+    padding: 30px;
+}
+.active {
+    background-color: #d5fff5;
 }
 
 .to-do-card p:last-child {

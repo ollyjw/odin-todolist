@@ -23,11 +23,7 @@ export const createProject = (projectName, description, id) => {
         }
     }
 
-    // updateIndex();
-
     storage.addNewProjectLocally(new Project(projectProps));
-    
-    //return { projectName, description };
 }
 
 
