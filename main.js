@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "h2 {\r\n    margin-top: 0;\r\n}\r\n\r\n#content-container {\r\n    margin: 60px;\r\n}\r\n\r\n#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n}\r\n\r\n.row {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n    margin-right: 15px;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;    \r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n    padding: 30px;\r\n    border: 1px solid blue;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.to-do-card p:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n/* .project-description {\r\n    margin: 0;\r\n} */\r\n\r\n.btn {\r\n    background-color: rgb(59,130,246);\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n    font-size: large;\r\n    border-style: none;\r\n    border-radius: 10px;\r\n    margin-right: 15px;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #0a58ca;\r\n    border-color: #0a53be;\r\n    cursor: pointer;\r\n}\r\n\r\ninput {\r\n    display: block;\r\n    box-sizing: border-box;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    color: #212529;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n}\r\n\r\nselect {\r\n    display: block;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 2.25rem 0.375rem 0.75rem;\r\n    -moz-padding-start: calc(0.75rem - 3px);\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.375rem;\r\n}\r\n\r\n\r\n/* Modal form */\r\n.modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;AACjB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,gBAAgB;AACpB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,OAAO;IACP,YAAY;IACZ,UAAU;IACV,kBAAkB;AACtB;;AAEA;IACI,OAAO;AACX;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,sBAAsB;IACtB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;;GAEG;;AAEH;IACI,iCAAiC;IACjC,WAAW;IACX,kBAAkB;IAClB,gBAAgB;IAChB,kBAAkB;IAClB,mBAAmB;IACnB,kBAAkB;AACtB;;AAEA;IACI,yBAAyB;IACzB,qBAAqB;IACrB,eAAe;AACnB;;AAEA;IACI,cAAc;IACd,sBAAsB;IACtB,eAAe;IACf,eAAe;IACf,yBAAyB;IACzB,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,cAAc;IACd,sBAAsB;IACtB,4BAA4B;IAC5B,yBAAyB;AAC7B;;AAEA;IACI,cAAc;IACd,eAAe;IACf,eAAe;IACf,0CAA0C;IAC1C,uCAAuC;IACvC,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,yBAAyB;IACzB,uBAAuB;AAC3B;;;AAGA,eAAe;AACf;IACI,eAAe;IACf,QAAQ;IACR,SAAS;IACT,wCAAwC;IACxC,6BAA6B;IAC7B,uBAAuB;IACvB,mBAAmB;IACnB,WAAW;IACX,WAAW;IACX,YAAY;IACZ,cAAc;IACd,aAAa;IACb,sBAAsB;AAC1B;AACA;IACI,wCAAwC;AAC5C;AACA;IACI,eAAe;IACf,UAAU;IACV,6BAA6B;IAC7B,MAAM;IACN,OAAO;IACP,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,oBAAoB;AACxB;AACA;IACI,UAAU;IACV,mBAAmB;AACvB","sourcesContent":["h2 {\r\n    margin-top: 0;\r\n}\r\n\r\n#content-container {\r\n    margin: 60px;\r\n}\r\n\r\n#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n}\r\n\r\n.row {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n    margin-right: 15px;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;    \r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n    padding: 30px;\r\n    border: 1px solid blue;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.to-do-card p:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n/* .project-description {\r\n    margin: 0;\r\n} */\r\n\r\n.btn {\r\n    background-color: rgb(59,130,246);\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n    font-size: large;\r\n    border-style: none;\r\n    border-radius: 10px;\r\n    margin-right: 15px;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #0a58ca;\r\n    border-color: #0a53be;\r\n    cursor: pointer;\r\n}\r\n\r\ninput {\r\n    display: block;\r\n    box-sizing: border-box;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    color: #212529;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n}\r\n\r\nselect {\r\n    display: block;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 2.25rem 0.375rem 0.75rem;\r\n    -moz-padding-start: calc(0.75rem - 3px);\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.375rem;\r\n}\r\n\r\n\r\n/* Modal form */\r\n.modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "h2 {\r\n    margin-top: 0;\r\n}\r\n\r\n#content-container {\r\n    margin: 60px;\r\n}\r\n\r\n#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n}\r\n\r\n.row {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n    margin-right: 15px;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;    \r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n    border: 1px solid blue;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.project-link {\r\n    display: block;\r\n    padding: 30px;\r\n}\r\n.active {\r\n    background-color: #d5fff5;\r\n}\r\n\r\n.to-do-card p:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n/* .project-description {\r\n    margin: 0;\r\n} */\r\n\r\n.btn {\r\n    background-color: rgb(59,130,246);\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n    font-size: large;\r\n    border-style: none;\r\n    border-radius: 10px;\r\n    margin-right: 15px;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #0a58ca;\r\n    border-color: #0a53be;\r\n    cursor: pointer;\r\n}\r\n\r\ninput {\r\n    display: block;\r\n    box-sizing: border-box;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    color: #212529;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n}\r\n\r\nselect {\r\n    display: block;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 2.25rem 0.375rem 0.75rem;\r\n    -moz-padding-start: calc(0.75rem - 3px);\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.375rem;\r\n}\r\n\r\n\r\n/* Modal form */\r\n.modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;AACjB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,gBAAgB;AACpB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,OAAO;IACP,YAAY;IACZ,UAAU;IACV,kBAAkB;AACtB;;AAEA;IACI,OAAO;AACX;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,qBAAqB;IACrB,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,gBAAgB;IAChB,sBAAsB;IACtB,mBAAmB;AACvB;;AAEA;IACI,cAAc;IACd,aAAa;AACjB;AACA;IACI,yBAAyB;AAC7B;;AAEA;IACI,gBAAgB;AACpB;;AAEA;;GAEG;;AAEH;IACI,iCAAiC;IACjC,WAAW;IACX,kBAAkB;IAClB,gBAAgB;IAChB,kBAAkB;IAClB,mBAAmB;IACnB,kBAAkB;AACtB;;AAEA;IACI,yBAAyB;IACzB,qBAAqB;IACrB,eAAe;AACnB;;AAEA;IACI,cAAc;IACd,sBAAsB;IACtB,eAAe;IACf,eAAe;IACf,yBAAyB;IACzB,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,cAAc;IACd,sBAAsB;IACtB,4BAA4B;IAC5B,yBAAyB;AAC7B;;AAEA;IACI,cAAc;IACd,eAAe;IACf,eAAe;IACf,0CAA0C;IAC1C,uCAAuC;IACvC,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,yBAAyB;IACzB,uBAAuB;AAC3B;;;AAGA,eAAe;AACf;IACI,eAAe;IACf,QAAQ;IACR,SAAS;IACT,wCAAwC;IACxC,6BAA6B;IAC7B,uBAAuB;IACvB,mBAAmB;IACnB,WAAW;IACX,WAAW;IACX,YAAY;IACZ,cAAc;IACd,aAAa;IACb,sBAAsB;AAC1B;AACA;IACI,wCAAwC;AAC5C;AACA;IACI,eAAe;IACf,UAAU;IACV,6BAA6B;IAC7B,MAAM;IACN,OAAO;IACP,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,oBAAoB;AACxB;AACA;IACI,UAAU;IACV,mBAAmB;AACvB","sourcesContent":["h2 {\r\n    margin-top: 0;\r\n}\r\n\r\n#content-container {\r\n    margin: 60px;\r\n}\r\n\r\n#project-container {\r\n    display: flex;\r\n    min-height: 100%;\r\n}\r\n\r\n.row {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.side-nav {\r\n    flex: 2;\r\n    height: 100%;\r\n    width: 25%;\r\n    margin-right: 15px;\r\n}\r\n\r\n.to-do-container {\r\n    flex: 5;    \r\n}\r\n\r\n.to-do-card {\r\n    padding: 30px;\r\n    border-radius: 0.375rem;\r\n    border:1px solid #eee;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n#projects {\r\n    padding-left: 0;\r\n}\r\n\r\n.project {\r\n    list-style: none;\r\n    border: 1px solid blue;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.project-link {\r\n    display: block;\r\n    padding: 30px;\r\n}\r\n.active {\r\n    background-color: #d5fff5;\r\n}\r\n\r\n.to-do-card p:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n/* .project-description {\r\n    margin: 0;\r\n} */\r\n\r\n.btn {\r\n    background-color: rgb(59,130,246);\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n    font-size: large;\r\n    border-style: none;\r\n    border-radius: 10px;\r\n    margin-right: 15px;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #0a58ca;\r\n    border-color: #0a53be;\r\n    cursor: pointer;\r\n}\r\n\r\ninput {\r\n    display: block;\r\n    box-sizing: border-box;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    color: #212529;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n}\r\n\r\nselect {\r\n    display: block;\r\n    min-width: 100%;\r\n    max-width: 100%;\r\n    padding: 0.375rem 2.25rem 0.375rem 0.75rem;\r\n    -moz-padding-start: calc(0.75rem - 3px);\r\n    font-size: 1rem;\r\n    font-weight: 400;\r\n    line-height: 1.5;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.375rem;\r\n}\r\n\r\n\r\n/* Modal form */\r\n.modal {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%) scale(0);\r\n    transition: 200ms ease-in-out;\r\n    border: 1px solid black;\r\n    border-radius: 10px;\r\n    z-index: 10;\r\n    width: auto;\r\n    height: auto;\r\n    max-width: 80%;\r\n    padding: 2rem;\r\n    background-color: #fff;\r\n}\r\n.modal.active {\r\n    transform: translate(-50%,-50%) scale(1);\r\n}\r\n#overlay {\r\n    position: fixed;\r\n    opacity: 0;\r\n    transition: 200ms ease-in-out;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgb(0,0,0,0.5);\r\n    pointer-events: none;\r\n}\r\n#overlay.active {\r\n    opacity: 1;\r\n    pointer-events: all;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22510,10 +22510,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _grabFormData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./grabFormData */ "./src/grabFormData.js");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal */ "./src/modal.js");
 /* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parse/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
 
 
 
 // import { updateIndex } from './projects';
+
 
 
 const sideNav = document.getElementById("projects");
@@ -22527,6 +22530,12 @@ function printProjectInfo(project) {
     projectLi.classList.add('project');
     projectLi.dataset.index = project['id'];
     sideNav.appendChild(projectLi);
+
+    // Create an anchor tag within the li
+    const projectA = document.createElement('a');
+    projectA.className = "project-link";
+    projectA.href = '#';
+    projectLi.appendChild(projectA);
 
     // Create a h2 tag for title
     const projectH2 = document.createElement("h2");
@@ -22555,9 +22564,33 @@ function printProjectInfo(project) {
     deleteProjectConfirmBtn.addEventListener('click', deleteProject());
    
     // Add tags to list item
-    projectLi.appendChild(projectH2);
-    projectLi.appendChild(projectP);
-    projectLi.appendChild(deleteProjectBtn);
+    projectA.appendChild(projectH2);
+    projectA.appendChild(projectP);
+    projectA.appendChild(deleteProjectBtn);
+
+    addListenerToProjectItem(projectLi, project['projectName'], projectA, displayToDoItem);
+}
+
+// Click on a project, reset todo container, display project's to-do, add active class to anchor
+function addListenerToProjectItem(projectElem, projectName, anchor, displayToDoItem) {
+    projectElem.addEventListener('click', function() {
+        resetToDoList();
+        // NOT WORKING FOR DEFAULT PROJ - WHY?
+        displayToDoItem(projectName);
+        resetActiveProject(anchor);
+    })
+}
+
+// to be added to click event:
+// add class of active to anchor tag & remove it from the other projects
+function resetActiveProject(newActiveProject) {
+    let projectsUl = document.getElementById('projects').getElementsByClassName('active');
+
+    for (let project of projectsUl) {
+        project.classList.remove('active');
+    }
+
+    newActiveProject.classList.add('active');
 }
 
 // FIX NEXT
@@ -22635,8 +22668,9 @@ function printToDoInfo(title, description, dueDate, priority) {
     // Create p tag for date
     const toDoDateP = document.createElement("p");
     // the default parsed value is always formatted yyyy-mm-dd, date-fns changes it to dd-mm-yyyy
-    const {format} = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
-    toDoDateP.textContent = `Due Date: ${format(new Date(dueDate), 'dd.MM.yyy')}`;   
+    let date = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(dueDate, 'dd.MM.yyyy', new Date());
+
+    toDoDateP.textContent = `Due Date: ${(0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(date, 'dd.MM.yyyy')}`;   
 
     // Create p tag for priority
     const toDoPriority = document.createElement("p");
@@ -22672,11 +22706,16 @@ function printToDoInfo(title, description, dueDate, priority) {
     toDoCard.appendChild(deleteToDoBtn);
 }
 
+// Clear the to do list (when click on project so it hides other projects todos)
+function resetToDoList() {
+    toDoList.innerHTML = '';
+}
+
 // Loop through array and populate html elements
 function displayToDoItem(projectName) {
-    toDoList.innerHTML = '';
+    //toDoList.innerHTML = '';
     
-    let toDos = _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.getToDosofProject(projectName);
+    let toDos = _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.getToDosOfProject(projectName);
 
     toDos.forEach(toDo => {
         printToDoInfo(toDo['title'], 
@@ -22825,7 +22864,7 @@ function grabToDoFormData(event) {
     }
 
     // Push to DOM (Loops through array of to do items and populates html elements)
-    (0,_domController_js__WEBPACK_IMPORTED_MODULE_1__.displayToDoItem)();
+    (0,_domController_js__WEBPACK_IMPORTED_MODULE_1__.displayToDoItem)(projectName);
 }
 
 /***/ }),
@@ -22903,11 +22942,7 @@ const createProject = (projectName, description, id) => {
         }
     }
 
-    // updateIndex();
-
     _storage_js__WEBPACK_IMPORTED_MODULE_0__.storage.addNewProjectLocally(new Project(projectProps));
-    
-    //return { projectName, description };
 }
 
 
@@ -22991,7 +23026,7 @@ let storage;
         storage.setItem('todos', JSON.stringify(storageToDos));
     }
 
-    function getToDosofProject(project) {
+    function getToDosOfProject(project) {
         // Put todos array from storage into todos variable
         let todos = JSON.parse(storage.getItem('todos'));
         // filter through each element of todos array & check projectName property is equal to project input
@@ -23023,7 +23058,7 @@ let storage;
     return {
         addNewToDoLocally,
         addNewProjectLocally,
-        getToDosofProject,
+        getToDosOfProject,
         getProjectItems,
         deleteProject
     }
@@ -23042,19 +23077,10 @@ let storage;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "addNewToDoToArray": () => (/* binding */ addNewToDoToArray),
-/* harmony export */   "createToDo": () => (/* binding */ createToDo),
-/* harmony export */   "toDoArray": () => (/* binding */ toDoArray)
+/* harmony export */   "createToDo": () => (/* binding */ createToDo)
 /* harmony export */ });
 /* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
 
-
-let toDoArray = [];
-
-// Push new to-do items to toDo array
-function addNewToDoToArray(newToDo) {
-    toDoArray.push(newToDo);
-}
 
 // Factory function
 const createToDo = (title, description, dueDate, priority, projectName) => {
@@ -23080,23 +23106,7 @@ const createToDo = (title, description, dueDate, priority, projectName) => {
 
     //Save the input values to local storage
     _storage_js__WEBPACK_IMPORTED_MODULE_0__.storage.addNewToDoLocally(new ToDo(toDoProps));
-
 }
-
-// export const blankToDoLoad = () => {
-
-//     // date fns - import the function you want to use
-//     const {format} = require('date-fns');
-//     const today = format(new Date(),'dd.MM.yyyy');
-
-//     const myToDo = createToDo('eat', 'eat ingredients straight out of the fridge', `${today}`, 'high', 'default project');
-
-//     toDoArray.push(myToDo);
-
-//     //console.log(toDoArray);
-
-//     return {toDoArray};
-// }
 
 /***/ })
 
