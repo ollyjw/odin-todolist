@@ -55,10 +55,6 @@ h2 {
     margin-bottom: 0;
 }
 
-/* .project-description {
-    margin: 0;
-} */
-
 .btn {
     background-color: rgb(59,130,246);
     color: #fff;
@@ -88,6 +84,12 @@ input {
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
+}
+
+.label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 select {

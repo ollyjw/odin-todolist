@@ -34,12 +34,6 @@ export function grabToDoFormData(event) {
 
     const projectNameValue = document.getElementById("projectName").value;
 
-    const {format} = require('date-fns');
-    const formattedDate = format(new Date(toDoDateValue),'dd.MM.yyyy');
-
-    // Create new to-do object with properties from input values
-    createToDo(toDoTitleValue, toDoDescriptionValue, formattedDate, toDoPriorityValue, projectNameValue); 
-
     // Add required fields
     if (toDoTitleValue == '' || toDoDescriptionValue == '' || toDoDateValue == '') {
         alert("Please fill out the title, description and due date fields");
@@ -49,9 +43,15 @@ export function grabToDoFormData(event) {
     // Warn user that they selected a date in past
     if (parseISO(toDoDateValue) < startOfToday()) {
         alert("You have entered a date which already passed!");
-        console.log(parseISO(toDoDateValue));
+        // console.log(parseISO(toDoDateValue));
         return;
     }
+
+    const {format} = require('date-fns');
+    const formattedDate = format(new Date(toDoDateValue),'dd.MM.yyyy');
+
+    // Create new to-do object with properties from input values
+    createToDo(toDoTitleValue, toDoDescriptionValue, formattedDate, toDoPriorityValue, projectNameValue); 
 
     // Push to DOM (Loops through array of to do items and populates html elements)
     displayToDoItem(projectName);

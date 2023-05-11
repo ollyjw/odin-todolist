@@ -219,6 +219,10 @@ saveProjectBtn.addEventListener('click', populateProjectDropdown);
 
 const saveToDoBtn = document.getElementById("save-new-to-do");
 saveToDoBtn.addEventListener('click', grabToDoFormData);
+// saveToDoBtn.addEventListener('click', () => {
+//     const modals = document.querySelector('.modal.active')
+//     Modal.closeModal(modals);
+// })
 
 // Clear form and close modal
 // const cancelProjectBtn = document.getElementById("save-new-project");
@@ -254,8 +258,8 @@ newToDoBtn.addEventListener('click', () => {
     Modal.openModal(toDoModal);
 })
 
-contentContainer.appendChild(newProjectBtn);
-contentContainer.appendChild(newToDoBtn);
+contentContainer.prepend(newToDoBtn);contentContainer.prepend(newProjectBtn);
+
 
 // ///////////////////
 // CANCEL BTNS
