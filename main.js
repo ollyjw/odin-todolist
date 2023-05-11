@@ -22575,7 +22575,6 @@ function printProjectInfo(project) {
 function addListenerToProjectItem(projectElem, projectName, anchor, displayToDoItem) {
     projectElem.addEventListener('click', function() {
         resetToDoList();
-        // NOT WORKING FOR DEFAULT PROJ - WHY?
         displayToDoItem(projectName);
         resetActiveProject(anchor);
     })
@@ -22993,8 +22992,8 @@ let storage;
         title: 'Eat',
         description: 'Eat ingredients straight out of fridge',
         dueDate: `${today}`,
-        priority: 'high',
-        projectName: 'Default project'
+        priority: 'High',
+        projectName: 'Default Project'
     }    
     
     // If nothing in local storage load defaults
