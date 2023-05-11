@@ -27,12 +27,12 @@
         <form action="" id="project-form">
             <h2>Add New Project</h2>
             <div class="row">
-                <!-- <label for="title">Title</label> -->
+                <label class="label" for="title">Title</label>
                 <input type="text" name="project-title" id="project-title" placeholder="Title">
             </div>
             <div class="row">
-                <!-- <label for="description">description</label> -->
-                <input type="text" name="project-description" id="project-description" placeholder="description">
+                <label class="label" for="description">Description</label>
+                <input type="text" name="project-description" id="project-description" placeholder="Description">
             </div>
             <button id="save-new-project">Save</button>
             <button id="cancel-new-project">Cancel</button>
@@ -43,31 +43,30 @@
         <form action="" id="to-do-form">
             <h2>Add New To Do</h2>
             <div class="row">
-                <!-- <label for="title">Title</label> -->
+                <label class="label" for="title">Title</label>
                 <input type="text" name="to-do-title" id="to-do-title" placeholder="Title*" required>
             </div>
             <div class="row">
-                <!-- <label for="description">description</label> -->
+                <label class="label" for="description">Description</label>
                 <input type="text" name="to-do-description" id="to-do-description" placeholder="description*" required>
             </div>
             <div class="row">
-                <!-- <label for="dueDate">dueDate</label> -->
+                <label class="label" for="dueDate">Due Date</label>
                 <input type="date" name="dueDate" id="dueDate" required>
             </div>
             <div class="row">
-                <!-- <label for="priority">Priority</label> -->
+                <label class="label" for="priority">Priority</label>
                 <select name="priority" id="priority">
-                    <option value="" disabled selected>Task Priority</option>
+                    <!-- <option value="" disabled selected>Task Priority</option> -->
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                 </select>
             </div>
             <div class="row">
-                <label for="projectName"></label>
+                <label class="label" for="projectName">Project</label>
                 <select name="projectName" id="projectName">
-                    <option value="" disabled selected>Which project</option>
-                    
+                    <!-- <option value="" disabled selected>Which project</option> -->
                 </select>
             </div>
 
