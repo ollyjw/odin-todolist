@@ -61,7 +61,6 @@ export function printProjectInfo(project) {
 function addListenerToProjectItem(projectElem, projectName, anchor, displayToDoItem) {
     projectElem.addEventListener('click', function() {
         resetToDoList();
-        // NOT WORKING FOR DEFAULT PROJ - WHY?
         displayToDoItem(projectName);
         resetActiveProject(anchor);
     })

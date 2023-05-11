@@ -20,8 +20,8 @@ let storage;
         title: 'Eat',
         description: 'Eat ingredients straight out of fridge',
         dueDate: `${today}`,
-        priority: 'high',
-        projectName: 'Default project'
+        priority: 'High',
+        projectName: 'Default Project'
     }    
     
     // If nothing in local storage load defaults
