@@ -22801,6 +22801,9 @@ contentContainer.prepend(newToDoBtn);contentContainer.prepend(newProjectBtn);
 // ///////////////////
 const cancelDeleteProject = document.getElementById('delete-project-cancel');
 const cancelDeleteToDo = document.getElementById('delete-to-do-modal-cancel');
+const cancelNewProj = document.getElementById('cancel-new-project');
+const cancelNewToDo = document.getElementById('cancel-new-to-do');
+
 
 cancelDeleteProject.addEventListener('click', () => {
     const modals = document.querySelector('.modal.active')
@@ -22810,8 +22813,14 @@ cancelDeleteToDo.addEventListener('click', () => {
     const modals = document.querySelector('.modal.active')
     _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
 })
-
-// DETAILS BTN
+cancelNewProj.addEventListener('click', () => {
+    const modals = document.querySelector('.modal.active')
+    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
+})
+cancelNewToDo.addEventListener('click', () => {
+    const modals = document.querySelector('.modal.active')
+    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
+})
 
 /***/ }),
 
@@ -23059,19 +23068,19 @@ let storage;
     function deleteProject(projectId) {
         // store storage items into object arrays
         let projects = JSON.parse(storage.getItem('projects'));
-        // let todos = JSON.parse(storage.getItem('todos'));
+        let todos = JSON.parse(storage.getItem('todos'));
 
         // create new array of projects with ids equal to input projectid
-        // let toDelete = projects.filter(project => project['id'] == projectId);
+        let toDelete = projects.filter(project => project['id'] == projectId);
 
         // create new array of projects where the id is not equal to the input id
         let updatedProjects = projects.filter(project => project['id'] != projectId);
 
-        // // create new array of todos with projectNames that aren't equal to the projectName of first project object in toDelete array
-        // let updatedToDos = todos.filter(todo => todo['projectName'] != toDelete[0]['projectName']);
+        // create new array of todos with projectNames that aren't equal to the projectName of first project object in toDelete array
+        let updatedToDos = todos.filter(todo => todo['projectName'] != toDelete[0]['projectName']);
 
-        // // replace todos in storage with updated list
-        // storage.setItem('todos', JSON.stringify(updatedToDos));
+        // replace todos in storage with updated list
+        storage.setItem('todos', JSON.stringify(updatedToDos));
 
         // replace projects in local storage with updated array
         storage.setItem('projects', JSON.stringify(updatedProjects));
