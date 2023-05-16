@@ -2,7 +2,7 @@
 // we can only store strings in the window.localStorage object
 // If we try to store a JavaScript object without first converting it to a string, we will get an [object, object] response
 
-const storage = (() => {
+const Storage = (() => {
 
 let storage;
 
@@ -98,7 +98,7 @@ let storage;
         let todos = JSON.parse(storage.getItem('todos'));
         // Create new array of todos where the toDo id isn't equal to the target id
         let updatedToDos = todos.filter(todo => todo['id'] != toDoId);
-        
+
         storage.setItem('todos', JSON.stringify(updatedToDos));
     }
 
@@ -116,4 +116,4 @@ let storage;
 
 })();
 
-export { storage };
+export { Storage };

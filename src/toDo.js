@@ -1,39 +1,49 @@
-import { storage } from './storage.js';
+import { Storage } from './storage.js';
 
-// Factory function
-export const createToDo = (title, description, dueDate, priority, projectName) => {
+const ToDo = (() => {
 
-    let toDoProps = {
-        title: title, 
-        description: description,
-        dueDate: dueDate,
-        priority: priority,
-        projectName: projectName,
-        id: updateToDoIndex()
-    }
+    // Factory function
+    function createToDo(title, description, dueDate, priority, projectName) {
 
-    class ToDo {
-        constructor(props) {
-            this.title = props.title,
-            this.description = props.description,
-            this.dueDate = props.dueDate,
-            this.priority = props.priority,
-            this.projectName = props.projectName
-            this.id = props.id;
+        let toDoProps = {
+            title: title, 
+            description: description,
+            dueDate: dueDate,
+            priority: priority,
+            projectName: projectName,
+            id: updateToDoIndex()
         }
+
+        class ToDo {
+            constructor(props) {
+                this.title = props.title,
+                this.description = props.description,
+                this.dueDate = props.dueDate,
+                this.priority = props.priority,
+                this.projectName = props.projectName
+                this.id = props.id;
+            }
+        }
+
+        //Save the input values to local storage
+        Storage.addNewToDoLocally(new ToDo(toDoProps));
     }
 
-    //Save the input values to local storage
-    storage.addNewToDoLocally(new ToDo(toDoProps));
-}
+    function updateToDoIndex() {
+        let todos = Storage.getToDoItems();
+        let i = 0;
+        todos.forEach(todo => {
+            todo.id = i;
+            i += 1;
+        })
 
-export function updateToDoIndex() {
-    let todos = storage.getToDoItems();
-    let i = 0;
-    todos.forEach(todo => {
-        todo.id = i;
-        i += 1;
-    })
+        return i;
+    }
 
-    return i;
-}
+    return {
+        createToDo
+    }
+
+})();
+
+export { ToDo };
