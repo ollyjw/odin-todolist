@@ -22516,8 +22516,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { updateIndex } from './projects';
-
 
 
 const sideNav = document.getElementById("projects");
@@ -22610,8 +22608,8 @@ function resetActiveProject(newActiveProject) {
 }
 
 function init() {
-    // Clears to do container
-    resetToDoList();
+    // Clears project + to do containers
+    resetDisplay();
     // Loop through projects array and display each project object's properties
     displayProject();
     // Display default to do on page load
@@ -22622,22 +22620,16 @@ function init() {
 
 // Loop through array and populate html elements
 function displayProject() {
-
-    //storage.updateIndex();
-
     // Set content div to empty so it clears the page each time you save & doesnt append projects to previous iteration of displayProject
-    // NB - this didnt work until I called the function in global scope in index.js & broke when I put it beneath the following forEach
-    sideNav.innerHTML = '';
+    resetProjectList();
     
     // Loop through array and display each project's properties
-      
     let projects = _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.getProjectItems();
- 
+
     projects.forEach((item) => {
         printProjectInfo(item);
     });
 }
-
 
 // Once new project submitted, add to dropdown in new to-do form
 // populateProjectDropdown('Default project');
@@ -22662,12 +22654,13 @@ function populateProjectDropdown(projectName){
 }
 
 // Create to-do html elements
-function printToDoInfo(title, description, dueDate, priority) {
+function printToDoInfo(title, description, dueDate, priority, id) {
 
     // Create card div
     const toDoCard = document.createElement('div');
     toDoCard.classList.add('to-do-card');
     toDoList.appendChild(toDoCard);
+    toDoCard.id = id;
 
     // Create a h2 tag for title
     const toDoH2 = document.createElement("h2");
@@ -22698,19 +22691,9 @@ function printToDoInfo(title, description, dueDate, priority) {
     deleteToDoBtn.addEventListener('click', function() {
         const deleteConfirmModal = document.getElementById('delete-to-do-confirm-modal');
         _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.openModal(deleteConfirmModal);
+        addListenerToDelToDo(id);
     })
-
-    // DELETE TO DO CONFIRMATION
-    const deleteToDoConfirmBtn = document.getElementById('delete-to-do-confirm');
-
-    deleteToDoConfirmBtn.addEventListener('click', function deleteToDo() {
-        const modals = document.querySelector('.modal.active');
-        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
-
-        toDoCard.remove();
-        localStorage.clear();
-    })
-   
+  
     // Add tags to card div
     toDoCard.appendChild(toDoH2);
     toDoCard.appendChild(toDoDescriptionP);
@@ -22719,20 +22702,46 @@ function printToDoInfo(title, description, dueDate, priority) {
     toDoCard.appendChild(deleteToDoBtn);
 }
 
+// Read the ID of the delbtn & delete the corresponding todo
+function addListenerToDelToDo(toDoId) {
+    const deleteToDoConfirmBtn = document.getElementById('delete-to-do-confirm');
+    deleteToDoConfirmBtn.addEventListener('click', function() {
+        deleteToDo(toDoId);
+    })
+}
+
+function deleteToDo(toDoId) {
+    _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.deleteToDo(toDoId);
+
+    // Clear todo container, display proj, display default todo, populate dropdown
+    init();
+
+    // Close delete modal (to be added on click delete confirm btn)
+    const modals = document.querySelector('.modal.active');
+    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
+}
+
 // Clear the to do list (when click on project so it hides other projects todos)
 function resetToDoList() {
     toDoList.innerHTML = '';
 }
 
+function resetProjectList() {
+    sideNav.innerHTML = '';
+}
+
+function resetDisplay() {    
+    resetProjectList()
+    resetToDoList();
+}
+
 // Loop through array and populate html elements
-function displayToDoItem(projectName) {
-    //toDoList.innerHTML = '';
-    
+function displayToDoItem(projectName) {   
     let toDos = _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.getToDosOfProject(projectName);
 
     toDos.forEach(toDo => {
         printToDoInfo(toDo['title'], 
-        toDo['description'], toDo['dueDate'], toDo['priority']);
+        toDo['description'], toDo['dueDate'], toDo['priority'], toDo['id']);
     })
 }
 
@@ -22758,9 +22767,6 @@ saveToDoBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__
 //     const modals = document.querySelector('.modal.active')
 //     Modal.closeModal(modals);
 // })
-
-// Clear form and close modal
-// const cancelProjectBtn = document.getElementById("save-new-project");
 
 
 // ///////////////////
@@ -22806,19 +22812,19 @@ const cancelNewToDo = document.getElementById('cancel-new-to-do');
 
 
 cancelDeleteProject.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active')
+    const modals = document.querySelector('.modal.active');
     _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
 })
 cancelDeleteToDo.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active')
+    const modals = document.querySelector('.modal.active');
     _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
 })
 cancelNewProj.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active')
+    const modals = document.querySelector('.modal.active');
     _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
 })
 cancelNewToDo.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active')
+    const modals = document.querySelector('.modal.active');
     _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
 })
 
@@ -22947,7 +22953,7 @@ const Modal = (() => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "createProject": () => (/* binding */ createProject),
-/* harmony export */   "updateIndex": () => (/* binding */ updateIndex)
+/* harmony export */   "updateProjectIndex": () => (/* binding */ updateProjectIndex)
 /* harmony export */ });
 /* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
 
@@ -22957,7 +22963,7 @@ const createProject = (projectName, description) => {
     let projectProps = {
         projectName: projectName,
         description: description,
-        id: updateIndex()
+        id: updateProjectIndex()
     }
 
     class Project {
@@ -22974,7 +22980,7 @@ const createProject = (projectName, description) => {
 
 // update index no. of each project
 // start index from 0 & add 1 for every project added
-function updateIndex() {
+function updateProjectIndex() {
     let projects = _storage_js__WEBPACK_IMPORTED_MODULE_0__.storage.getProjectItems();
     let i = 0;
     projects.forEach(project => {
@@ -23019,7 +23025,8 @@ let storage;
         description: 'Eat ingredients straight out of fridge',
         dueDate: `${today}`,
         priority: 'High',
-        projectName: 'Default Project'
+        projectName: 'Default Project',
+        id: 0
     }
 
     // If nothing in local storage load defaults
@@ -23051,8 +23058,9 @@ let storage;
         storage.setItem('todos', JSON.stringify(storageToDos));
     }
 
+    // 
     function getToDosOfProject(project) {
-        // Put todos array from storage into todos variable
+        // Create todos array from storage item
         let todos = JSON.parse(storage.getItem('todos'));
         // filter through each element of todos array & check projectName property is equal to project input
         return todos.filter(todo => todo['projectName'] == project);
@@ -23061,6 +23069,11 @@ let storage;
     // retrieves projects from the storage and converts to an object array
     function getProjectItems() {
         return JSON.parse(storage.getItem('projects'));
+    }
+
+    // retrieves todos from the storage and converts to an object array
+    function getToDoItems() {
+        return JSON.parse(storage.getItem('todos'));
     }
 
     // Get projects from storage & replace (set) with updated list
@@ -23084,7 +23097,15 @@ let storage;
 
         // replace projects in local storage with updated array
         storage.setItem('projects', JSON.stringify(updatedProjects));
-    }    
+    }   
+    
+    function deleteToDo(toDoId) {
+        let todos = JSON.parse(storage.getItem('todos'));
+        // Create new array of todos where the toDo id isn't equal to the target id
+        let updatedToDos = todos.filter(todo => todo['id'] != toDoId);
+        
+        storage.setItem('todos', JSON.stringify(updatedToDos));
+    }
 
     init();
 
@@ -23093,7 +23114,9 @@ let storage;
         addNewProjectLocally,
         getToDosOfProject,
         getProjectItems,
-        deleteProject
+        getToDoItems,
+        deleteProject,
+        deleteToDo
     }
 
 })();
@@ -23110,7 +23133,8 @@ let storage;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createToDo": () => (/* binding */ createToDo)
+/* harmony export */   "createToDo": () => (/* binding */ createToDo),
+/* harmony export */   "updateToDoIndex": () => (/* binding */ updateToDoIndex)
 /* harmony export */ });
 /* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
 
@@ -23123,7 +23147,8 @@ const createToDo = (title, description, dueDate, priority, projectName) => {
         description: description,
         dueDate: dueDate,
         priority: priority,
-        projectName: projectName
+        projectName: projectName,
+        id: updateToDoIndex()
     }
 
     class ToDo {
@@ -23133,12 +23158,23 @@ const createToDo = (title, description, dueDate, priority, projectName) => {
             this.dueDate = props.dueDate,
             this.priority = props.priority,
             this.projectName = props.projectName
-            // this.id = props.id;
+            this.id = props.id;
         }
     }
 
     //Save the input values to local storage
     _storage_js__WEBPACK_IMPORTED_MODULE_0__.storage.addNewToDoLocally(new ToDo(toDoProps));
+}
+
+function updateToDoIndex() {
+    let todos = _storage_js__WEBPACK_IMPORTED_MODULE_0__.storage.getToDoItems();
+    let i = 0;
+    todos.forEach(todo => {
+        todo.id = i;
+        i += 1;
+    })
+
+    return i;
 }
 
 /***/ })
@@ -23230,10 +23266,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Create new to-dos, set to-dos to complete, change to-do priority
-
-// View all projects / View all todos in each project / expand todo to see/edit details
-
-// Possibly use Array.filter() to grab the projectName property out of the to-do factory & check if it's equal to title property of project array?
 
 // Make sure you can't add the same project title more than once
 
