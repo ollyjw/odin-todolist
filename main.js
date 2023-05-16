@@ -22501,12 +22501,7 @@ module.exports = styleTagTransform;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "displayProject": () => (/* binding */ displayProject),
-/* harmony export */   "displayToDoItem": () => (/* binding */ displayToDoItem),
-/* harmony export */   "init": () => (/* binding */ init),
-/* harmony export */   "populateProjectDropdown": () => (/* binding */ populateProjectDropdown),
-/* harmony export */   "printProjectInfo": () => (/* binding */ printProjectInfo),
-/* harmony export */   "printToDoInfo": () => (/* binding */ printToDoInfo)
+/* harmony export */   "DisplayController": () => (/* binding */ DisplayController)
 /* harmony export */ });
 /* harmony import */ var _grabFormData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./grabFormData */ "./src/grabFormData.js");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal */ "./src/modal.js");
@@ -22518,315 +22513,339 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const sideNav = document.getElementById("projects");
-const toDoList = document.getElementById("to-do-list");
+const DisplayController = (() => {
 
-// Create project html elements
-function printProjectInfo(project) {
+    const sideNav = document.getElementById("projects");
+    const toDoList = document.getElementById("to-do-list");
 
-    // Create project list item
-    const projectLi = document.createElement('li');
-    projectLi.classList.add('project');
-    projectLi.dataset.index = project['id'];
-    sideNav.appendChild(projectLi);
+    // Create project html elements
+    function printProjectInfo(project) {
 
-    // Create an anchor tag within the li
-    const projectA = document.createElement('a');
-    projectA.className = "project-link";
-    projectA.href = '#';
-    projectLi.appendChild(projectA);
+        // Create project list item
+        const projectLi = document.createElement('li');
+        projectLi.classList.add('project');
+        projectLi.dataset.index = project['id'];
+        sideNav.appendChild(projectLi);
 
-    // Create a h2 tag for title
-    const projectH2 = document.createElement("h2");
-    projectH2.className = "project-title";
-    projectH2.textContent = project['projectName'];
+        // Create an anchor tag within the li
+        const projectA = document.createElement('a');
+        projectA.className = "project-link";
+        projectA.href = '#';
+        projectLi.appendChild(projectA);
 
-    // Create p tag for description
-    const projectP = document.createElement("p");
-    projectP.className = "project-description";
-    projectP.textContent = project['description'];
+        // Create a h2 tag for title
+        const projectH2 = document.createElement("h2");
+        projectH2.className = "project-title";
+        projectH2.textContent = project['projectName'];
 
-    // Create delete project btn that brings up confirmation modal
-    const deleteProjectBtn = document.createElement('button');
-    deleteProjectBtn.classList.add('btn');
-    deleteProjectBtn.setAttribute('type', 'button');
-    deleteProjectBtn.textContent = 'Delete';
-    deleteProjectBtn.id = project['id'];
-        
-    deleteProjectBtn.addEventListener('click', function() {
-        const deleteConfirmModal = document.getElementById('delete-project-confirm-modal');
-        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.openModal(deleteConfirmModal);
-        addListenerToDelProj(project['id']);
-    })  
-   
-    // Add tags to list item
-    projectA.appendChild(projectH2);
-    projectA.appendChild(projectP);
-    projectA.appendChild(deleteProjectBtn);
+        // Create p tag for description
+        const projectP = document.createElement("p");
+        projectP.className = "project-description";
+        projectP.textContent = project['description'];
 
-    addListenerToProjectItem(projectLi, project['projectName'], projectA, displayToDoItem);
-}
+        // Create delete project btn that brings up confirmation modal
+        const deleteProjectBtn = document.createElement('button');
+        deleteProjectBtn.classList.add('btn');
+        deleteProjectBtn.setAttribute('type', 'button');
+        deleteProjectBtn.textContent = 'Delete';
+        deleteProjectBtn.id = project['id'];
 
-// Read the ID of the delbtn & delete the corresponding proj
-function addListenerToDelProj(projectId) {
-    const deleteProjectConfirmBtn = document.getElementById('delete-project-confirm');
-    deleteProjectConfirmBtn.addEventListener('click', function() {
-        deleteProject(projectId);
-    })
-}
+        deleteProjectBtn.addEventListener('click', function () {
+            const deleteConfirmModal = document.getElementById('delete-project-confirm-modal');
+            _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.openModal(deleteConfirmModal);
+            addListenerToDelProj(project['id']);
+        })
 
-function deleteProject(projectId) {
-    _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.deleteProject(projectId);
+        // Add tags to list item
+        projectA.appendChild(projectH2);
+        projectA.appendChild(projectP);
+        projectA.appendChild(deleteProjectBtn);
 
-    // Clear todo container, display proj, display default todo, populate dropdown
-    init();
+        addListenerToProjectItem(projectLi, project['projectName'], projectA, displayToDoItem);
+    }
 
-    // Close delete modal (to be added on click delete confirm btn)
-    const modals = document.querySelector('.modal.active');
-    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
-}
+    // Read the ID of the delbtn & delete the corresponding proj
+    function addListenerToDelProj(projectId) {
+        const deleteProjectConfirmBtn = document.getElementById('delete-project-confirm');
+        deleteProjectConfirmBtn.addEventListener('click', function () {
+            deleteProject(projectId);
+        })
+    }
 
-// Click on a project, reset todo container, display project's to-do, add active class to anchor
-function addListenerToProjectItem(projectElem, projectName, anchor, displayToDoItem) {
-    projectElem.addEventListener('click', function() {
+    function deleteProject(projectId) {
+        _storage_js__WEBPACK_IMPORTED_MODULE_2__.Storage.deleteProject(projectId);
+
+        // Clear todo container, display proj, display default todo, populate dropdown
+        init();
+
+        // Close delete modal (to be added on click delete confirm btn)
+        const modals = document.querySelector('.modal.active');
+        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
+    }
+
+    // Click on a project, reset todo container, display project's to-do, add active class to anchor
+    function addListenerToProjectItem(projectElem, projectName, anchor, displayToDoItem) {
+        projectElem.addEventListener('click', function () {
+            resetToDoList();
+            displayToDoItem(projectName);
+            resetActiveProject(anchor);
+        })
+    }
+
+    // to be added to click event:
+    // add class of active to anchor tag & remove it from the other projects
+    function resetActiveProject(newActiveProject) {
+        let projectsUl = document.getElementById('projects').getElementsByClassName('active');
+
+        for (let project of projectsUl) {
+            project.classList.remove('active');
+        }
+
+        newActiveProject.classList.add('active');
+    }
+
+    function init() {
+        // Clears project + to do containers
+        resetDisplay();
+        // Loop through projects array and display each project object's properties
+        displayProject();
+        // Display default to do on page load
+        displayToDoItem('Default Project');
+        // Populate the dropdown
+        populateProjectDropdown('Default project');
+    }
+
+    // Loop through array and populate html elements
+    function displayProject() {
+        // Set content div to empty so it clears the page each time you save & doesnt append projects to previous iteration of displayProject
+        resetProjectList();
+
+        // Loop through array and display each project's properties
+        let projects = _storage_js__WEBPACK_IMPORTED_MODULE_2__.Storage.getProjectItems();
+
+        projects.forEach((item) => {
+            printProjectInfo(item);
+        });
+    }
+
+    // Once new project submitted, add to dropdown in new to-do form
+    // populateProjectDropdown('Default project');
+    function populateProjectDropdown(projectName) {
+        // Store Select tag of project dropdown
+        const projectSelect = document.getElementById("projectName");
+
+        // reset the list every time a project is added
+        projectSelect.innerHTML = '';
+
+        // REFACTOR AWAY FROM INITIAL ARRAYS TO LOCAL Storage ARRAYS
+        let projects = _storage_js__WEBPACK_IMPORTED_MODULE_2__.Storage.getProjectItems();
+
+        // Loop through projects array and populate in option tags
+        for (let i = 0; i < projects.length; i++) {
+            let project = projects[i].projectName;
+            let optionElement = document.createElement('option');
+            optionElement.textContent = project;
+            optionElement.value = project;
+            projectSelect.appendChild(optionElement);
+        }
+    }
+
+    // Create to-do html elements
+    function printToDoInfo(title, description, dueDate, priority, id) {
+
+        // Create card div
+        const toDoCard = document.createElement('div');
+        toDoCard.classList.add('to-do-card');
+        toDoList.appendChild(toDoCard);
+        toDoCard.id = id;
+
+        // Create a h2 tag for title
+        const toDoH2 = document.createElement("h2");
+        toDoH2.className = "to-do-title";
+        toDoH2.textContent = title;
+
+        // Create p tag for description
+        const toDoDescriptionP = document.createElement("p");
+        toDoDescriptionP.textContent = `Description: ${description}`;
+
+        // Create p tag for date
+        const toDoDateP = document.createElement("p");
+        // the default parsed value is always formatted yyyy-mm-dd, date-fns changes it to dd-mm-yyyy
+        let date = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(dueDate, 'dd.MM.yyyy', new Date());
+
+        toDoDateP.textContent = `Due Date: ${(0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(date, 'dd.MM.yyyy')}`;
+
+        // Create p tag for priority
+        const toDoPriority = document.createElement("p");
+        toDoPriority.textContent = `Priority: ${priority}`;
+
+        // Create Delete Btn which brings up delete confirmation modal
+        const deleteToDoBtn = document.createElement('button');
+        deleteToDoBtn.classList.add('btn');
+        deleteToDoBtn.setAttribute('type', 'button');
+        deleteToDoBtn.textContent = 'Delete';
+
+        deleteToDoBtn.addEventListener('click', function () {
+            const deleteConfirmModal = document.getElementById('delete-to-do-confirm-modal');
+            _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.openModal(deleteConfirmModal);
+            addListenerToDelToDo(id);
+        })
+
+        // Add tags to card div
+        toDoCard.appendChild(toDoH2);
+        toDoCard.appendChild(toDoDescriptionP);
+        toDoCard.appendChild(toDoDateP);
+        toDoCard.appendChild(toDoPriority);
+        toDoCard.appendChild(deleteToDoBtn);
+    }
+
+    // Read the ID of the delbtn & delete the corresponding todo
+    function addListenerToDelToDo(toDoId) {
+        const deleteToDoConfirmBtn = document.getElementById('delete-to-do-confirm');
+        deleteToDoConfirmBtn.addEventListener('click', function () {
+            deleteToDo(toDoId);
+        })
+    }
+
+    function deleteToDo(toDoId) {
+        _storage_js__WEBPACK_IMPORTED_MODULE_2__.Storage.deleteToDo(toDoId);
+
+        // Clear todo container, display proj, display default todo, populate dropdown
+        init();
+
+        // Close delete modal (to be added on click delete confirm btn)
+        const modals = document.querySelector('.modal.active');
+        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
+    }
+
+    // Clear the to do list (when click on project so it hides other projects todos)
+    function resetToDoList() {
+        toDoList.innerHTML = '';
+    }
+
+    function resetProjectList() {
+        sideNav.innerHTML = '';
+    }
+
+    function resetDisplay() {
+        resetProjectList()
         resetToDoList();
-        displayToDoItem(projectName);
-        resetActiveProject(anchor);
-    })
-}
-
-// to be added to click event:
-// add class of active to anchor tag & remove it from the other projects
-function resetActiveProject(newActiveProject) {
-    let projectsUl = document.getElementById('projects').getElementsByClassName('active');
-
-    for (let project of projectsUl) {
-        project.classList.remove('active');
     }
 
-    newActiveProject.classList.add('active');
-}
+    // Loop through array and populate html elements
+    function displayToDoItem(projectName) {
+        let toDos = _storage_js__WEBPACK_IMPORTED_MODULE_2__.Storage.getToDosOfProject(projectName);
 
-function init() {
-    // Clears project + to do containers
-    resetDisplay();
-    // Loop through projects array and display each project object's properties
-    displayProject();
-    // Display default to do on page load
-    displayToDoItem('Default Project');
-    // Populate the dropdown
-    populateProjectDropdown('Default project');
-}
-
-// Loop through array and populate html elements
-function displayProject() {
-    // Set content div to empty so it clears the page each time you save & doesnt append projects to previous iteration of displayProject
-    resetProjectList();
-    
-    // Loop through array and display each project's properties
-    let projects = _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.getProjectItems();
-
-    projects.forEach((item) => {
-        printProjectInfo(item);
-    });
-}
-
-// Once new project submitted, add to dropdown in new to-do form
-// populateProjectDropdown('Default project');
-function populateProjectDropdown(projectName){
-    // Store Select tag of project dropdown
-    const projectSelect = document.getElementById("projectName");
-
-    // reset the list every time a project is added
-    projectSelect.innerHTML = '';
-
-    // REFACTOR AWAY FROM INITIAL ARRAYS TO LOCAL STORAGE ARRAYS
-    let projects = _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.getProjectItems();
-    
-    // Loop through projects array and populate in option tags
-    for (let i = 0; i < projects.length; i++) {
-        let project = projects[i].projectName;
-        let optionElement = document.createElement('option');
-        optionElement.textContent = project;
-        optionElement.value = project;
-        projectSelect.appendChild(optionElement);
+        toDos.forEach(toDo => {
+            printToDoInfo(toDo['title'],
+                toDo['description'], toDo['dueDate'], toDo['priority'], toDo['id']);
+        })
     }
-}
 
-// Create to-do html elements
-function printToDoInfo(title, description, dueDate, priority, id) {
+    ////////////////////////////////////////////
 
-    // Create card div
-    const toDoCard = document.createElement('div');
-    toDoCard.classList.add('to-do-card');
-    toDoList.appendChild(toDoCard);
-    toDoCard.id = id;
+    // ///////////////////
+    // FORM SUBMIT/CANCEl BTNS
+    // ///////////////////
+    const saveProjectBtn = document.getElementById("save-new-project");
+    saveProjectBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__.grabProjectFormData);
+    saveProjectBtn.addEventListener('click', populateProjectDropdown);
 
-    // Create a h2 tag for title
-    const toDoH2 = document.createElement("h2");
-    toDoH2.className = "to-do-title";
-    toDoH2.textContent = title;
-
-    // Create p tag for description
-    const toDoDescriptionP = document.createElement("p");
-    toDoDescriptionP.textContent = `Description: ${description}`;
-
-    // Create p tag for date
-    const toDoDateP = document.createElement("p");
-    // the default parsed value is always formatted yyyy-mm-dd, date-fns changes it to dd-mm-yyyy
-    let date = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(dueDate, 'dd.MM.yyyy', new Date());
-
-    toDoDateP.textContent = `Due Date: ${(0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(date, 'dd.MM.yyyy')}`;   
-
-    // Create p tag for priority
-    const toDoPriority = document.createElement("p");
-    toDoPriority.textContent = `Priority: ${priority}`;
-
-    // Create Delete Btn which brings up delete confirmation modal
-    const deleteToDoBtn = document.createElement('button');
-    deleteToDoBtn.classList.add('btn');
-    deleteToDoBtn.setAttribute('type', 'button');
-    deleteToDoBtn.textContent = 'Delete';
-        
-    deleteToDoBtn.addEventListener('click', function() {
-        const deleteConfirmModal = document.getElementById('delete-to-do-confirm-modal');
-        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.openModal(deleteConfirmModal);
-        addListenerToDelToDo(id);
+    saveProjectBtn.addEventListener('click', () => {
+        const modals = document.querySelector('.modal.active')
+        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
     })
-  
-    // Add tags to card div
-    toDoCard.appendChild(toDoH2);
-    toDoCard.appendChild(toDoDescriptionP);
-    toDoCard.appendChild(toDoDateP);
-    toDoCard.appendChild(toDoPriority);
-    toDoCard.appendChild(deleteToDoBtn);
-}
 
-// Read the ID of the delbtn & delete the corresponding todo
-function addListenerToDelToDo(toDoId) {
-    const deleteToDoConfirmBtn = document.getElementById('delete-to-do-confirm');
-    deleteToDoConfirmBtn.addEventListener('click', function() {
-        deleteToDo(toDoId);
+    const saveToDoBtn = document.getElementById("save-new-to-do");
+    saveToDoBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__.grabToDoFormData);
+
+    // commented because currently if you dont fill out the fields you get the alert & the form closes
+    // saveToDoBtn.addEventListener('click', () => {
+    //     const modals = document.querySelector('.modal.active')
+    //     Modal.closeModal(modals);
+    // })
+
+
+    // ///////////////////
+    // NEW PROJ/TO-DO BTNS
+    // ///////////////////
+    const contentContainer = document.getElementById('content-container');
+    const overlay = document.getElementById('overlay');
+
+    const newProjectBtn = document.createElement('button');
+    newProjectBtn.classList.add('btn');
+    newProjectBtn.setAttribute('type', 'button');
+    newProjectBtn.textContent = 'New project';
+
+    newProjectBtn.addEventListener('click', () => {
+        const projectModal = document.getElementById('new-project');
+        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.openModal(projectModal);
     })
-}
-
-function deleteToDo(toDoId) {
-    _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.deleteToDo(toDoId);
-
-    // Clear todo container, display proj, display default todo, populate dropdown
-    init();
-
-    // Close delete modal (to be added on click delete confirm btn)
-    const modals = document.querySelector('.modal.active');
-    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
-}
-
-// Clear the to do list (when click on project so it hides other projects todos)
-function resetToDoList() {
-    toDoList.innerHTML = '';
-}
-
-function resetProjectList() {
-    sideNav.innerHTML = '';
-}
-
-function resetDisplay() {    
-    resetProjectList()
-    resetToDoList();
-}
-
-// Loop through array and populate html elements
-function displayToDoItem(projectName) {   
-    let toDos = _storage_js__WEBPACK_IMPORTED_MODULE_2__.storage.getToDosOfProject(projectName);
-
-    toDos.forEach(toDo => {
-        printToDoInfo(toDo['title'], 
-        toDo['description'], toDo['dueDate'], toDo['priority'], toDo['id']);
+    overlay.addEventListener('click', () => {
+        const modals = document.querySelector('.modal.active')
+        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
     })
-}
 
-///////////////////////////////////////////////
+    const newToDoBtn = document.createElement('button');
+    newToDoBtn.classList.add('btn');
+    newToDoBtn.setAttribute('type', 'button');
+    newToDoBtn.textContent = 'New To Do';
 
-// ///////////////////
-// FORM SUBMIT/CANCEl BTNS
-// ///////////////////
-const saveProjectBtn = document.getElementById("save-new-project");
-saveProjectBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__.grabProjectFormData);
-saveProjectBtn.addEventListener('click', populateProjectDropdown);
+    newToDoBtn.addEventListener('click', () => {
+        const toDoModal = document.getElementById('new-to-do');
+        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.openModal(toDoModal);
+    })
 
-saveProjectBtn.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active')
-    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
-})
-
-const saveToDoBtn = document.getElementById("save-new-to-do");
-saveToDoBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__.grabToDoFormData);
-
-// commented because currently if you dont fill out the fields you get the alert & the form closes
-// saveToDoBtn.addEventListener('click', () => {
-//     const modals = document.querySelector('.modal.active')
-//     Modal.closeModal(modals);
-// })
+    contentContainer.prepend(newToDoBtn); contentContainer.prepend(newProjectBtn);
 
 
-// ///////////////////
-// NEW PROJ/TO-DO BTNS
-// ///////////////////
-const contentContainer = document.getElementById('content-container');
-const overlay = document.getElementById('overlay');
-
-const newProjectBtn = document.createElement('button');
-newProjectBtn.classList.add('btn');
-newProjectBtn.setAttribute('type', 'button');
-newProjectBtn.textContent = 'New project';
-
-newProjectBtn.addEventListener('click', () => {
-    const projectModal = document.getElementById('new-project');
-    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.openModal(projectModal);
-})
-overlay.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active')
-    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
-})
-
-const newToDoBtn = document.createElement('button');
-newToDoBtn.classList.add('btn');
-newToDoBtn.setAttribute('type', 'button');
-newToDoBtn.textContent = 'New To Do';
-
-newToDoBtn.addEventListener('click', () => {
-    const toDoModal = document.getElementById('new-to-do');
-    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.openModal(toDoModal);
-})
-
-contentContainer.prepend(newToDoBtn);contentContainer.prepend(newProjectBtn);
+    // ///////////////////
+    // CANCEL BTNS
+    // ///////////////////
+    const cancelDeleteProject = document.getElementById('delete-project-cancel');
+    const cancelDeleteToDo = document.getElementById('delete-to-do-modal-cancel');
+    const cancelNewProj = document.getElementById('cancel-new-project');
+    const cancelNewToDo = document.getElementById('cancel-new-to-do');
 
 
-// ///////////////////
-// CANCEL BTNS
-// ///////////////////
-const cancelDeleteProject = document.getElementById('delete-project-cancel');
-const cancelDeleteToDo = document.getElementById('delete-to-do-modal-cancel');
-const cancelNewProj = document.getElementById('cancel-new-project');
-const cancelNewToDo = document.getElementById('cancel-new-to-do');
+    cancelDeleteProject.addEventListener('click', () => {
+        const modals = document.querySelector('.modal.active');
+        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
+    })
+    cancelDeleteToDo.addEventListener('click', () => {
+        const modals = document.querySelector('.modal.active');
+        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
+    })
+    cancelNewProj.addEventListener('click', () => {
+        const modals = document.querySelector('.modal.active');
+        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
+    })
+    cancelNewToDo.addEventListener('click', () => {
+        const modals = document.querySelector('.modal.active');
+        _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
+    })
+
+    return {
+        printProjectInfo,
+        addListenerToDelProj,
+        deleteProject,
+        resetActiveProject,
+        addListenerToProjectItem,
+        init,
+        displayProject,
+        populateProjectDropdown,
+        printToDoInfo,
+        addListenerToDelToDo,
+        deleteToDo,
+        resetToDoList,
+        resetProjectList,
+        resetDisplay,
+        displayToDoItem
+    }
+
+})();
 
 
-cancelDeleteProject.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active');
-    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
-})
-cancelDeleteToDo.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active');
-    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
-})
-cancelNewProj.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active');
-    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
-})
-cancelNewToDo.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active');
-    _modal__WEBPACK_IMPORTED_MODULE_1__.Modal.closeModal(modals);
-})
 
 /***/ }),
 
@@ -22844,12 +22863,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _projects_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects.js */ "./src/projects.js");
 /* harmony import */ var _domController_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./domController.js */ "./src/domController.js");
 /* harmony import */ var _toDo_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toDo.js */ "./src/toDo.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
-/* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
-
-
-
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
 
 
 
@@ -22865,10 +22880,10 @@ function grabProjectFormData(event) {
     const projectDescriptionValue = document.getElementById("project-description").value;  
 
     // Create new project with these values
-    (0,_projects_js__WEBPACK_IMPORTED_MODULE_0__.createProject)(projectTitleValue, projectDescriptionValue);
+    _projects_js__WEBPACK_IMPORTED_MODULE_0__.Project.createProject(projectTitleValue, projectDescriptionValue);
 
     // Display function
-    (0,_domController_js__WEBPACK_IMPORTED_MODULE_1__.displayProject)();
+    _domController_js__WEBPACK_IMPORTED_MODULE_1__.DisplayController.displayProject();
 }
 
 // To-do form
@@ -22890,9 +22905,8 @@ function grabToDoFormData(event) {
 
     // the default parsed value is always formatted yyyy-mm-dd, date-fns's parse ISO changes it to dd-mm-yyyy
     // Warn user that they selected a date in past
-    if ((0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(toDoDateValue) < (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])()) {
+    if ((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(toDoDateValue) < (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])()) {
         alert("You have entered a date which already passed!");
-        // console.log(parseISO(toDoDateValue));
         return;
     }
 
@@ -22900,10 +22914,10 @@ function grabToDoFormData(event) {
     const formattedDate = format(new Date(toDoDateValue),'dd.MM.yyyy');
 
     // Create new to-do object with properties from input values
-    (0,_toDo_js__WEBPACK_IMPORTED_MODULE_2__.createToDo)(toDoTitleValue, toDoDescriptionValue, formattedDate, toDoPriorityValue, projectNameValue); 
+    _toDo_js__WEBPACK_IMPORTED_MODULE_2__.ToDo.createToDo(toDoTitleValue, toDoDescriptionValue, formattedDate, toDoPriorityValue, projectNameValue);
 
     // Push to DOM (Loops through array of to do items and populates html elements)
-    (0,_domController_js__WEBPACK_IMPORTED_MODULE_1__.displayToDoItem)(projectName);
+    _domController_js__WEBPACK_IMPORTED_MODULE_1__.DisplayController.displayToDoItem(projectName);
 }
 
 /***/ }),
@@ -22952,44 +22966,53 @@ const Modal = (() => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createProject": () => (/* binding */ createProject),
-/* harmony export */   "updateProjectIndex": () => (/* binding */ updateProjectIndex)
+/* harmony export */   "Project": () => (/* binding */ Project)
 /* harmony export */ });
 /* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
 
 
-// Factory function
-const createProject = (projectName, description) => {    
-    let projectProps = {
-        projectName: projectName,
-        description: description,
-        id: updateProjectIndex()
-    }
+const Project = (() => {
 
-    class Project {
-        constructor(props) {
-            this.projectName = props.projectName;
-            this.description = props.description;
-            this.id = props.id;
+    // Factory function
+    const createProject = (projectName, description) => {    
+        let projectProps = {
+            projectName: projectName,
+            description: description,
+            id: updateProjectIndex()
         }
+
+        class Project {
+            constructor(props) {
+                this.projectName = props.projectName;
+                this.description = props.description;
+                this.id = props.id;
+            }
+        }
+
+        _storage_js__WEBPACK_IMPORTED_MODULE_0__.Storage.addNewProjectLocally(new Project(projectProps));
     }
 
-    _storage_js__WEBPACK_IMPORTED_MODULE_0__.storage.addNewProjectLocally(new Project(projectProps));
-}
+
+    // update index no. of each project
+    // start index from 0 & add 1 for every project added
+    function updateProjectIndex() {
+        let projects = _storage_js__WEBPACK_IMPORTED_MODULE_0__.Storage.getProjectItems();
+        let i = 0;
+        projects.forEach(project => {
+            project.id = i;
+            i += 1;
+        })
+
+        return i;
+    }
+
+    return {
+        createProject
+    }
+
+})();
 
 
-// update index no. of each project
-// start index from 0 & add 1 for every project added
-function updateProjectIndex() {
-    let projects = _storage_js__WEBPACK_IMPORTED_MODULE_0__.storage.getProjectItems();
-    let i = 0;
-    projects.forEach(project => {
-        project.id = i;
-        i += 1;
-    })
-
-    return i;
-}
 
 /***/ }),
 
@@ -23001,13 +23024,13 @@ function updateProjectIndex() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "storage": () => (/* binding */ storage)
+/* harmony export */   "Storage": () => (/* binding */ Storage)
 /* harmony export */ });
 // https://blog.logrocket.com/storing-retrieving-javascript-objects-localstorage/
 // we can only store strings in the window.localStorage object
 // If we try to store a JavaScript object without first converting it to a string, we will get an [object, object] response
 
-const storage = (() => {
+const Storage = (() => {
 
 let storage;
 
@@ -23103,7 +23126,7 @@ let storage;
         let todos = JSON.parse(storage.getItem('todos'));
         // Create new array of todos where the toDo id isn't equal to the target id
         let updatedToDos = todos.filter(todo => todo['id'] != toDoId);
-        
+
         storage.setItem('todos', JSON.stringify(updatedToDos));
     }
 
@@ -23133,49 +23156,58 @@ let storage;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createToDo": () => (/* binding */ createToDo),
-/* harmony export */   "updateToDoIndex": () => (/* binding */ updateToDoIndex)
+/* harmony export */   "ToDo": () => (/* binding */ ToDo)
 /* harmony export */ });
 /* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
 
 
-// Factory function
-const createToDo = (title, description, dueDate, priority, projectName) => {
+const ToDo = (() => {
 
-    let toDoProps = {
-        title: title, 
-        description: description,
-        dueDate: dueDate,
-        priority: priority,
-        projectName: projectName,
-        id: updateToDoIndex()
-    }
+    // Factory function
+    function createToDo(title, description, dueDate, priority, projectName) {
 
-    class ToDo {
-        constructor(props) {
-            this.title = props.title,
-            this.description = props.description,
-            this.dueDate = props.dueDate,
-            this.priority = props.priority,
-            this.projectName = props.projectName
-            this.id = props.id;
+        let toDoProps = {
+            title: title, 
+            description: description,
+            dueDate: dueDate,
+            priority: priority,
+            projectName: projectName,
+            id: updateToDoIndex()
         }
+
+        class ToDo {
+            constructor(props) {
+                this.title = props.title,
+                this.description = props.description,
+                this.dueDate = props.dueDate,
+                this.priority = props.priority,
+                this.projectName = props.projectName
+                this.id = props.id;
+            }
+        }
+
+        //Save the input values to local storage
+        _storage_js__WEBPACK_IMPORTED_MODULE_0__.Storage.addNewToDoLocally(new ToDo(toDoProps));
     }
 
-    //Save the input values to local storage
-    _storage_js__WEBPACK_IMPORTED_MODULE_0__.storage.addNewToDoLocally(new ToDo(toDoProps));
-}
+    function updateToDoIndex() {
+        let todos = _storage_js__WEBPACK_IMPORTED_MODULE_0__.Storage.getToDoItems();
+        let i = 0;
+        todos.forEach(todo => {
+            todo.id = i;
+            i += 1;
+        })
 
-function updateToDoIndex() {
-    let todos = _storage_js__WEBPACK_IMPORTED_MODULE_0__.storage.getToDoItems();
-    let i = 0;
-    todos.forEach(todo => {
-        todo.id = i;
-        i += 1;
-    })
+        return i;
+    }
 
-    return i;
-}
+    return {
+        createToDo
+    }
+
+})();
+
+
 
 /***/ })
 
@@ -23269,9 +23301,9 @@ __webpack_require__.r(__webpack_exports__);
 
 // Make sure you can't add the same project title more than once
 
-// REFACTOR all pages to module pattern
+// Display to do item as soon as form submitted
 
-(0,_domController_js__WEBPACK_IMPORTED_MODULE_1__.init)();
+_domController_js__WEBPACK_IMPORTED_MODULE_1__.DisplayController.init();
 })();
 
 /******/ })()
