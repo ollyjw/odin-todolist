@@ -9,10 +9,9 @@ let storage;
     const defaultProject = {
         projectName: 'Default Project',
         description: 'Default Description',
-        id: '0'
+        id: 0
     }  
 
-    // date fns - import the function you want to use
     const {format} = require('date-fns');
     const today = format(new Date(),'dd.MM.yyyy');
 
@@ -22,8 +21,8 @@ let storage;
         dueDate: `${today}`,
         priority: 'High',
         projectName: 'Default Project'
-    }    
-    
+    }
+
     // If nothing in local storage load defaults
     function init() {
         storage = window.localStorage;
@@ -68,15 +67,23 @@ let storage;
     // Get projects from storage & replace (set) with updated list
     // deleteProject(project['id'])
     function deleteProject(projectId) {
+        // store storage items into object arrays
         let projects = JSON.parse(storage.getItem('projects'));
+        // let todos = JSON.parse(storage.getItem('todos'));
 
-        // if project id is equal to input projectid, store in todelete variable
-        let toDelete = projects.filter(project => project['id'] == projectId);
+        // create new array of projects with ids equal to input projectid
+        // let toDelete = projects.filter(project => project['id'] == projectId);
 
-        // if project id is not equal to the input id, store in new array
+        // create new array of projects where the id is not equal to the input id
         let updatedProjects = projects.filter(project => project['id'] != projectId);
 
-        // replace projects key in local storage with updated array
+        // // create new array of todos with projectNames that aren't equal to the projectName of first project object in toDelete array
+        // let updatedToDos = todos.filter(todo => todo['projectName'] != toDelete[0]['projectName']);
+
+        // // replace todos in storage with updated list
+        // storage.setItem('todos', JSON.stringify(updatedToDos));
+
+        // replace projects in local storage with updated array
         storage.setItem('projects', JSON.stringify(updatedProjects));
     }    
 

@@ -38,16 +38,13 @@ export function printProjectInfo(project) {
     deleteProjectBtn.classList.add('btn');
     deleteProjectBtn.setAttribute('type', 'button');
     deleteProjectBtn.textContent = 'Delete';
+    deleteProjectBtn.id = project['id'];
         
     deleteProjectBtn.addEventListener('click', function() {
         const deleteConfirmModal = document.getElementById('delete-project-confirm-modal');
         Modal.openModal(deleteConfirmModal);
-    })
-
-    // DELETE PROJECT CONFIRMATION - currently deletes all
-    const deleteProjectConfirmBtn = document.getElementById('delete-project-confirm');
-
-    deleteProjectConfirmBtn.addEventListener('click', deleteProject());
+        addListenerToDelProj(project['id']);
+    })  
    
     // Add tags to list item
     projectA.appendChild(projectH2);
@@ -55,6 +52,25 @@ export function printProjectInfo(project) {
     projectA.appendChild(deleteProjectBtn);
 
     addListenerToProjectItem(projectLi, project['projectName'], projectA, displayToDoItem);
+}
+
+// Read the ID of the delbtn & delete the corresponding proj
+function addListenerToDelProj(projectId) {
+    const deleteProjectConfirmBtn = document.getElementById('delete-project-confirm');
+    deleteProjectConfirmBtn.addEventListener('click', function() {
+        deleteProject(projectId);
+    })
+}
+
+function deleteProject(projectId) {
+    storage.deleteProject(projectId);
+
+    // Clear todo container, display proj, display default todo, populate dropdown
+    init();
+
+    // Close delete modal (to be added on click delete confirm btn)
+    const modals = document.querySelector('.modal.active');
+    Modal.closeModal(modals);
 }
 
 // Click on a project, reset todo container, display project's to-do, add active class to anchor
@@ -78,18 +94,15 @@ function resetActiveProject(newActiveProject) {
     newActiveProject.classList.add('active');
 }
 
-// FIX NEXT
-//deleteProject(project['id'])
-function deleteProject(projectId) {
-    storage.deleteProject(projectId);
-
-    const modals = document.querySelector('.modal.active');
-    Modal.closeModal(modals);
-    
-    // Clears everything - need to target id
-    //projectLi.remove();
-    //localStorage.clear();
-
+export function init() {
+    // Clears to do container
+    resetToDoList();
+    // Loop through projects array and display each project object's properties
+    displayProject();
+    // Display default to do on page load
+    displayToDoItem('Default Project');
+    // Populate the dropdown
+    populateProjectDropdown('Default project');
 }
 
 // Loop through array and populate html elements
@@ -217,8 +230,15 @@ const saveProjectBtn = document.getElementById("save-new-project");
 saveProjectBtn.addEventListener('click', grabProjectFormData);
 saveProjectBtn.addEventListener('click', populateProjectDropdown);
 
+saveProjectBtn.addEventListener('click', () => {
+    const modals = document.querySelector('.modal.active')
+    Modal.closeModal(modals);
+})
+
 const saveToDoBtn = document.getElementById("save-new-to-do");
 saveToDoBtn.addEventListener('click', grabToDoFormData);
+
+// commented because currently if you dont fill out the fields you get the alert & the form closes
 // saveToDoBtn.addEventListener('click', () => {
 //     const modals = document.querySelector('.modal.active')
 //     Modal.closeModal(modals);

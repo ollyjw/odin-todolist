@@ -1,14 +1,7 @@
 import { storage } from './storage.js';
 
-// export let projectsArray = [];
-
-// // Push new projects to projects array
-// export function addNewProjectToArray(newProject) {
-//     projectsArray.push(newProject)
-// }
-
 // Factory function
-export const createProject = (projectName, description, id) => {    
+export const createProject = (projectName, description) => {    
     let projectProps = {
         projectName: projectName,
         description: description,
