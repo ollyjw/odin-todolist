@@ -286,6 +286,9 @@ contentContainer.prepend(newToDoBtn);contentContainer.prepend(newProjectBtn);
 // ///////////////////
 const cancelDeleteProject = document.getElementById('delete-project-cancel');
 const cancelDeleteToDo = document.getElementById('delete-to-do-modal-cancel');
+const cancelNewProj = document.getElementById('cancel-new-project');
+const cancelNewToDo = document.getElementById('cancel-new-to-do');
+
 
 cancelDeleteProject.addEventListener('click', () => {
     const modals = document.querySelector('.modal.active')
@@ -295,5 +298,11 @@ cancelDeleteToDo.addEventListener('click', () => {
     const modals = document.querySelector('.modal.active')
     Modal.closeModal(modals);
 })
-
-// DETAILS BTN
+cancelNewProj.addEventListener('click', () => {
+    const modals = document.querySelector('.modal.active')
+    Modal.closeModal(modals);
+})
+cancelNewToDo.addEventListener('click', () => {
+    const modals = document.querySelector('.modal.active')
+    Modal.closeModal(modals);
+})
