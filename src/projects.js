@@ -5,7 +5,7 @@ export const createProject = (projectName, description) => {
     let projectProps = {
         projectName: projectName,
         description: description,
-        id: updateIndex()
+        id: updateProjectIndex()
     }
 
     class Project {
@@ -22,7 +22,7 @@ export const createProject = (projectName, description) => {
 
 // update index no. of each project
 // start index from 0 & add 1 for every project added
-export function updateIndex() {
+export function updateProjectIndex() {
     let projects = storage.getProjectItems();
     let i = 0;
     projects.forEach(project => {

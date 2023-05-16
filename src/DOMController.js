@@ -1,9 +1,7 @@
 import { grabProjectFormData, grabToDoFormData } from './grabFormData';
 import { Modal } from './modal';
 import { storage } from './storage.js';
-// import { updateIndex } from './projects';
 import { format, parse } from 'date-fns';
-
 
 const sideNav = document.getElementById("projects");
 const toDoList = document.getElementById("to-do-list");
@@ -95,8 +93,8 @@ function resetActiveProject(newActiveProject) {
 }
 
 export function init() {
-    // Clears to do container
-    resetToDoList();
+    // Clears project + to do containers
+    resetDisplay();
     // Loop through projects array and display each project object's properties
     displayProject();
     // Display default to do on page load
@@ -107,22 +105,16 @@ export function init() {
 
 // Loop through array and populate html elements
 export function displayProject() {
-
-    //storage.updateIndex();
-
     // Set content div to empty so it clears the page each time you save & doesnt append projects to previous iteration of displayProject
-    // NB - this didnt work until I called the function in global scope in index.js & broke when I put it beneath the following forEach
-    sideNav.innerHTML = '';
+    resetProjectList();
     
     // Loop through array and display each project's properties
-      
     let projects = storage.getProjectItems();
- 
+
     projects.forEach((item) => {
         printProjectInfo(item);
     });
 }
-
 
 // Once new project submitted, add to dropdown in new to-do form
 // populateProjectDropdown('Default project');
@@ -147,12 +139,13 @@ export function populateProjectDropdown(projectName){
 }
 
 // Create to-do html elements
-export function printToDoInfo(title, description, dueDate, priority) {
+export function printToDoInfo(title, description, dueDate, priority, id) {
 
     // Create card div
     const toDoCard = document.createElement('div');
     toDoCard.classList.add('to-do-card');
     toDoList.appendChild(toDoCard);
+    toDoCard.id = id;
 
     // Create a h2 tag for title
     const toDoH2 = document.createElement("h2");
@@ -183,19 +176,9 @@ export function printToDoInfo(title, description, dueDate, priority) {
     deleteToDoBtn.addEventListener('click', function() {
         const deleteConfirmModal = document.getElementById('delete-to-do-confirm-modal');
         Modal.openModal(deleteConfirmModal);
+        addListenerToDelToDo(id);
     })
-
-    // DELETE TO DO CONFIRMATION
-    const deleteToDoConfirmBtn = document.getElementById('delete-to-do-confirm');
-
-    deleteToDoConfirmBtn.addEventListener('click', function deleteToDo() {
-        const modals = document.querySelector('.modal.active');
-        Modal.closeModal(modals);
-
-        toDoCard.remove();
-        localStorage.clear();
-    })
-   
+  
     // Add tags to card div
     toDoCard.appendChild(toDoH2);
     toDoCard.appendChild(toDoDescriptionP);
@@ -204,20 +187,46 @@ export function printToDoInfo(title, description, dueDate, priority) {
     toDoCard.appendChild(deleteToDoBtn);
 }
 
+// Read the ID of the delbtn & delete the corresponding todo
+function addListenerToDelToDo(toDoId) {
+    const deleteToDoConfirmBtn = document.getElementById('delete-to-do-confirm');
+    deleteToDoConfirmBtn.addEventListener('click', function() {
+        deleteToDo(toDoId);
+    })
+}
+
+function deleteToDo(toDoId) {
+    storage.deleteToDo(toDoId);
+
+    // Clear todo container, display proj, display default todo, populate dropdown
+    init();
+
+    // Close delete modal (to be added on click delete confirm btn)
+    const modals = document.querySelector('.modal.active');
+    Modal.closeModal(modals);
+}
+
 // Clear the to do list (when click on project so it hides other projects todos)
 function resetToDoList() {
     toDoList.innerHTML = '';
 }
 
+function resetProjectList() {
+    sideNav.innerHTML = '';
+}
+
+function resetDisplay() {    
+    resetProjectList()
+    resetToDoList();
+}
+
 // Loop through array and populate html elements
-export function displayToDoItem(projectName) {
-    //toDoList.innerHTML = '';
-    
+export function displayToDoItem(projectName) {   
     let toDos = storage.getToDosOfProject(projectName);
 
     toDos.forEach(toDo => {
         printToDoInfo(toDo['title'], 
-        toDo['description'], toDo['dueDate'], toDo['priority']);
+        toDo['description'], toDo['dueDate'], toDo['priority'], toDo['id']);
     })
 }
 
@@ -243,9 +252,6 @@ saveToDoBtn.addEventListener('click', grabToDoFormData);
 //     const modals = document.querySelector('.modal.active')
 //     Modal.closeModal(modals);
 // })
-
-// Clear form and close modal
-// const cancelProjectBtn = document.getElementById("save-new-project");
 
 
 // ///////////////////
@@ -291,18 +297,18 @@ const cancelNewToDo = document.getElementById('cancel-new-to-do');
 
 
 cancelDeleteProject.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active')
+    const modals = document.querySelector('.modal.active');
     Modal.closeModal(modals);
 })
 cancelDeleteToDo.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active')
+    const modals = document.querySelector('.modal.active');
     Modal.closeModal(modals);
 })
 cancelNewProj.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active')
+    const modals = document.querySelector('.modal.active');
     Modal.closeModal(modals);
 })
 cancelNewToDo.addEventListener('click', () => {
-    const modals = document.querySelector('.modal.active')
+    const modals = document.querySelector('.modal.active');
     Modal.closeModal(modals);
 })

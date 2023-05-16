@@ -20,7 +20,8 @@ let storage;
         description: 'Eat ingredients straight out of fridge',
         dueDate: `${today}`,
         priority: 'High',
-        projectName: 'Default Project'
+        projectName: 'Default Project',
+        id: 0
     }
 
     // If nothing in local storage load defaults
@@ -52,8 +53,9 @@ let storage;
         storage.setItem('todos', JSON.stringify(storageToDos));
     }
 
+    // 
     function getToDosOfProject(project) {
-        // Put todos array from storage into todos variable
+        // Create todos array from storage item
         let todos = JSON.parse(storage.getItem('todos'));
         // filter through each element of todos array & check projectName property is equal to project input
         return todos.filter(todo => todo['projectName'] == project);
@@ -62,6 +64,11 @@ let storage;
     // retrieves projects from the storage and converts to an object array
     function getProjectItems() {
         return JSON.parse(storage.getItem('projects'));
+    }
+
+    // retrieves todos from the storage and converts to an object array
+    function getToDoItems() {
+        return JSON.parse(storage.getItem('todos'));
     }
 
     // Get projects from storage & replace (set) with updated list
@@ -85,7 +92,15 @@ let storage;
 
         // replace projects in local storage with updated array
         storage.setItem('projects', JSON.stringify(updatedProjects));
-    }    
+    }   
+    
+    function deleteToDo(toDoId) {
+        let todos = JSON.parse(storage.getItem('todos'));
+        // Create new array of todos where the toDo id isn't equal to the target id
+        let updatedToDos = todos.filter(todo => todo['id'] != toDoId);
+        
+        storage.setItem('todos', JSON.stringify(updatedToDos));
+    }
 
     init();
 
@@ -94,7 +109,9 @@ let storage;
         addNewProjectLocally,
         getToDosOfProject,
         getProjectItems,
-        deleteProject
+        getToDoItems,
+        deleteProject,
+        deleteToDo
     }
 
 })();

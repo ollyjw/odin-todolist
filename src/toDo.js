@@ -8,7 +8,8 @@ export const createToDo = (title, description, dueDate, priority, projectName) =
         description: description,
         dueDate: dueDate,
         priority: priority,
-        projectName: projectName
+        projectName: projectName,
+        id: updateToDoIndex()
     }
 
     class ToDo {
@@ -18,10 +19,21 @@ export const createToDo = (title, description, dueDate, priority, projectName) =
             this.dueDate = props.dueDate,
             this.priority = props.priority,
             this.projectName = props.projectName
-            // this.id = props.id;
+            this.id = props.id;
         }
     }
 
     //Save the input values to local storage
     storage.addNewToDoLocally(new ToDo(toDoProps));
+}
+
+export function updateToDoIndex() {
+    let todos = storage.getToDoItems();
+    let i = 0;
+    todos.forEach(todo => {
+        todo.id = i;
+        i += 1;
+    })
+
+    return i;
 }
