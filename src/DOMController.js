@@ -102,7 +102,7 @@ const DisplayController = (() => {
         // Display default to do on page load
         displayToDoItem('Default Project');
         // Populate the dropdown
-        populateProjectDropdown('Default project');
+        populateProjectDropdown('Default project');        
     }
 
     // Loop through array and populate html elements
@@ -248,6 +248,7 @@ const DisplayController = (() => {
 
     const saveToDoBtn = document.getElementById("save-new-to-do");
     saveToDoBtn.addEventListener('click', grabToDoFormData);
+    saveToDoBtn.addEventListener('click', init);
 
     // commented because currently if you dont fill out the fields you get the alert & the form closes
     // saveToDoBtn.addEventListener('click', () => {

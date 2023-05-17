@@ -22612,7 +22612,7 @@ const DisplayController = (() => {
         // Display default to do on page load
         displayToDoItem('Default Project');
         // Populate the dropdown
-        populateProjectDropdown('Default project');
+        populateProjectDropdown('Default project');        
     }
 
     // Loop through array and populate html elements
@@ -22758,6 +22758,7 @@ const DisplayController = (() => {
 
     const saveToDoBtn = document.getElementById("save-new-to-do");
     saveToDoBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__.grabToDoFormData);
+    saveToDoBtn.addEventListener('click', init);
 
     // commented because currently if you dont fill out the fields you get the alert & the form closes
     // saveToDoBtn.addEventListener('click', () => {
@@ -22879,6 +22880,12 @@ function grabProjectFormData(event) {
     const projectTitleValue = document.getElementById("project-title").value;
     const projectDescriptionValue = document.getElementById("project-description").value;  
 
+    // Add required fields
+    if (projectTitleValue == '') {
+        alert("Please fill out the title");
+        return;
+    }
+
     // Create new project with these values
     _projects_js__WEBPACK_IMPORTED_MODULE_0__.Project.createProject(projectTitleValue, projectDescriptionValue);
 
@@ -22895,7 +22902,6 @@ function grabToDoFormData(event) {
     const toDoDescriptionValue = document.getElementById("to-do-description").value;
     const toDoDateValue = document.getElementById("dueDate").value;
     const toDoPriorityValue = document.getElementById("priority").value;
-
     const projectNameValue = document.getElementById("projectName").value;
 
     // Add required fields
@@ -23296,14 +23302,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+_domController_js__WEBPACK_IMPORTED_MODULE_1__.DisplayController.init();
 
-// Create new to-dos, set to-dos to complete, change to-do priority
+
+// TO DO: ;)
+// Set to-dos to complete, change to-do priority
 
 // Make sure you can't add the same project title more than once
 
-// Display to do item as soon as form submitted
-
-_domController_js__WEBPACK_IMPORTED_MODULE_1__.DisplayController.init();
+// Make 'project 'active' on page load
 })();
 
 /******/ })()

@@ -12,6 +12,12 @@ export function grabProjectFormData(event) {
     const projectTitleValue = document.getElementById("project-title").value;
     const projectDescriptionValue = document.getElementById("project-description").value;  
 
+    // Add required fields
+    if (projectTitleValue == '') {
+        alert("Please fill out the title");
+        return;
+    }
+
     // Create new project with these values
     Project.createProject(projectTitleValue, projectDescriptionValue);
 
@@ -28,7 +34,6 @@ export function grabToDoFormData(event) {
     const toDoDescriptionValue = document.getElementById("to-do-description").value;
     const toDoDateValue = document.getElementById("dueDate").value;
     const toDoPriorityValue = document.getElementById("priority").value;
-
     const projectNameValue = document.getElementById("projectName").value;
 
     // Add required fields
