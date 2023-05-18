@@ -14,13 +14,11 @@ const DisplayController = (() => {
         // Create project list item
         const projectLi = document.createElement('li');
         projectLi.classList.add('project');
-        projectLi.dataset.index = project['id'];
         sideNav.appendChild(projectLi);
 
         // Create an anchor tag within the li
         const projectA = document.createElement('a');
         projectA.className = "project-link";
-        projectA.href = '#';
         projectLi.appendChild(projectA);
 
         // Create a h2 tag for title
@@ -73,7 +71,7 @@ const DisplayController = (() => {
         Modal.closeModal(modals);
     }
 
-    // Click on a project, reset todo container, display project's to-do, add active class to anchor
+    // Click on a project li tag, reset todo container, display project's to-do, add active class to anchor
     function addListenerToProjectItem(projectElem, projectName, anchor, displayToDoItem) {
         projectElem.addEventListener('click', function () {
             resetToDoList();
@@ -102,7 +100,7 @@ const DisplayController = (() => {
         // Display default to do on page load
         displayToDoItem('Default Project');
         // Populate the dropdown
-        populateProjectDropdown('Default project');        
+        populateProjectDropdown('Default project');
     }
 
     // Loop through array and populate html elements
@@ -149,10 +147,14 @@ const DisplayController = (() => {
         toDoList.appendChild(toDoCard);
         toDoCard.id = id;
 
-        // Create a h2 tag for title
-        const toDoH2 = document.createElement("h2");
-        toDoH2.className = "to-do-title";
-        toDoH2.textContent = title;
+        // Create a btn for collapsible
+        const collapseBtn = document.createElement("button");
+        collapseBtn.className = "collapsible";
+        collapseBtn.textContent = title;
+        collapseBtn.id = id;
+
+        const contentDiv = document.createElement('div');
+        contentDiv.classList.add('content');
 
         // Create p tag for description
         const toDoDescriptionP = document.createElement("p");
@@ -162,7 +164,6 @@ const DisplayController = (() => {
         const toDoDateP = document.createElement("p");
         // the default parsed value is always formatted yyyy-mm-dd, date-fns changes it to dd-mm-yyyy
         let date = parse(dueDate, 'dd.MM.yyyy', new Date());
-
         toDoDateP.textContent = `Due Date: ${format(date, 'dd.MM.yyyy')}`;
 
         // Create p tag for priority
@@ -182,11 +183,12 @@ const DisplayController = (() => {
         })
 
         // Add tags to card div
-        toDoCard.appendChild(toDoH2);
-        toDoCard.appendChild(toDoDescriptionP);
-        toDoCard.appendChild(toDoDateP);
-        toDoCard.appendChild(toDoPriority);
-        toDoCard.appendChild(deleteToDoBtn);
+        toDoCard.appendChild(collapseBtn);
+        toDoCard.appendChild(contentDiv);
+        contentDiv.appendChild(toDoDescriptionP);
+        contentDiv.appendChild(toDoDateP);
+        contentDiv.appendChild(toDoPriority);
+        contentDiv.appendChild(deleteToDoBtn);
     }
 
     // Read the ID of the delbtn & delete the corresponding todo
@@ -230,6 +232,27 @@ const DisplayController = (() => {
             printToDoInfo(toDo['title'],
                 toDo['description'], toDo['dueDate'], toDo['priority'], toDo['id']);
         })
+
+        let coll = document.getElementsByClassName("collapsible");
+        let i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                let content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                content.style.display = "none";
+                } else {
+                content.style.display = "block";
+                }
+                // Animated slide down
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
     }
 
     ////////////////////////////////////////////

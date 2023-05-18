@@ -10,3 +10,5 @@ DisplayController.init();
 // Make sure you can't add the same project title more than once
 
 // Make 'project 'active' on page load
+
+// Change color palette of tasks according to priority
