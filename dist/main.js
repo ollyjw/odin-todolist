@@ -22590,6 +22590,13 @@ const DisplayController = (() => {
         })
     }
 
+    // On page load add active class to first project item in list
+    function activeOnLoad() {
+        let projects = document.getElementsByClassName('project-link');
+        let firstProject = projects[0];
+        firstProject.classList.add('active');
+    }
+
     // to be added to click event:
     // add class of active to anchor tag & remove it from the other projects
     function resetActiveProject(newActiveProject) {
@@ -22611,6 +22618,7 @@ const DisplayController = (() => {
         displayToDoItem('Default Project');
         // Populate the dropdown
         populateProjectDropdown('Default project');
+        activeOnLoad();
     }
 
     // Loop through array and populate html elements
@@ -23329,11 +23337,9 @@ _domController_js__WEBPACK_IMPORTED_MODULE_1__.DisplayController.init();
 
 
 // TO DO: ;)
-// Set to-dos to complete, change to-do priority
+// Edit button, change to-do priority
 
 // Make sure you can't add the same project title more than once
-
-// Make 'project 'active' on page load
 
 // Change color palette of tasks according to priority
 })();

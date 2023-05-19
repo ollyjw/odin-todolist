@@ -5,10 +5,8 @@ DisplayController.init();
 
 
 // TO DO: ;)
-// Set to-dos to complete, change to-do priority
+// Edit button, change to-do priority
 
 // Make sure you can't add the same project title more than once
-
-// Make 'project 'active' on page load
 
 // Change color palette of tasks according to priority
