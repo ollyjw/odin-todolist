@@ -22590,11 +22590,15 @@ const DisplayController = (() => {
         })
     }
 
-    // On page load add active class to first project item in list
+    // On page load add active class to first project item in list + display it's to-dos
     function activeOnLoad() {
         let projects = document.getElementsByClassName('project-link');
         let firstProject = projects[0];
         firstProject.classList.add('active');
+
+        let storageProjects = _storage_js__WEBPACK_IMPORTED_MODULE_2__.Storage.getProjectItems();
+        let firstStorageProject = storageProjects[0].projectName;
+        displayToDoItem(firstStorageProject);
     }
 
     // to be added to click event:
@@ -22618,6 +22622,7 @@ const DisplayController = (() => {
         displayToDoItem('Default Project');
         // Populate the dropdown
         populateProjectDropdown('Default project');
+        //On page load add active class to first project item in list
         activeOnLoad();
     }
 
@@ -22781,6 +22786,7 @@ const DisplayController = (() => {
     const saveProjectBtn = document.getElementById("save-new-project");
     saveProjectBtn.addEventListener('click', _grabFormData__WEBPACK_IMPORTED_MODULE_0__.grabProjectFormData);
     saveProjectBtn.addEventListener('click', populateProjectDropdown);
+    saveProjectBtn.addEventListener('click', init);
 
     saveProjectBtn.addEventListener('click', () => {
         const modals = document.querySelector('.modal.active')
@@ -22858,20 +22864,8 @@ const DisplayController = (() => {
     })
 
     return {
-        printProjectInfo,
-        addListenerToDelProj,
-        deleteProject,
-        resetActiveProject,
-        addListenerToProjectItem,
         init,
         displayProject,
-        populateProjectDropdown,
-        printToDoInfo,
-        addListenerToDelToDo,
-        deleteToDo,
-        resetToDoList,
-        resetProjectList,
-        resetDisplay,
         displayToDoItem
     }
 
