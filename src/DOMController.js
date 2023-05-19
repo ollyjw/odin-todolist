@@ -108,11 +108,9 @@ const DisplayController = (() => {
         resetDisplay();
         // Loop through projects array and display each project object's properties
         displayProject();
-        // Display default to do on page load
-        displayToDoItem('Default Project');
         // Populate the dropdown
         populateProjectDropdown('Default project');
-        //On page load add active class to first project item in list
+        //On page load add active class to first project item in list + display it's to-dos
         activeOnLoad();
     }
 
