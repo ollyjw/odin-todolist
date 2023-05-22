@@ -181,6 +181,14 @@ const DisplayController = (() => {
         const toDoPriority = document.createElement("p");
         toDoPriority.textContent = `Priority: ${priority}`;
 
+        if(priority == "High") {
+            toDoCard.classList.add("high-priority")
+        } else if (priority == "Medium") {
+            toDoCard.classList.add("medium-priority")
+        } else if (priority == "Low") {
+            toDoCard.classList.add("low-priority")
+        }
+
         // Create Delete Btn which brings up delete confirmation modal
         const deleteToDoBtn = document.createElement('button');
         deleteToDoBtn.classList.add('btn');

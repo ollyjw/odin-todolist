@@ -43,9 +43,44 @@ h2 {
     margin-bottom: 0;
 }
 
+/* High Priority */
+.high-priority .collapsible {
+    background-color: #ff5252;
+}
+.high-priority .collapsible.active, 
+.collapsible:hover {
+    background-color: #d54646;
+}
+.high-priority .content {
+    background-color: #ffc9c9;
+}
+
+/* Medium priority */
+.medium-priority .collapsible {
+    background-color: #ffc552;
+}
+.medium-priority .collapsible.active, 
+.medium-priority .collapsible:hover {
+    background-color: #e3b24e;
+}
+.medium-priority .content {
+    background-color: #ffde9c;
+}
+
+/* Low priority */
+.low-priority .collapsible {
+    background-color: #87ff77;
+}
+.low-priority .collapsible.active, 
+.low-priority .collapsible:hover {
+    background-color: #6dce60;
+}
+.low-priority .content {
+    background-color: #b8ffae;
+}
+
 .collapsible {
-    background-color: #c1fffb;
-    color: #444;
+    color: #000;
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -67,10 +102,10 @@ h2 {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
   }
 
-.collapsible.active, 
+/* .collapsible.active, 
 .collapsible:hover {
     background-color: #94e7e2;
-}
+} */
 
 .content {
     padding: 30px;
